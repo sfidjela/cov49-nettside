@@ -1,0 +1,9 @@
+Underlagsdokumenter*/
+"Underlagsdokumenter CØV49"/
+*.skp
+*.mp4
+*.dwg
+.DS_Store
+node_modules/
+dist/
+.env
