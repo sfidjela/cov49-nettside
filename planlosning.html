@@ -95,19 +95,6 @@
 
                     <!-- ── ENEBOLIG ── -->
                     <div class="pl-bolig-group is-active" id="grp-enebolig">
-                        <!-- Etasje-faner med planlagt/alternativ -->
-                        <div class="pl-etasje-selector">
-                            <div class="pl-etasje-tabs">
-                                <button class="pl-etasje-tab is-active" data-floor="ene-hoved">Hovedetasje</button>
-                                <button class="pl-etasje-tab" data-floor="ene-under">Underetasje</button>
-                            </div>
-                            <div class="pl-variant-toggle">
-                                <button class="pl-variant-btn is-active" data-variant="planlagt">Planlagt
-                                    løsning</button>
-                                <button class="pl-variant-btn" data-variant="alternativ">Alternativ</button>
-                            </div>
-                        </div>
-
                         <!-- Rom-knapper per etasje (over plantegningen) -->
                         <div class="pl-room-grid is-active" id="rooms-ene-hoved">
                             <button class="pl-room-btn" data-room="ene-stue">
@@ -167,6 +154,19 @@
                             </button>
                         </div>
 
+                        <!-- Etasje-faner med planlagt/alternativ -->
+                        <div class="pl-etasje-selector">
+                            <div class="pl-etasje-tabs">
+                                <button class="pl-etasje-tab is-active" data-floor="ene-hoved">Hovedetasje</button>
+                                <button class="pl-etasje-tab" data-floor="ene-under">Underetasje</button>
+                            </div>
+                            <div class="pl-variant-toggle">
+                                <button class="pl-variant-btn is-active" data-variant="planlagt">Planlagt
+                                    løsning</button>
+                                <button class="pl-variant-btn" data-variant="alternativ">Alternativ</button>
+                            </div>
+                        </div>
+
                         <!-- Plantegningsbilde -->
                         <div class="pl-floorplan">
                             <picture class="pl-floorplan__img is-active" id="fp-ene-hoved-planlagt">
@@ -202,14 +202,6 @@
 
                     <!-- ── TOMANNSBOLIG ── -->
                     <div class="pl-bolig-group" id="grp-tomannsbolig">
-                        <div class="pl-etasje-selector">
-                            <div class="pl-etasje-tabs">
-                                <button class="pl-etasje-tab is-active" data-floor="tom-1">1. etasje</button>
-                                <button class="pl-etasje-tab" data-floor="tom-2">2. etasje</button>
-                                <button class="pl-etasje-tab" data-floor="tom-under">Underetasje</button>
-                            </div>
-                        </div>
-
                         <!-- Rom-knapper plasseres over plantegning -->
                         <div class="pl-room-grid is-active" id="rooms-tom-1">
                             <button class="pl-room-btn" data-room="tom-stue">
@@ -262,6 +254,14 @@
                                 <span class="pl-room-btn__name">Teknisk rom</span>
                                 <span class="pl-room-btn__area">ca. 4 m²</span>
                             </button>
+                        </div>
+
+                        <div class="pl-etasje-selector">
+                            <div class="pl-etasje-tabs">
+                                <button class="pl-etasje-tab is-active" data-floor="tom-1">1. etasje</button>
+                                <button class="pl-etasje-tab" data-floor="tom-2">2. etasje</button>
+                                <button class="pl-etasje-tab" data-floor="tom-under">Underetasje</button>
+                            </div>
                         </div>
 
                         <div class="pl-floorplan">

@@ -299,6 +299,7 @@
   display: none;
   grid-template-columns: repeat(3, 1fr);
   gap: 6px;
+  margin-bottom: 16px;
 }
 
 .pl-room-grid.is-active {
