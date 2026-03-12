@@ -324,8 +324,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 2px;
-  padding: 10px 6px;
+  padding: 8px 4px;
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   cursor: pointer;
@@ -343,11 +344,6 @@
   border-color: var(--color-accent);
   background: rgba(139, 111, 78, 0.1);
   box-shadow: 0 0 0 1px var(--color-accent);
-}
-
-.pl-room-btn__icon {
-  font-size: 1.2rem;
-  line-height: 1.2;
 }
 
 .pl-room-btn__name {
