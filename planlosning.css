@@ -298,7 +298,7 @@
 .pl-room-grid {
   display: none;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
+  gap: 6px;
 }
 
 .pl-room-grid.is-active {
@@ -307,14 +307,16 @@
 
 @media (max-width: 768px) {
   .pl-room-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    /* Keep 3 cols on tablet/mobile to save vertical space */
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
   .pl-room-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 6px;
+    grid-template-columns: repeat(3, 1fr);
+    /* 3 cols on small phones too, buttons are smaller now */
+    gap: 4px;
   }
 }
 
@@ -322,8 +324,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  padding: 16px 10px;
+  gap: 2px;
+  padding: 10px 6px;
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
   cursor: pointer;
@@ -344,19 +346,19 @@
 }
 
 .pl-room-btn__icon {
-  font-size: 1.4rem;
-  line-height: 1;
+  font-size: 1.2rem;
+  line-height: 1.2;
 }
 
 .pl-room-btn__name {
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   font-weight: 400;
   color: var(--color-text);
   letter-spacing: 0.02em;
 }
 
 .pl-room-btn__area {
-  font-size: 0.68rem;
+  font-size: 0.62rem;
   color: var(--color-text-muted);
 }
 
@@ -387,6 +389,7 @@
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
