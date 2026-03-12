@@ -1,0 +1,437 @@
+/* ========================================================
+   PLANLØSNING PAGE – Styles
+   Inherits design tokens and base from index.css
+   ======================================================== */
+
+/* ── Page layout ── */
+.pl-page {
+  padding-top: 100px;
+  min-height: 100vh;
+}
+
+.pl-header {
+  margin-bottom: 48px;
+}
+
+/* ── Back link ── */
+.pl-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.pl-back svg {
+  transition: transform 0.2s;
+}
+
+.pl-back:hover svg {
+  transform: translateX(-4px);
+}
+
+/* ── Bolig selector ── */
+.pl-bolig-selector {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.pl-bolig-btn {
+  flex: 1;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  padding: 20px 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: left;
+  font-family: var(--font);
+}
+
+.pl-bolig-btn:hover {
+  border-color: var(--color-text-muted);
+}
+
+.pl-bolig-btn.is-active {
+  border-color: var(--color-accent);
+  background: rgba(139, 111, 78, 0.08);
+}
+
+.pl-bolig-btn__label {
+  display: block;
+  font-size: var(--fs-body);
+  font-weight: 400;
+  color: var(--color-text);
+  margin-bottom: 4px;
+}
+
+.pl-bolig-btn__sub {
+  display: block;
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+/* ── Main viewer layout ── */
+.pl-viewer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  margin-bottom: 48px;
+}
+
+@media (min-width: 1024px) {
+  .pl-viewer {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .pl-room-display {
+    order: 2;
+    position: sticky;
+    top: 100px;
+  }
+
+  .pl-controls {
+    order: 1;
+  }
+}
+
+/* ── Room display (viewer) ── */
+.pl-room-display {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  min-height: 300px;
+}
+
+.pl-room-display__placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 40px;
+  color: var(--color-text-muted);
+  gap: 16px;
+}
+
+.pl-room-display__placeholder svg {
+  opacity: 0.3;
+}
+
+.pl-room-display__placeholder p {
+  font-size: var(--fs-small);
+}
+
+.pl-room-display__image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+
+.pl-room-display__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.4s ease;
+}
+
+.pl-room-display__no-image {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--color-text-muted);
+  background: var(--color-bg);
+}
+
+.pl-room-display__no-image svg {
+  opacity: 0.25;
+}
+
+.pl-room-display__no-image p {
+  font-size: var(--fs-small);
+  letter-spacing: 0.05em;
+}
+
+.pl-room-display__info {
+  padding: 24px 28px 28px;
+}
+
+.pl-room-display__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+
+.pl-room-display__name {
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.pl-room-display__area {
+  font-size: var(--fs-small);
+  color: var(--color-accent-light);
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.pl-room-display__desc {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}
+
+/* ── Controls section ── */
+.pl-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Bolig group show/hide ── */
+.pl-bolig-group {
+  display: none;
+}
+
+.pl-bolig-group.is-active {
+  display: block;
+}
+
+/* ── Etasje selector ── */
+.pl-etasje-selector {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.pl-etasje-tabs {
+  display: flex;
+  gap: 6px;
+}
+
+.pl-etasje-tab {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-family: var(--font);
+  font-size: 0.8rem;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
+}
+
+.pl-etasje-tab:hover {
+  border-color: var(--color-text-muted);
+  color: var(--color-text);
+}
+
+.pl-etasje-tab.is-active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+.pl-variant-toggle {
+  display: flex;
+  gap: 4px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  padding: 3px;
+}
+
+.pl-variant-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  font-family: var(--font);
+  font-size: 0.72rem;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  letter-spacing: 0.02em;
+}
+
+.pl-variant-btn:hover {
+  color: var(--color-text);
+}
+
+.pl-variant-btn.is-active {
+  background: rgba(139, 111, 78, 0.2);
+  color: var(--color-accent-light);
+}
+
+/* ── Floor plan image ── */
+.pl-floorplan {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.pl-floorplan__img {
+  display: none;
+}
+
+.pl-floorplan__img.is-active {
+  display: block;
+}
+
+.pl-floorplan__img img {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  border: 1px solid var(--color-border);
+}
+
+/* ── Room button grid ── */
+.pl-room-grid {
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.pl-room-grid.is-active {
+  display: grid;
+}
+
+@media (max-width: 768px) {
+  .pl-room-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 400px) {
+  .pl-room-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+  }
+}
+
+.pl-room-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 10px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-family: var(--font);
+  text-align: center;
+}
+
+.pl-room-btn:hover {
+  border-color: var(--color-text-muted);
+  transform: translateY(-2px);
+}
+
+.pl-room-btn.is-active {
+  border-color: var(--color-accent);
+  background: rgba(139, 111, 78, 0.1);
+  box-shadow: 0 0 0 1px var(--color-accent);
+}
+
+.pl-room-btn__icon {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.pl-room-btn__name {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--color-text);
+  letter-spacing: 0.02em;
+}
+
+.pl-room-btn__area {
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+}
+
+/* ── Disclaimer ── */
+.pl-disclaimer {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  padding: 20px 0 40px;
+  border-top: 1px solid var(--color-border);
+  margin-top: 16px;
+  opacity: 0.7;
+}
+
+.pl-disclaimer a {
+  color: var(--color-accent-light);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ── Room display animation ── */
+.pl-room-display__content {
+  animation: fadeInRoom 0.4s ease;
+}
+
+@keyframes fadeInRoom {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Mobile-first: on mobile, room display is above controls ── */
+@media (max-width: 1023px) {
+  .pl-room-display {
+    order: 1;
+  }
+
+  .pl-controls {
+    order: 2;
+  }
+
+  .pl-bolig-selector {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .pl-bolig-btn {
+    padding: 16px 20px;
+  }
+
+  .pl-etasje-selector {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pl-etasje-tabs {
+    width: 100%;
+  }
+
+  .pl-etasje-tab {
+    flex: 1;
+    text-align: center;
+  }
+
+  .pl-variant-toggle {
+    width: 100%;
+  }
+
+  .pl-variant-btn {
+    flex: 1;
+    text-align: center;
+  }
+}
