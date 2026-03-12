@@ -169,6 +169,33 @@ a {
   justify-content: space-between;
 }
 
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+@media (max-width: 768px) {
+  .navbar__links {
+    gap: 16px;
+  }
+}
+
+.navbar__link {
+  font-family: var(--font);
+  font-weight: 400;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navbar__link:hover {
+  color: var(--color-accent);
+}
+
 .navbar__logo {
   height: 28px;
   width: auto;
@@ -1428,6 +1455,84 @@ body.lightbox-open .lightbox {
 .leaflet-popup-tip {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
+}
+
+/* ========================================================
+   FAQ
+   ======================================================== */
+.faq {
+  background: var(--color-bg);
+}
+
+.faq__list {
+  max-width: 800px;
+  margin: 0 auto;
+  border-top: 1px solid var(--color-border);
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--color-border);
+  transition: background 0.3s;
+}
+
+.faq__item:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.faq__question {
+  padding: 24px 0;
+  font-size: 1.1rem;
+  font-weight: 300;
+  cursor: pointer;
+  list-style: none;
+  /* Skuler standard pil */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text);
+  transition: color 0.3s ease;
+}
+
+.faq__question::-webkit-details-marker {
+  display: none;
+}
+
+.faq__question::after {
+  content: "+";
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: var(--color-accent);
+  transition: transform 0.3s ease;
+}
+
+details[open] .faq__question::after {
+  transform: rotate(45deg);
+}
+
+details[open] .faq__question {
+  color: var(--color-accent);
+}
+
+.faq__answer {
+  padding-bottom: 24px;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  font-size: 0.95rem;
+  animation: faq-fade-in 0.4s ease forwards;
+}
+
+@keyframes faq-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ========================================================
