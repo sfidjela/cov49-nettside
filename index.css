@@ -177,7 +177,12 @@ a {
 
 @media (max-width: 768px) {
   .navbar__links {
-    gap: 16px;
+    gap: 12px;
+  }
+
+  .navbar__link {
+    display: none;
+    /* Skuler ekstra linker for å bevare plass på mobil */
   }
 }
 
