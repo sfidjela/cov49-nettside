@@ -57,7 +57,18 @@
     ctaObserver.observe(kontaktSection);
   }
 
-  // ── Smooth scroll for all anchor links ───────────────
+  // ── Smooth scroll for all anchor links & hash navigation ──
+  function smoothScrollTo(target) {
+    if (!target) return;
+    const navbar = document.getElementById('navbar');
+    const navbarHeight = navbar ? navbar.offsetHeight : 70;
+    const targetPos = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20;
+    window.scrollTo({
+      top: Math.max(0, targetPos),
+      behavior: 'smooth'
+    });
+  }
+
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
@@ -65,15 +76,31 @@
       const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
-        const navbarHeight = document.getElementById('navbar')?.offsetHeight || 70;
-        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 24;
-        window.scrollTo({
-          top: Math.max(0, targetPos),
-          behavior: 'smooth'
-        });
+        smoothScrollTo(target);
       }
     });
   });
+
+  // Re-adjust scroll position when arriving from another page with #hash (e.g. #kontakt)
+  function handleInitialHashScroll() {
+    const hash = window.location.hash;
+    if (hash && hash !== '#faq') {
+      const target = document.querySelector(hash);
+      if (target) {
+        smoothScrollTo(target);
+      }
+    }
+  }
+
+  if (window.location.hash && window.location.hash !== '#faq') {
+    setTimeout(handleInitialHashScroll, 50);
+    setTimeout(handleInitialHashScroll, 300);
+    setTimeout(handleInitialHashScroll, 800);
+    window.addEventListener('load', () => {
+      setTimeout(handleInitialHashScroll, 100);
+      setTimeout(handleInitialHashScroll, 500);
+    });
+  }
 
 
   // ── Map POI click-to-navigate ───────────────────────
