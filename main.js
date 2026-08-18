@@ -190,11 +190,23 @@
 
   function closeFaqModal() {
     document.body.classList.remove('faq-open');
+    if (window.location.hash === '#faq') {
+      history.replaceState(null, null, window.location.pathname + window.location.search);
+    }
   }
 
   if (navFaqBtn) navFaqBtn.addEventListener('click', openFaqModal);
   if (faqModalCloseBtn) faqModalCloseBtn.addEventListener('click', closeFaqModal);
   if (faqModalCloseBg) faqModalCloseBg.addEventListener('click', closeFaqModal);
+
+  if (window.location.hash === '#faq') {
+    openFaqModal();
+  }
+  window.addEventListener('hashchange', () => {
+    if (window.location.hash === '#faq') {
+      openFaqModal();
+    }
+  });
 
   // ── Dark/Light Mode Theme Toggle ─────────────────────
   const themeToggle = document.getElementById('theme-toggle');

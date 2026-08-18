@@ -916,4 +916,52 @@
     }
   });
 
+  // ── FAQ Accordion Logic ───────────────────────────────
+  const faqItems = document.querySelectorAll('.faq__item');
+  faqItems.forEach(item => {
+    const summary = item.querySelector('.faq__question');
+    if (summary) {
+      summary.addEventListener('click', () => {
+        if (!item.hasAttribute('open')) {
+          faqItems.forEach(other => {
+            if (other !== item && other.hasAttribute('open')) {
+              other.removeAttribute('open');
+            }
+          });
+        }
+      });
+    }
+  });
+
+  // ── FAQ Modal Logic ───────────────────────────────
+  const navFaqBtn = document.getElementById('navFaqBtn');
+  const faqModal = document.getElementById('faqModal');
+  const faqModalCloseBtn = document.getElementById('faqModalCloseBtn');
+  const faqModalCloseBg = document.getElementById('faqModalCloseBg');
+
+  function openFaqModal(e) {
+    if (e) e.preventDefault();
+    document.body.classList.add('faq-open');
+  }
+
+  function closeFaqModal() {
+    document.body.classList.remove('faq-open');
+    if (window.location.hash === '#faq') {
+      history.replaceState(null, null, window.location.pathname + window.location.search);
+    }
+  }
+
+  if (navFaqBtn) navFaqBtn.addEventListener('click', openFaqModal);
+  if (faqModalCloseBtn) faqModalCloseBtn.addEventListener('click', closeFaqModal);
+  if (faqModalCloseBg) faqModalCloseBg.addEventListener('click', closeFaqModal);
+
+  if (window.location.hash === '#faq') {
+    openFaqModal();
+  }
+  window.addEventListener('hashchange', () => {
+    if (window.location.hash === '#faq') {
+      openFaqModal();
+    }
+  });
+
 })();
