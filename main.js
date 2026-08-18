@@ -60,13 +60,17 @@
   // ── Smooth scroll for all anchor links & hash navigation ──
   function smoothScrollTo(target) {
     if (!target) return;
-    const navbar = document.getElementById('navbar');
-    const navbarHeight = navbar ? navbar.offsetHeight : 70;
-    const targetPos = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 20;
-    window.scrollTo({
-      top: Math.max(0, targetPos),
-      behavior: 'smooth'
-    });
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // Continuously adjust as lazy images, map and reveal elements expand the page height
+    let iterations = 0;
+    const tracker = setInterval(() => {
+      iterations++;
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (iterations >= 6) {
+        clearInterval(tracker);
+      }
+    }, 200);
   }
 
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {

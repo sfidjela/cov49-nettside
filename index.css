@@ -1265,9 +1265,10 @@ section {
 /* ========================================================
    ⑧ KONTAKT
    ======================================================== */
-.kontakt {
+.kontakt,
+#kontakt {
   background: var(--color-bg);
-  scroll-margin-top: 100px;
+  scroll-margin-top: 80px;
 }
 
 .kontakt__grid {
