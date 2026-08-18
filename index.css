@@ -396,9 +396,10 @@ section {
 
 .hero__title {
   font-size: var(--fs-hero);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.05;
   letter-spacing: 0.02em;
+  color: #ffffff;
 }
 
 .hero__badge {
@@ -416,8 +417,8 @@ section {
 
 .hero__sub {
   font-size: var(--fs-hero-sub);
-  font-weight: 300;
-  color: var(--color-text-muted);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.9);
   margin-bottom: 40px;
   letter-spacing: 0.02em;
 }
@@ -430,7 +431,7 @@ section {
   font-weight: 400;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: rgba(255, 255, 255, 0.75);
   cursor: pointer;
   background: none;
   border: none;
