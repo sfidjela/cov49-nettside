@@ -1267,6 +1267,7 @@ section {
    ======================================================== */
 .kontakt {
   background: var(--color-bg);
+  scroll-margin-top: 100px;
 }
 
 .kontakt__grid {

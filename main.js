@@ -60,10 +60,17 @@
   // ── Smooth scroll for all anchor links ───────────────
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
+      const href = this.getAttribute('href');
+      if (href === '#' || href === '#faq') return; // FAQ modal handles #faq
+      const target = document.querySelector(href);
       if (target) {
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        e.preventDefault();
+        const navbarHeight = document.getElementById('navbar')?.offsetHeight || 70;
+        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight - 24;
+        window.scrollTo({
+          top: Math.max(0, targetPos),
+          behavior: 'smooth'
+        });
       }
     });
   });
