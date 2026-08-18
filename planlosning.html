@@ -16,18 +16,46 @@
 </head>
 
 <body>
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
+                document.body.classList.add('light-mode');
+            }
+        })();
+    </script>
 
     <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
     <nav class="navbar scrolled" id="navbar">
         <div class="container">
-            <a href="index.html" class="pl-back" aria-label="Tilbake til forsiden">
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" width="18" height="18">
-                    <path d="M14 4l-8 8 8 8" />
-                </svg>
-                <img src="Logo/02. Tekstlogo/Nobello_Tekstlogo_negativ.svg" alt="Nobello" class="navbar__logo">
-            </a>
+            <a href="index.html" class="navbar__link navbar__home-btn">Forside</a>
             <div class="navbar__links">
+                <a href="enebolig.html" class="navbar__link">Eneboligen</a>
+                <a href="tomannsbolig.html" class="navbar__link">Tomannsboligen</a>
+                <a href="planlosning.html" class="navbar__link is-active">Planløsning</a>
+                <a href="index.html#faq" class="navbar__link">FAQ</a>
                 <a href="index.html#kontakt" class="navbar__cta">Kontakt oss</a>
+                <span class="navbar__passive-logo">
+                    <img src="Logo/02. Tekstlogo/Nobello_Tekstlogo_negativ.svg" alt="Nobello" class="navbar__logo logo-dark-theme">
+                    <img src="Logo/02. Tekstlogo/Nobello_Tekstlogo.svg" alt="Nobello" class="navbar__logo logo-light-theme">
+                </span>
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Bytt fargetema" title="Bytt fargetema">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
             </div>
         </div>
     </nav>
@@ -57,239 +85,173 @@
             </div>
 
             <!-- ═══════════════════════ ROM-VIEWER ═══════════════════════ -->
+            <!-- ═══════════════════════ ROM-VIEWER ═══════════════════════ -->
             <div class="pl-viewer">
-                <!-- Romvisualisering (øverst / til høyre) -->
-                <div class="pl-room-display" id="roomDisplay">
-                    <div class="pl-room-display__placeholder" id="roomPlaceholder">
-                        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" width="48"
-                            height="48">
-                            <rect x="6" y="10" width="36" height="28" rx="2" />
-                            <path d="M6 30l10-8 8 6 8-10 10 12" />
-                            <circle cx="32" cy="18" r="3" />
-                        </svg>
-                        <p>Velg et rom nedenfor for å se visualisering</p>
-                    </div>
-                    <div class="pl-room-display__content" id="roomContent" style="display:none;">
-                        <div class="pl-room-display__image-wrap">
-                            <img class="pl-room-display__img" id="roomImg" src="" alt="">
-                            <div class="pl-room-display__no-image" id="roomNoImage" style="display:none;">
-                                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" width="48"
-                                    height="48">
-                                    <rect x="6" y="10" width="36" height="28" rx="2" />
-                                    <path d="M6 30l10-8 8 6 8-10 10 12" />
-                                    <circle cx="32" cy="18" r="3" />
-                                </svg>
-                                <p>Bilde kommer snart</p>
-                            </div>
-                        </div>
-                        <div class="pl-room-display__info">
-                            <div class="pl-room-display__header">
-                                <h2 class="pl-room-display__name" id="roomName"></h2>
-                                <span class="pl-room-display__area" id="roomArea"></span>
-                            </div>
-                            <p class="pl-room-display__desc" id="roomDesc"></p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Plantegning + romknapper (under / til venstre) -->
-                <div class="pl-controls">
-
-                    <!-- ── ENEBOLIG ── -->
-                    <div class="pl-bolig-group is-active" id="grp-enebolig">
-                        <!-- Rom-knapper per etasje (over plantegningen) -->
+                <!-- Høyre kolonne: Romknapper + Visualisering -->
+                <div class="pl-display-column">
+                    <div class="pl-selector-group">
+                        <span class="pl-selector-label">Velg illustrasjon:</span>
+                        <!-- Rom-knapper per etasje (Enebolig) -->
                         <div class="pl-room-grid is-active" id="rooms-ene-hoved">
                             <button class="pl-room-btn" data-room="ene-stue">
                                 <span class="pl-room-btn__name">Stue</span>
-                                <span class="pl-room-btn__area">ca. 35 m²</span>
                             </button>
                             <button class="pl-room-btn" data-room="ene-kjokken">
                                 <span class="pl-room-btn__name">Kjøkken</span>
-                                <span class="pl-room-btn__area">ca. 14 m²</span>
-                            </button>
-                            <button class="pl-room-btn" data-room="ene-entre">
-                                <span class="pl-room-btn__name">Entré</span>
-                                <span class="pl-room-btn__area">ca. 8 m²</span>
-                            </button>
-                            <button class="pl-room-btn" data-room="ene-bad-hoved">
-                                <span class="pl-room-btn__name">Bad</span>
-                                <span class="pl-room-btn__area">ca. 7 m²</span>
                             </button>
                             <button class="pl-room-btn" data-room="ene-garderobe">
                                 <span class="pl-room-btn__name">Garderobe</span>
-                                <span class="pl-room-btn__area">ca. 5 m²</span>
-                            </button>
-                            <button class="pl-room-btn" data-room="ene-terrasse">
-                                <span class="pl-room-btn__name">Terrasse</span>
-                                <span class="pl-room-btn__area">ca. 18 m²</span>
                             </button>
                         </div>
 
                         <div class="pl-room-grid" id="rooms-ene-under">
                             <button class="pl-room-btn" data-room="ene-sov1">
-                                <span class="pl-room-btn__name">Soverom 1</span>
-                                <span class="pl-room-btn__area">ca. 12 m²</span>
+                                <span class="pl-room-btn__name">Hovedsoverom</span>
                             </button>
-                            <button class="pl-room-btn" data-room="ene-sov2">
-                                <span class="pl-room-btn__name">Soverom 2</span>
-                                <span class="pl-room-btn__area">ca. 10 m²</span>
+                            <button class="pl-room-btn" data-room="ene-tvstue-under">
+                                <span class="pl-room-btn__name">TV-stue</span>
                             </button>
-                            <button class="pl-room-btn" data-room="ene-sov3">
-                                <span class="pl-room-btn__name">Soverom 3</span>
-                                <span class="pl-room-btn__area">ca. 9 m²</span>
-                            </button>
-                            <button class="pl-room-btn" data-room="ene-sov4">
-                                <span class="pl-room-btn__name">Soverom 4</span>
-                                <span class="pl-room-btn__area">ca. 8 m²</span>
-                            </button>
-                            <button class="pl-room-btn" data-room="ene-bad-under">
-                                <span class="pl-room-btn__name">Bad</span>
-                                <span class="pl-room-btn__area">ca. 6 m²</span>
-                            </button>
-                            <button class="pl-room-btn" data-room="ene-vaskerom">
-                                <span class="pl-room-btn__name">Vaskerom</span>
-                                <span class="pl-room-btn__area">ca. 5 m²</span>
-                            </button>
-                            <button class="pl-room-btn" data-room="ene-bod">
-                                <span class="pl-room-btn__name">Bod</span>
-                                <span class="pl-room-btn__area">ca. 6 m²</span>
+                            <button class="pl-room-btn" data-room="ene-hybel">
+                                <span class="pl-room-btn__name">Hybel</span>
                             </button>
                         </div>
 
-                        <!-- Etasje-faner med planlagt/alternativ -->
-                        <div class="pl-etasje-selector">
-                            <div class="pl-etasje-tabs">
-                                <button class="pl-etasje-tab is-active" data-floor="ene-hoved">Hovedetasje</button>
-                                <button class="pl-etasje-tab" data-floor="ene-under">Underetasje</button>
-                            </div>
-                            <div class="pl-variant-toggle">
-                                <button class="pl-variant-btn is-active" data-variant="planlagt">Planlagt
-                                    løsning</button>
-                                <button class="pl-variant-btn" data-variant="alternativ">Alternativ</button>
-                            </div>
-                        </div>
-
-                        <!-- Plantegningsbilde -->
-                        <div class="pl-floorplan">
-                            <picture class="pl-floorplan__img is-active" id="fp-ene-hoved-planlagt">
-                                <source type="image/webp"
-                                    srcset="images/optimized/CØV49 enebolig - første etasje stor stue-768w.webp 768w, images/optimized/CØV49 enebolig - første etasje stor stue-1182w.webp 1182w"
-                                    sizes="(max-width: 768px) 100vw, 560px">
-                                <img src="images/CØV49 enebolig - første etasje stor stue.jpg"
-                                    alt="Enebolig hovedetasje – planlagt løsning">
-                            </picture>
-                            <picture class="pl-floorplan__img" id="fp-ene-hoved-alternativ">
-                                <source type="image/webp"
-                                    srcset="images/optimized/CØV49 enebolig - første etasje ekstra soverom-768w.webp 768w, images/optimized/CØV49 enebolig - første etasje ekstra soverom-1221w.webp 1221w"
-                                    sizes="(max-width: 768px) 100vw, 560px">
-                                <img src="images/CØV49 enebolig - første etasje ekstra soverom.jpg"
-                                    alt="Enebolig hovedetasje – alternativ løsning">
-                            </picture>
-                            <picture class="pl-floorplan__img" id="fp-ene-under-planlagt">
-                                <source type="image/webp"
-                                    srcset="images/optimized/CØV49 enebolig - underetasje 4 soverom og hybel-768w.webp 768w, images/optimized/CØV49 enebolig - underetasje 4 soverom og hybel-1140w.webp 1140w"
-                                    sizes="(max-width: 768px) 100vw, 560px">
-                                <img src="images/CØV49 enebolig - underetasje 4 soverom og hybel.jpg"
-                                    alt="Enebolig underetasje – planlagt løsning">
-                            </picture>
-                            <picture class="pl-floorplan__img" id="fp-ene-under-alternativ">
-                                <source type="image/webp"
-                                    srcset="images/optimized/CØV49 enebolig - underetasje med stor stue og uten bad i hybel-768w.webp 768w, images/optimized/CØV49 enebolig - underetasje med stor stue og uten bad i hybel-1118w.webp 1118w"
-                                    sizes="(max-width: 768px) 100vw, 560px">
-                                <img src="images/CØV49 enebolig - underetasje med stor stue og uten bad i hybel.jpg"
-                                    alt="Enebolig underetasje – alternativ løsning">
-                            </picture>
-                        </div>
-                    </div>
-
-                    <!-- ── TOMANNSBOLIG ── -->
-                    <div class="pl-bolig-group" id="grp-tomannsbolig">
-                        <!-- Rom-knapper plasseres over plantegning -->
-                        <div class="pl-room-grid is-active" id="rooms-tom-1">
+                        <!-- Rom-knapper per etasje (Tomannsbolig) -->
+                        <div class="pl-room-grid" id="rooms-tom-1">
                             <button class="pl-room-btn" data-room="tom-stue">
                                 <span class="pl-room-btn__name">Stue</span>
-                                <span class="pl-room-btn__area">ca. 25 m²</span>
                             </button>
                             <button class="pl-room-btn" data-room="tom-kjokken">
                                 <span class="pl-room-btn__name">Kjøkken</span>
-                                <span class="pl-room-btn__area">ca. 10 m²</span>
-                            </button>
-                            <button class="pl-room-btn" data-room="tom-entre">
-                                <span class="pl-room-btn__name">Entré</span>
-                                <span class="pl-room-btn__area">ca. 6 m²</span>
-                            </button>
-                            <button class="pl-room-btn" data-room="tom-bad1">
-                                <span class="pl-room-btn__name">Bad</span>
-                                <span class="pl-room-btn__area">ca. 5 m²</span>
                             </button>
                         </div>
 
                         <div class="pl-room-grid" id="rooms-tom-2">
                             <button class="pl-room-btn" data-room="tom-sov1">
                                 <span class="pl-room-btn__name">Hovedsoverom</span>
-                                <span class="pl-room-btn__area">ca. 14 m²</span>
                             </button>
-                            <button class="pl-room-btn" data-room="tom-sov2">
-                                <span class="pl-room-btn__name">Soverom 2</span>
-                                <span class="pl-room-btn__area">ca. 10 m²</span>
-                            </button>
-                            <button class="pl-room-btn" data-room="tom-sov3">
-                                <span class="pl-room-btn__name">Soverom 3</span>
-                                <span class="pl-room-btn__area">ca. 8 m²</span>
+                            <button class="pl-room-btn" data-room="tom-loftstue">
+                                <span class="pl-room-btn__name">Loftstue</span>
                             </button>
                             <button class="pl-room-btn" data-room="tom-bad2">
-                                <span class="pl-room-btn__name">Bad</span>
-                                <span class="pl-room-btn__area">ca. 5 m²</span>
+                                <span class="pl-room-btn__name">Familiebad</span>
                             </button>
                         </div>
 
                         <div class="pl-room-grid" id="rooms-tom-under">
-                            <button class="pl-room-btn" data-room="tom-bod">
-                                <span class="pl-room-btn__name">Bod</span>
-                                <span class="pl-room-btn__area">ca. 8 m²</span>
-                            </button>
-                            <button class="pl-room-btn" data-room="tom-vaskerom">
-                                <span class="pl-room-btn__name">Vaskerom</span>
-                                <span class="pl-room-btn__area">ca. 5 m²</span>
-                            </button>
-                            <button class="pl-room-btn" data-room="tom-teknisk">
-                                <span class="pl-room-btn__name">Teknisk rom</span>
-                                <span class="pl-room-btn__area">ca. 4 m²</span>
-                            </button>
                         </div>
+                    </div>
 
+                    <!-- Romvisualisering -->
+                    <div class="pl-room-display" id="roomDisplay">
+                        <div class="pl-room-display__placeholder" id="roomPlaceholder">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" width="48"
+                                height="48">
+                                <rect x="6" y="10" width="36" height="28" rx="2" />
+                                <path d="M6 30l10-8 8 6 8-10 10 12" />
+                                <circle cx="32" cy="18" r="3" />
+                            </svg>
+                            <p>Velg et rom ovenfor for å se visualisering</p>
+                        </div>
+                        <div class="pl-room-display__content" id="roomContent" style="display:none;">
+                            <div class="pl-room-display__images-list" id="roomImagesList">
+                                <!-- Images dynamically loaded here -->
+                            </div>
+                            <div class="pl-room-display__info">
+                                <div class="pl-room-display__header">
+                                    <h2 class="pl-room-display__name" id="roomName"></h2>
+                                    <span class="pl-room-display__area" id="roomArea"></span>
+                                </div>
+                                <p class="pl-room-display__desc" id="roomDesc"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Venstre kolonne: Plantegning + etasje-velger -->
+                <div class="pl-controls">
+                    <!-- ── ENEBOLIG ── -->
+                    <div class="pl-bolig-group is-active" id="grp-enebolig">
+                        <!-- Etasje-faner med planlagt/alternativ -->
                         <div class="pl-etasje-selector">
-                            <div class="pl-etasje-tabs">
-                                <button class="pl-etasje-tab is-active" data-floor="tom-1">1. etasje</button>
-                                <button class="pl-etasje-tab" data-floor="tom-2">2. etasje</button>
-                                <button class="pl-etasje-tab" data-floor="tom-under">Underetasje</button>
+                            <div class="pl-selector-group">
+                                <span class="pl-selector-label">Velg etasje:</span>
+                                <div class="pl-etasje-tabs">
+                                    <button class="pl-etasje-tab is-active" data-floor="ene-hoved">Overetasje</button>
+                                    <button class="pl-etasje-tab" data-floor="ene-under">Underetasje</button>
+                                </div>
+                            </div>
+                            <div class="pl-selector-group">
+                                <span class="pl-selector-label">Velg planløsning:</span>
+                                <div class="pl-variant-toggle is-active" id="vt-ene-hoved">
+                                    <button class="pl-variant-btn is-active" data-variant="planlagt">Planlagt løsning</button>
+                                    <button class="pl-variant-btn" data-variant="soverom">Ekstra soverom</button>
+                                    <button class="pl-variant-btn" data-variant="tv-stue">Ekstra TV-stue</button>
+                                </div>
+                                <div class="pl-variant-toggle" id="vt-ene-under" style="display: none;">
+                                    <button class="pl-variant-btn is-active" data-variant="planlagt">Planlagt løsning</button>
+                                    <button class="pl-variant-btn" data-variant="alternativ">Alternativ løsning</button>
+                                </div>
                             </div>
                         </div>
 
+                        <!-- Beskrivelse av planløsning -->
+                        <div class="pl-floorplan-desc" style="display: none;"></div>
+
+                        <!-- Plantegningsbilde -->
                         <div class="pl-floorplan">
-                            <picture class="pl-floorplan__img is-active" id="fp-tom-1-planlagt">
-                                <source type="image/webp"
-                                    srcset="images/optimized/CØV49 tomannsbolig - første etasje-768w.webp 768w, images/optimized/CØV49 tomannsbolig - første etasje-1280w.webp 1280w, images/optimized/CØV49 tomannsbolig - første etasje-1690w.webp 1690w"
-                                    sizes="(max-width: 768px) 100vw, 560px">
-                                <img src="images/CØV49 tomannsbolig - første etasje.jpg" alt="Tomannsbolig 1. etasje">
+                            <picture class="pl-floorplan__img is-active" id="fp-ene-hoved-planlagt">
+                                <img src="images/CØV49 enebolig - første etasje stor stue.jpg"
+                                    alt="Enebolig hovedetasje – Planlagt løsning (stor stue)">
                             </picture>
-                            <picture class="pl-floorplan__img" id="fp-tom-2-planlagt">
-                                <source type="image/webp"
-                                    srcset="images/optimized/CØV49 tomannsbolig - andre etasje-768w.webp 768w, images/optimized/CØV49 tomannsbolig - andre etasje-1280w.webp 1280w, images/optimized/CØV49 tomannsbolig - andre etasje-1879w.webp 1879w"
-                                    sizes="(max-width: 768px) 100vw, 560px">
-                                <img src="images/CØV49 tomannsbolig - andre etasje.jpg" alt="Tomannsbolig 2. etasje">
+                            <picture class="pl-floorplan__img" id="fp-ene-hoved-soverom">
+                                <img src="images/CØV49 enebolig - første etasje ekstra soverom.jpg"
+                                    alt="Enebolig hovedetasje – Alternativ løsning (ekstra soverom)">
                             </picture>
-                            <picture class="pl-floorplan__img" id="fp-tom-under-planlagt">
-                                <source type="image/webp"
-                                    srcset="images/optimized/CØV49 tomannsbolig - underetasje-768w.webp 768w, images/optimized/CØV49 tomannsbolig - underetasje-1280w.webp 1280w, images/optimized/CØV49 tomannsbolig - underetasje-1519w.webp 1519w"
-                                    sizes="(max-width: 768px) 100vw, 560px">
-                                <img src="images/CØV49 tomannsbolig - underetasje.jpg" alt="Tomannsbolig underetasje">
+                            <picture class="pl-floorplan__img" id="fp-ene-hoved-tv-stue">
+                                <img src="images/CØV49 enebolig - første etasje ekstra tv-stue.jpg"
+                                    alt="Enebolig hovedetasje – Alternativ løsning (ekstra TV-stue)">
+                            </picture>
+                            <picture class="pl-floorplan__img" id="fp-ene-under-planlagt">
+                                <img src="images/CØV49 enebolig underetasje hybel og 4 soverom med hems NY.jpg"
+                                    alt="Enebolig underetasje – Planlagt løsning (hybel og 4 soverom med hems)">
+                            </picture>
+                            <picture class="pl-floorplan__img" id="fp-ene-under-alternativ">
+                                <img src="images/CØV49 enebolig underetasje stor kjellerstue og 3 soverom hems NY.jpg"
+                                    alt="Enebolig underetasje – Alternativ løsning (stor kjellerstue og 3 soverom med hems)">
                             </picture>
                         </div>
                     </div>
 
+                    <!-- ── TOMANNSBOLIG ── -->
+                    <div class="pl-bolig-group" id="grp-tomannsbolig">
+                        <div class="pl-etasje-selector">
+                            <div class="pl-selector-group">
+                                <span class="pl-selector-label">Velg etasje:</span>
+                                <div class="pl-etasje-tabs">
+                                    <button class="pl-etasje-tab is-active" data-floor="tom-1">1. etasje</button>
+                                    <button class="pl-etasje-tab" data-floor="tom-2">2. etasje</button>
+                                    <button class="pl-etasje-tab" data-floor="tom-under">Underetasje</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Beskrivelse av planløsning -->
+                        <div class="pl-floorplan-desc" style="display: none;"></div>
+
+                        <div class="pl-floorplan">
+                            <picture class="pl-floorplan__img is-active" id="fp-tom-1-planlagt">
+                                <img src="images/CØV49 tomannsbolig - første etasje.jpg" alt="Tomannsbolig 1. etasje">
+                            </picture>
+                            <picture class="pl-floorplan__img" id="fp-tom-2-planlagt">
+                                <img src="images/CØV49 tomannsbolig - andre etasje.jpg" alt="Tomannsbolig 2. etasje">
+                            </picture>
+                            <picture class="pl-floorplan__img" id="fp-tom-under-planlagt">
+                                <img src="images/CØV49 tomannsbolig - underetasje.jpg" alt="Tomannsbolig underetasje">
+                            </picture>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
             <!-- Disclaimer -->
             <p class="pl-disclaimer">
@@ -306,9 +268,19 @@
     <footer class="footer">
         <div class="container">
             <span class="footer__text">&copy; 2026 Nobello AS</span>
-            <img src="Logo/02. Tekstlogo/Nobello_Tekstlogo_negativ.svg" alt="Nobello" class="footer__logo">
+            <img src="Logo/02. Tekstlogo/Nobello_Tekstlogo_negativ.svg" alt="Nobello" class="footer__logo logo-dark-theme">
+            <img src="Logo/02. Tekstlogo/Nobello_Tekstlogo.svg" alt="Nobello" class="footer__logo logo-light-theme">
         </div>
     </footer>
+
+    <!-- LIGHTBOX (forstørret bilde) -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Forstørret bilde">
+        <button class="lightbox__close" aria-label="Lukk">&times;</button>
+        <button class="lightbox__prev" aria-label="Forrige bilde">&#10094;</button>
+        <button class="lightbox__next" aria-label="Neste bilde">&#10095;</button>
+        <div class="lightbox__counter">1 / 1</div>
+        <img class="lightbox__img" id="lightboxImg" src="" alt="">
+    </div>
 
     <script src="planlosning.js"></script>
 </body>

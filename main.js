@@ -68,59 +68,6 @@
     });
   });
 
-  // ── Floor plan tab switching ─────────────────────────
-  document.querySelectorAll('.planlosning__tabs').forEach((tabGroup) => {
-    tabGroup.addEventListener('click', (e) => {
-      const tab = e.target.closest('.planlosning__tab');
-      if (!tab) return;
-
-      const planlosning = tab.closest('.planlosning');
-      const planId = tab.dataset.plan;
-
-      // Update tabs
-      planlosning.querySelectorAll('.planlosning__tab').forEach((t) => t.classList.remove('is-active'));
-      tab.classList.add('is-active');
-
-      // Update images
-      planlosning.querySelectorAll('.planlosning__img').forEach((img) => img.classList.remove('is-active'));
-      const target = planlosning.querySelector('#' + planId);
-      if (target) target.classList.add('is-active');
-    });
-  });
-
-  // ── Lightbox for floor plans ─────────────────────────
-  const lightbox = document.getElementById('lightbox');
-  const lightboxImg = document.getElementById('lightboxImg');
-  const lightboxClose = document.querySelector('.lightbox__close');
-
-  function openLightbox(src, alt) {
-    lightboxImg.src = src;
-    lightboxImg.alt = alt || '';
-    document.body.classList.add('lightbox-open');
-  }
-
-  function closeLightbox() {
-    document.body.classList.remove('lightbox-open');
-    lightboxImg.src = '';
-  }
-
-  // Click on any floor plan image to open lightbox
-  document.querySelectorAll('.planlosning__img').forEach((pic) => {
-    pic.addEventListener('click', () => {
-      const img = pic.querySelector('img');
-      if (img) {
-        openLightbox(img.src, img.alt);
-      }
-    });
-  });
-
-  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-  if (lightbox) lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox();
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeLightbox();
-  });
 
   // ── Map POI click-to-navigate ───────────────────────
   const mapFrame = document.getElementById('mapFrame');
@@ -211,5 +158,64 @@
       floatingNote.classList.remove('is-visible');
     });
   }
+
+  // ── FAQ Accordion Logic ───────────────────────────────
+  const faqItems = document.querySelectorAll('.faq__item');
+  faqItems.forEach(item => {
+    const summary = item.querySelector('.faq__question');
+    if (summary) {
+      summary.addEventListener('click', (e) => {
+        // If it's closed and about to open, close all others
+        if (!item.hasAttribute('open')) {
+          faqItems.forEach(other => {
+            if (other !== item && other.hasAttribute('open')) {
+              other.removeAttribute('open');
+            }
+          });
+        }
+      });
+    }
+  });
+
+  // ── FAQ Modal Logic ───────────────────────────────
+  const navFaqBtn = document.getElementById('navFaqBtn');
+  const faqModal = document.getElementById('faqModal');
+  const faqModalCloseBtn = document.getElementById('faqModalCloseBtn');
+  const faqModalCloseBg = document.getElementById('faqModalCloseBg');
+
+  function openFaqModal(e) {
+    if (e) e.preventDefault();
+    document.body.classList.add('faq-open');
+  }
+
+  function closeFaqModal() {
+    document.body.classList.remove('faq-open');
+  }
+
+  if (navFaqBtn) navFaqBtn.addEventListener('click', openFaqModal);
+  if (faqModalCloseBtn) faqModalCloseBtn.addEventListener('click', closeFaqModal);
+  if (faqModalCloseBg) faqModalCloseBg.addEventListener('click', closeFaqModal);
+
+  // ── Dark/Light Mode Theme Toggle ─────────────────────
+  const themeToggle = document.getElementById('theme-toggle');
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      const currentTheme = document.body.classList.contains('light-mode') ? 'light' : 'dark';
+      localStorage.setItem('theme', currentTheme);
+    });
+  }
+
+  // Synchronize theme across open tabs/windows
+  window.addEventListener('storage', (e) => {
+    if (e.key === 'theme') {
+      if (e.newValue === 'light') {
+        document.body.classList.add('light-mode');
+      } else {
+        document.body.classList.remove('light-mode');
+      }
+    }
+  });
 
 })();

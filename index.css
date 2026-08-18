@@ -52,18 +52,83 @@
   --fs-hero-sub: clamp(1rem, 2vw, 1.35rem);
   --fs-section: clamp(1.8rem, 3.5vw, 3rem);
   --fs-card-title: clamp(1.2rem, 2vw, 1.5rem);
-  --fs-body: clamp(0.95rem, 1.2vw, 1.1rem);
-  --fs-small: clamp(0.8rem, 1vw, 0.9rem);
-  --fs-label: 0.75rem;
+  --fs-body: clamp(1rem, 1.25vw, 1.15rem);
+  --fs-small: clamp(0.88rem, 1.05vw, 0.98rem);
+  --fs-label: 0.78rem;
 
   /* Spacing */
   --section-pad: clamp(80px, 12vh, 160px);
   --content-max: 1200px;
   --grid-gap: clamp(20px, 3vw, 40px);
 
-  /* Motion */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --duration: 0.8s;
+}
+
+/* --- Light Mode Colors --- */
+body.light-mode {
+  --color-bg: #f5f2eb;
+  --color-bg-warm: #eae5d8;
+  --color-bg-card: #ffffff;
+  --color-bg-input: #ffffff;
+  --color-text: #1a1a18;
+  --color-text-muted: #4a4740;
+  --color-border: rgba(29, 29, 27, 0.1);
+  --color-border-strong: rgba(29, 29, 27, 0.18);
+}
+
+body.light-mode .navbar.scrolled {
+  background: rgba(245, 242, 235, 0.85);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* --- Logo Theme Switching --- */
+body.light-mode .logo-dark-theme {
+  display: none;
+}
+body:not(.light-mode) .logo-light-theme {
+  display: none;
+}
+
+/* --- Theme Toggle Button --- */
+.theme-toggle-btn {
+  background: transparent;
+  border: none;
+  color: var(--color-text);
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.3s ease, transform 0.2s ease;
+  border-radius: 50%;
+  margin-left: 8px;
+}
+
+.theme-toggle-btn:hover {
+  color: var(--color-accent);
+  transform: scale(1.05);
+}
+
+.theme-toggle-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Hide moon icon by default (dark mode active) */
+body:not(.light-mode) .theme-toggle-btn .moon-icon {
+  display: none;
+}
+body:not(.light-mode) .theme-toggle-btn .sun-icon {
+  display: block;
+}
+
+/* Hide sun icon in light mode */
+body.light-mode .theme-toggle-btn .sun-icon {
+  display: none;
+}
+body.light-mode .theme-toggle-btn .moon-icon {
+  display: block;
 }
 
 /* --- Reset & Base --- */
@@ -82,7 +147,7 @@ html {
 
 body {
   font-family: var(--font);
-  font-weight: 300;
+  font-weight: 400;
   color: var(--color-text);
   background: var(--color-bg);
   line-height: 1.7;
@@ -167,6 +232,9 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 1200px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
 }
 
 .navbar__links {
@@ -201,9 +269,36 @@ a {
   color: var(--color-accent);
 }
 
+.navbar__link.is-active {
+  color: var(--color-accent) !important;
+}
+
 .navbar__logo {
   height: 28px;
   width: auto;
+}
+
+.navbar__home-btn {
+  font-weight: 500 !important;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .navbar .container .navbar__home-btn {
+    display: inline-block !important;
+  }
+}
+
+.navbar__passive-logo {
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
+}
+
+@media (max-width: 768px) {
+  .navbar__passive-logo {
+    display: none;
+  }
 }
 
 .navbar__cta {
@@ -235,7 +330,7 @@ section {
 
 .section-label {
   display: block;
-  font-size: var(--fs-label);
+  font-size: 1.35rem;
   font-weight: 400;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -276,7 +371,8 @@ section {
   z-index: 0;
 }
 
-.hero__bg img {
+.hero__bg img,
+.hero__video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -433,7 +529,7 @@ section {
 }
 
 .bolig-card__badge {
-  font-size: var(--fs-label);
+  font-size: 1.35rem;
   font-weight: 400;
   letter-spacing: 0.15em;
   text-transform: uppercase;
@@ -539,6 +635,26 @@ section {
 
 .bolig-card__cta:hover {
   gap: 14px;
+}
+
+.bolig-card__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.bolig-card__actions .bolig-card__cta {
+  margin-top: 0;
+}
+
+@media (max-width: 480px) {
+  .bolig-card__actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
 }
 
 /* -- Floor plan tabs -- */
@@ -1430,6 +1546,58 @@ body.lightbox-open .lightbox {
   opacity: 1;
 }
 
+.lightbox__prev,
+.lightbox__next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.3);
+  border: none;
+  color: #fff;
+  font-size: 2.5rem;
+  padding: 20px 15px;
+  cursor: pointer;
+  z-index: 10001;
+  transition: background 0.2s, opacity 0.2s;
+  user-select: none;
+  opacity: 0.7;
+}
+
+.lightbox__prev:hover,
+.lightbox__next:hover {
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 1;
+}
+
+.lightbox__prev {
+  left: 20px;
+}
+
+.lightbox__next {
+  right: 20px;
+}
+
+.lightbox__counter {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+
+  .lightbox__prev,
+  .lightbox__next {
+    font-size: 1.8rem;
+    padding: 15px 10px;
+  }
+}
+
 /* ========================================================
    MAP POI PINS
    ======================================================== */
@@ -1463,11 +1631,76 @@ body.lightbox-open .lightbox {
 }
 
 /* ========================================================
-   FAQ
+   FAQ & FAQ MODAL
    ======================================================== */
-.faq {
+.faq-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  padding: 16px;
+}
+
+body.faq-open .faq-modal {
+  opacity: 1;
+  visibility: visible;
+}
+
+.faq-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(6px);
+}
+
+.faq-modal__content {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
   background: var(--color-bg);
-  padding: 100px 0;
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 48px;
+  z-index: 10000;
+  transform: translateY(20px);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+body.faq-open .faq-modal__content {
+  transform: translateY(0);
+}
+
+.faq-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 2.5rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.faq-modal__close:hover {
+  color: var(--color-accent);
+}
+
+.faq-modal .section-label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.faq-modal .section-title {
+  margin-bottom: 32px;
 }
 
 .faq__list {
@@ -1481,28 +1714,36 @@ body.lightbox-open .lightbox {
 .faq__item {
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .faq__item:hover {
   border-color: var(--color-border-strong);
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.faq__item[open] {
+  border-color: var(--color-accent);
+  transform: scale(1.02);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+  margin: 12px 0;
+  z-index: 10;
+  position: relative;
 }
 
 .faq__question {
-  padding: 24px;
-  font-size: 1.1rem;
-  font-weight: 300;
+  padding: 24px 30px;
+  font-size: 1.15rem;
+  font-weight: 400;
   cursor: pointer;
   list-style: none;
-  /* Skjuler standard pil */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
   color: var(--color-text);
   transition: color 0.3s ease;
   user-select: none;
@@ -1521,32 +1762,28 @@ body.lightbox-open .lightbox {
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-details[open] .faq__item {
-  border-color: var(--color-accent);
-}
-
-details[open] .faq__question::after {
+.faq__item[open] .faq__question::after {
   transform: rotate(45deg);
 }
 
-details[open] .faq__question {
+.faq__item[open] .faq__question {
   color: var(--color-accent);
+  padding-bottom: 16px;
 }
 
 .faq__answer {
-  padding: 0 24px 24px 24px;
+  padding: 0 30px 24px 30px;
   color: var(--color-text-muted);
   line-height: 1.7;
-  font-size: 0.95rem;
-  animation: faq-fade-in 0.4s ease forwards;
+  font-size: 1rem;
+  animation: faq-fade-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1);
 }
 
 @keyframes faq-fade-in {
   from {
     opacity: 0;
-    transform: translateY(-8px);
+    transform: translateY(-12px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);

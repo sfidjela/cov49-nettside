@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="nb">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enebolig – Caroline Øverlands vei 49 – Nobello</title>
+    <meta name="description"
+        content="Utforsk plantegningene for eneboligen i Caroline Øverlands vei 49. Klikk på rom for å se visualiseringer og kvaliteter.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="Logo/01. Logo med ikon/Nobello_Logo med ikon.svg">
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="planlosning.css">
+</head>
+
+<body>
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
+                document.body.classList.add('light-mode');
+            }
+        })();
+    </script>
+
+    <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+    <nav class="navbar scrolled" id="navbar">
+        <div class="container">
+            <a href="index.html" class="navbar__link navbar__home-btn">Forside</a>
+            <div class="navbar__links">
+                <a href="enebolig.html" class="navbar__link is-active">Eneboligen</a>
+                <a href="tomannsbolig.html" class="navbar__link">Tomannsboligen</a>
+                <a href="index.html#faq" class="navbar__link">FAQ</a>
+                <a href="index.html#kontakt" class="navbar__cta">Kontakt oss</a>
+                <span class="navbar__passive-logo">
+                    <img src="Logo/02. Tekstlogo/Nobello_Tekstlogo_negativ.svg" alt="Nobello" class="navbar__logo logo-dark-theme">
+                    <img src="Logo/02. Tekstlogo/Nobello_Tekstlogo.svg" alt="Nobello" class="navbar__logo logo-light-theme">
+                </span>
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Bytt fargetema" title="Bytt fargetema">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ═══════════════════════ MAIN CONTENT ═══════════════════════ -->
+    <main class="pl-page">
+        <div class="container">
+
+            <!-- Header -->
+            <header class="pl-header">
+                <span class="section-label">Eneboligen</span>
+            </header>
+
+            <!-- Header Image -->
+            <div class="pl-header-image">
+                <img src="images/optimized/Enebolig eksterior hovedbilde-1280w.jpg" alt="Enebolig Eksteriør" class="pl-header-img">
+            </div>
+
+            <!-- Intro Text -->
+            <div class="pl-intro-text">
+                <h1 class="section-title">Utforsk eneboligen</h1>
+                <p class="section-intro">Eneboligen går over to plan med tilhørende dobbeltgarasje, og er tegnet med fokus på moderne arkitektur, funksjonelle løsninger og gjennomgående høy standard. Innvendig preges oppholdsrommene av en imponerende takhøyde på opptil ca. 4,8 meter i overetasjen, samt store glassflater som gir rikelig med dagslys. Eneboligen byr på mange muligheter for planløsninger og rominndeling. Her forsøker vi å gi deg oversikt over alle mulighetene eneboligen byr på. Velg først etasje, og deretter tilhørende planløsning og tilhørende rom-illustrasjon for å utforske de ulike mulighetene.</p>
+            </div>
+
+            <!-- ═══════════════════════ ROM-VIEWER ═══════════════════════ -->
+            <div class="pl-viewer">
+                <!-- Høyre kolonne: Romknapper + Visualisering -->
+                <div class="pl-display-column">
+                    <div class="pl-selector-group">
+                        <span class="pl-selector-label">Velg illustrasjon:</span>
+                        <!-- Rom-knapper per etasje -->
+                        <div class="pl-room-grid is-active" id="rooms-ene-hoved">
+                            <button class="pl-room-btn" data-room="ene-stue">
+                                <span class="pl-room-btn__name">Stue</span>
+                            </button>
+                            <button class="pl-room-btn" data-room="ene-kjokken">
+                                <span class="pl-room-btn__name">Kjøkken</span>
+                            </button>
+                            <button class="pl-room-btn" data-room="ene-garderobe">
+                                <span class="pl-room-btn__name">Garderobe</span>
+                            </button>
+                        </div>
+
+                        <div class="pl-room-grid" id="rooms-ene-under">
+                            <button class="pl-room-btn" data-room="ene-sov1">
+                                <span class="pl-room-btn__name">Hovedsoverom</span>
+                            </button>
+                            <button class="pl-room-btn" data-room="ene-tvstue-under">
+                                <span class="pl-room-btn__name">TV-stue</span>
+                            </button>
+                            <button class="pl-room-btn" data-room="ene-hybel">
+                                <span class="pl-room-btn__name">Hybel</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Romvisualisering -->
+                    <div class="pl-room-display" id="roomDisplay">
+                        <div class="pl-room-display__placeholder" id="roomPlaceholder">
+                            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1" width="48"
+                                height="48">
+                                <rect x="6" y="10" width="36" height="28" rx="2" />
+                                <path d="M6 30l10-8 8 6 8-10 10 12" />
+                                <circle cx="32" cy="18" r="3" />
+                            </svg>
+                            <p>Velg et rom ovenfor for å se visualisering</p>
+                        </div>
+                        <div class="pl-room-display__content" id="roomContent" style="display:none;">
+                            <div class="pl-room-display__images-list" id="roomImagesList">
+                                <!-- Images dynamically loaded here -->
+                            </div>
+                            <div class="pl-room-display__info">
+                                <div class="pl-room-display__header">
+                                    <h2 class="pl-room-display__name" id="roomName"></h2>
+                                    <span class="pl-room-display__area" id="roomArea"></span>
+                                </div>
+                                <p class="pl-room-display__desc" id="roomDesc"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Venstre kolonne: Plantegning + etasje-velger -->
+                <div class="pl-controls">
+                    <div class="pl-bolig-group is-active" id="grp-enebolig">
+                        <!-- Etasje-faner med planlagt/alternativ -->
+                        <div class="pl-etasje-selector">
+                            <div class="pl-selector-group">
+                                <span class="pl-selector-label">Velg etasje:</span>
+                                <div class="pl-etasje-tabs">
+                                    <button class="pl-etasje-tab is-active" data-floor="ene-hoved">Overetasje</button>
+                                    <button class="pl-etasje-tab" data-floor="ene-under">Underetasje</button>
+                                </div>
+                            </div>
+                            <div class="pl-selector-group">
+                                <span class="pl-selector-label">Velg planløsning:</span>
+                                <div class="pl-variant-toggle is-active" id="vt-ene-hoved">
+                                    <button class="pl-variant-btn is-active" data-variant="planlagt">Planlagt løsning</button>
+                                    <button class="pl-variant-btn" data-variant="soverom">Ekstra soverom</button>
+                                    <button class="pl-variant-btn" data-variant="tv-stue">Ekstra TV-stue</button>
+                                </div>
+                                <div class="pl-variant-toggle" id="vt-ene-under" style="display: none;">
+                                    <button class="pl-variant-btn is-active" data-variant="planlagt">Planlagt løsning</button>
+                                    <button class="pl-variant-btn" data-variant="alternativ">Alternativ løsning</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Beskrivelse av planløsning -->
+                        <div class="pl-floorplan-desc" style="display: none;"></div>
+
+                        <!-- Plantegningsbilde -->
+                        <div class="pl-floorplan">
+                            <picture class="pl-floorplan__img is-active" id="fp-ene-hoved-planlagt">
+                                <img src="images/CØV49 enebolig - første etasje stor stue.jpg"
+                                    alt="Enebolig hovedetasje – Planlagt løsning (stor stue)">
+                            </picture>
+                            <picture class="pl-floorplan__img" id="fp-ene-hoved-soverom">
+                                <img src="images/CØV49 enebolig - første etasje ekstra soverom.jpg"
+                                    alt="Enebolig hovedetasje – Alternativ løsning (ekstra soverom)">
+                            </picture>
+                            <picture class="pl-floorplan__img" id="fp-ene-hoved-tv-stue">
+                                <img src="images/CØV49 enebolig - første etasje ekstra tv-stue.jpg"
+                                    alt="Enebolig hovedetasje – Alternativ løsning (ekstra TV-stue)">
+                            </picture>
+                            <picture class="pl-floorplan__img" id="fp-ene-under-planlagt">
+                                <img src="images/CØV49 enebolig underetasje hybel og 4 soverom med hems NY.jpg"
+                                    alt="Enebolig underetasje – Planlagt løsning (hybel og 4 soverom med hems)">
+                            </picture>
+                            <picture class="pl-floorplan__img" id="fp-ene-under-alternativ">
+                                <img src="images/CØV49 enebolig underetasje stor kjellerstue og 3 soverom hems NY.jpg"
+                                    alt="Enebolig underetasje – Alternativ løsning (stor kjellerstue og 3 soverom med hems)">
+                            </picture>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══════════════════════ Om eneboligen ═══════════════════════ -->
+            <section class="pl-about-section">
+                <h2 class="pl-about-title">Om eneboligen</h2>
+                <div class="pl-about-grid">
+                    <div class="pl-about-text">
+                        <p>Eiendommen i Caroline Øverlands vei 49 utgjør et eksklusivt nybyggprosjekt bestående av én frittstående enebolig og én tomannsbolig, vakkert beliggende innerst i en rolig blindvei på et attraktivt høydedrag ved Bekkestua. Eneboligen går over to plan med tilhørende dobbeltgarasje på 38 m², og er tegnet med fokus på moderne arkitektur, funksjonelle løsninger og gjennomgående høy standard. Her bor man sentralt, men tilbaketrukket og skjermet, med kort vei til skoler, barnehager, kollektivtransport og et bredt servicetilbud, samtidig som man kan nyte gode solforhold og en flott utsikt mot Kolsåstoppen og nærområdet.</p>
+                        <p>Innvendig byr boligen på en svært gjennomtenkt og nøye planlagt rominndeling. Du ønskes velkommen inn i en romslig entré med god plass til garderobeløsninger og lagring, med et praktisk separat toalettrom i direkte tilknytning. Oppholdsrommene preges av en imponerende takhøyde på opptil ca. 4,8 meter i overetasjen, samt store glassflater som gir rikelig med dagslys. Det eksklusive Svane-kjøkkenet leveres med integrerte hvitevarer fra Siemens og Bora, hvit benkeplate i komposittstein og ekstra høye overskap. I underetasjen ligger boligens soveromsavdeling, et separat vaskerom/teknisk rom, samt et eget bad i tilknytning til barnerommene. Planløsningen er optimalisert for familielivet, der den skjermede masterfløyen (hovedsoverommet med walk-in-garderobe og privat bad) ligger plassert tilbaketrukket fra både barnerommene og underetasjens hybelavdeling.</p>
+                        <p>Eneboligen byr på en svært fleksibel planløsning der kjøper har gode muligheter til å gjøre endringer og tilvalg underveis for å skape sitt drømmehjem. Underetasjen er klargjort for en innholdsrik hybel- eller ungdoms-/gjesteavdeling med egen inngang, bad og en praktisk hems med sengeplass. Dette gir en unik fleksibilitet til enten å bruke hele underetasjen som en integrert del av boligen, tilrettelegge for eldre barn, eller ha en praktisk avdeling for gjester.</p>
+                        <p class="pl-about-disclaimer">For ytterligere informasjon, se fullstendig salgsoppgave.</p>
+                    </div>
+                    
+                    <div class="pl-about-sidebar">
+                        <div class="pl-about-card">
+                            <h3 class="pl-card-title">Nøkkelinfo</h3>
+                            <ul class="pl-card-list">
+                                <li><strong>Bruksareal (BRA):</strong> 218 m² (Intern: 180 m² / Ekstern: 38 m²)</li>
+                                <li><strong>Terrasse-/balkongareal (TBA):</strong> 8 m²</li>
+                                <li><strong>Tomteareal:</strong> 800 m² (Eiet tomt)</li>
+                                <li><strong>Soverom / Bad:</strong> 3 soverom / 3 bad</li>
+                                <li><strong>Parkering:</strong> Dobbeltgarasje på 38 m²</li>
+                                <li><strong>Byggeår:</strong> 2027</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pl-highlights-section">
+                    <h3 class="pl-highlights-title">Nøkkelpunkter</h3>
+                    <div class="pl-highlights-grid">
+                        <div class="pl-highlight-item">
+                            <h4>Generøs romfølelse</h4>
+                            <p>Takhøyde på inntil ca. 4,8 meter i overetasjen og ca. 2,7 meter i underetasjen gir et lyst, åpent og svært luftig innemiljø.</p>
+                        </div>
+                        <div class="pl-highlight-item">
+                            <h4>Eksklusive materialer</h4>
+                            <p>Flott 1-stavs herdet tregulv i eik, påkostet Svane-kjøkken med steinbenkeplate og integrerte hvitevarer, samt flotte 60x60 fliser.</p>
+                        </div>
+                        <div class="pl-highlight-item">
+                            <h4>Solrike uteplasser</h4>
+                            <p>Stor terrasse på bakkeplan med direkte adkomst fra TV-stuen, samt balkong med utgang fra kjøkkenet.</p>
+                        </div>
+                        <div class="pl-highlight-item">
+                            <h4>Moderne komfort</h4>
+                            <p>Balansert ventilasjonsanlegg og klargjøring for peis og varmepumpe. Det leveres elektrisk gulvvarme i alle rom i underetasjen, samt i WC, garderobe og entré.</p>
+                        </div>
+                        <div class="pl-highlight-item">
+                            <h4>Fleksibel planløsning</h4>
+                            <p>Mulighet for tilpasninger underveis, inkludert stuedeling, etablering av ekstra soverom, samt valg av utleiehybel, ungdomsavdeling eller gjesterom.</p>
+                        </div>
+                        <div class="pl-highlight-item">
+                            <h4>Romslig garasje</h4>
+                            <p>Dobbeltgarasje på 38 m² med opplegg for elbillader og direkte adkomst til boligen. Det leveres asfaltert tilkomstvei og gårdsplass, mens gangstien foran huset blir gruset.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ═══════════════════════ Fleksibilitet, endringer og tilvalg ═══════════════════════ -->
+            <section class="pl-flexibility-section">
+                <h2 class="pl-flexibility-title">Fleksibilitet, endringer og tilvalg</h2>
+                <p class="pl-flexibility-intro">Dette prosjektet skiller seg ut ved å tilby en uvanlig høy grad av planløsningsmessig frihet og fleksibilitet. Selv om boligen i utgangspunktet er nøye planlagt, vet vi at ulike familier har ulike behov og ønsker. Derfor har vi tilrettelagt for gode løsninger som gjør det enkelt å tilpasse rominndelingen og utformingen – uansett om du har mange eller få barn, ofte har overnattingsgjester på besøk, eller foretrekker åpne sosiale soner fremfor mer avskjermede rom.</p>
+                
+                <div class="pl-flexibility-grid">
+                    <!-- Rominndeling -->
+                    <div class="pl-flex-card">
+                        <h3>Fleksibel rominndeling og planløsning</h3>
+                        
+                        <div class="pl-flex-subgroup">
+                            <h4>Overetasjen</h4>
+                            <ul>
+                                <li><strong>Entré og ekstra rom:</strong> Velg mellom en stor, åpen stueløsning eller å etablere et ekstra rom ved inngangen som kan benyttes til soverom, kontor eller lignende. Dette rommet kan også åpnes helt opp dersom du ønsker å skape en storslått, enorm og flislagt entré med meget generøs garderobe- og skapplass – en svært lekker og innbydende løsning.</li>
+                                <li><strong>Inndeling av stuen:</strong> Dersom du velger den store stueløsningen, kan deler av arealet enkelt deles av – for eksempel med en elegant glassvegg – for å skape en skjermet TV-sone, et rolig bibliotek eller et koselig lesehjørne uten at du mister den åpne romfølelsen.</li>
+                            </ul>
+                        </div>
+
+                        <div class="pl-flex-subgroup">
+                            <h4>Underetasjen</h4>
+                            <ul>
+                                <li><strong>TV-stue og soverom:</strong> Underetasjen byr på en uvanlig høy fleksibilitet der du selv bestemmer balansen mellom antall soverom og størrelsen på oppholdsrommet. Planløsningen lar deg enkelt prioritere flere soverom, eller bytte ut soverom med mer stueplass for å få enten en stor, utvidet kjellerstue eller en koseligere og mer skjermet TV-krok.</li>
+                                <li><strong>Ungdomsavdeling, gjesterom eller hybel:</strong> Du kan velge å etablere en hybel eller en separat ungdoms- eller gjesteavdeling. Arealet for det tilhørende badet kan etter ønske også omdisponeres til et hjemmekontor, en romslig garderobe eller en bod.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Tilvalg -->
+                    <div class="pl-flex-card">
+                        <h3>Skreddersydde tilvalg</h3>
+                        
+                        <div class="pl-flex-subgroup">
+                            <h4>Overflater</h4>
+                            <p>Her kan du gjøre personlige valg på alle boligens overflater. Dette inkluderer blant annet ulike typer fliser, herdet tregulv i eik, malte innerdører, samt mulighet for å få trappen levert i samme farge som veggene.</p>
+                        </div>
+
+                        <div class="pl-flex-subgroup">
+                            <h4>Innredning</h4>
+                            <p>Gjør tilpasninger på den påkostede kjøkkeninnredningen fra Svane Kjøkkenet og baderomsinnredningene. Her kan du velge blant ulike fronter, benkeplater i stein, samt tilpasse detaljer som vasker, kraner, speil, belysning, dusjløsninger, badekar og toalett. Skreddersydde garderobeløsninger kan også bestilles via kjøkkenleverandøren.</p>
+                        </div>
+
+                        <div class="pl-flex-subgroup">
+                            <h4>Varme, lys, elektronikk</h4>
+                            <p>Tilpass tekniske løsninger etter ønske: varmekabler i stue, peis, klargjøring for ettermontering av varmepumpe (med tomrør), Plejd-smarthusstyring av belysning/termostater, utekran med varmtvann, samt opplegg for elbillader i dobbeltgarasjen.</p>
+                        </div>
+
+                        <div class="pl-flex-subgroup">
+                            <h4>Uteområde bak garasjen</h4>
+                            <p>Tilpass uteplassen bak garasjen etter eget ønske, enten du foretrekker en romslig terrasse eller andre terrengtilpassede løsninger, med mulighet for oppgradering av materialer på selve terrassen.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div> <!-- Closes container -->
+
+            <!-- ═══════════════════════ ③ BILDER AV ENEBOLIGEN ═══════════════════════ -->
+            <section class="pl-gallery-section">
+                <h2 class="pl-gallery-title">Bildegalleri – Eneboligen</h2>
+                <p class="pl-gallery-subtitle">Utforsk alle 3D-visualiseringer og eksteriørbilder av eneboligen samlet på ett sted. Klikk på et bilde for å se det i fullskjerm. Alle illustrasjoner og 3D-visualiseringer er veiledende, og avvik fra endelig leveranse kan forekomme.</p>
+                
+                <div class="pl-gallery-container">
+                    <div class="pl-gallery-track-wrapper">
+                        <div class="pl-gallery-track">
+                            <div class="pl-gallery-slide" data-index="0">
+                                <img src="images/optimized/Enebolig terrasse boblebad ferdig-1280w.jpg" alt="Enebolig – Stor enebolig" class="pl-gallery-img">
+                                <span class="pl-gallery-caption">En stor og flott enebolig med mye vindusflater og nydelig utsikt. God takhøyde i etasjene.</span>
+                            </div>
+                            <div class="pl-gallery-slide" data-index="1">
+                                <img src="images/optimized/Enebolig front nede ferdig-1280w.jpg" alt="Enebolig – Uteplasser" class="pl-gallery-img">
+                                <span class="pl-gallery-caption">Solfylte uteplasser med både en stor terrasse og en hyggelig balkong. Terrassen har god plass til sittegrupper, grilling og soling med direkte adkomst fra underetasjens TV-stue, mens balkongen har direkte tilkomst fra kjøkkenet.</span>
+                            </div>
+                            <div class="pl-gallery-slide" data-index="2">
+                                <img src="images/optimized/Enebolig fasade hage ferdig-1280w.jpg" alt="Enebolig – Uteplass bak garasje" class="pl-gallery-img">
+                                <span class="pl-gallery-caption">En lun og skjermet uteplass bak garasjen med mange bruksmuligheter. Vist med opparbeidet terrasse, pergola og jacuzzi som eksempler (uteplass, pergola og jacuzzi medfølger ikke i standard leveranse).</span>
+                            </div>
+                            <div class="pl-gallery-slide" data-index="3">
+                                <img src="images/optimized/Enebolig stue stor ferdig-1280w.jpg" alt="Enebolig – Stor stue" class="pl-gallery-img">
+                                <span class="pl-gallery-caption">Lys og luftig stue preget av sjenerøs takhøyde og store vindusflater. Den åpne løsningen gir gode muligheter for inndeling i flere trivelige soner.</span>
+                            </div>
+                            <div class="pl-gallery-slide" data-index="4">
+                                <img src="images/optimized/Enebolig stue ferdig-1280w.jpg" alt="Enebolig – Stue" class="pl-gallery-img">
+                                <span class="pl-gallery-caption">Fleksibel stue med romslige soner for både avslapning og hygge. Vist i en løsning med adskilt kontor eller ekstra soverom i tilknytning til entréen.</span>
+                            </div>
+                            <div class="pl-gallery-slide" data-index="5">
+                                <img src="images/optimized/Enebolig kjøkken påkostet ferdig-1280w.jpg" alt="Enebolig – Kjøkken" class="pl-gallery-img">
+                                <span class="pl-gallery-caption">Eksklusivt og påkostet Svane-kjøkken med integrerte hvitevarer, lekker hvit steinbenkeplate, stor kjøkkenøy og ekstra høye skap tilpasset den generøse takhøyden.</span>
+                            </div>
+                            <div class="pl-gallery-slide" data-index="6">
+                                <img src="images/optimized/Enebolig gang ferdig-1280w.jpg" alt="Enebolig – Entré" class="pl-gallery-img">
+                                <span class="pl-gallery-caption">Lyst, elegant og funksjonelt inngangsparti med god plass til skreddersydde garderobeløsninger og et ryddig førsteinntrykk (garderobeinnredning medfølger ikke).</span>
+                            </div>
+                            <div class="pl-gallery-slide" data-index="7">
+                                <img src="images/optimized/Enebolig hovedsoverom ferdig-1280w.jpg" alt="Enebolig – Masterfløy" class="pl-gallery-img">
+                                <span class="pl-gallery-caption">Flott masterfløy med et romslig hovedsoverom, walk-in-garderobe og eget tilhørende bad (garderobeinnredning medfølger ikke).</span>
+                            </div>
+                            <div class="pl-gallery-slide" data-index="8">
+                                <img src="images/optimized/Enebolig tv-stue stor ferdig-1280w.jpg" alt="Enebolig – TV-stue stor" class="pl-gallery-img">
+                                <span class="pl-gallery-caption">TV-stuen i underetasjen vist i den store, utvidede løsningen, som gir et ekstra romslig og sosialt oppholdsrom for hele familien.</span>
+                            </div>
+                            <div class="pl-gallery-slide" data-index="9">
+                                <img src="images/optimized/Enebolig tv-stue liten ferdig-1280w.jpg" alt="Enebolig – TV-stue liten" class="pl-gallery-img">
+                                <span class="pl-gallery-caption">TV-stuen i underetasjen vist i den mindre løsningen. Dette er en koselig og lun sone som gjør det mulig å prioritere ekstra soverom i boligen.</span>
+                            </div>
+                            <div class="pl-gallery-slide" data-index="10">
+                                <img src="images/optimized/Enebolig hybel ferdig-1280w.jpg" alt="Enebolig – Hybelavdeling" class="pl-gallery-img">
+                                <span class="pl-gallery-caption">Innholdsrik avdeling med over 4 meter takhøyde, noe som gir stor fleksibilitet til bruk som hybel, ungdoms- eller gjesteavdeling. Planløsningen kan tilpasses etter behov med enten eget bad, ekstra bod eller andre funksjoner.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="pl-gallery-nav prev" aria-label="Forrige bilde">&#10094;</button>
+                    <button class="pl-gallery-nav next" aria-label="Neste bilde">&#10095;</button>
+                    
+                    <div class="pl-gallery-scrollbar">
+                        <div class="pl-gallery-scrollbar-thumb"></div>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="container">
+                <!-- Disclaimer -->
+            <p class="pl-disclaimer">
+                Illustrasjoner og arealer er veiledende og kan avvike fra endelig leveranse. Noe av innholdet kan være
+                AI-generert.
+                Se leveransebeskrivelse og tegninger for nøyaktige mål. <a href="index.html#kontakt">Kontakt oss</a> for
+                detaljer.
+            </p>
+
+        </div>
+    </main>
+
+    <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
+    <footer class="footer">
+        <div class="container">
+            <span class="footer__text">&copy; 2026 Nobello AS</span>
+            <img src="Logo/02. Tekstlogo/Nobello_Tekstlogo_negativ.svg" alt="Nobello" class="footer__logo logo-dark-theme">
+            <img src="Logo/02. Tekstlogo/Nobello_Tekstlogo.svg" alt="Nobello" class="footer__logo logo-light-theme">
+        </div>
+    </footer>
+
+    <!-- LIGHTBOX (forstørret bilde) -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Forstørret bilde">
+        <button class="lightbox__close" aria-label="Lukk">&times;</button>
+        <button class="lightbox__prev" aria-label="Forrige bilde">&#10094;</button>
+        <button class="lightbox__next" aria-label="Neste bilde">&#10095;</button>
+        <div class="lightbox__counter">1 / 1</div>
+        <img class="lightbox__img" id="lightboxImg" src="" alt="">
+    </div>
+
+    <script src="planlosning.js"></script>
+</body>
+
+</html>

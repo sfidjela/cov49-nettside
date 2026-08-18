@@ -31,22 +31,51 @@
 
 
   <!-- Preload hero image -->
-  <link rel="preload" as="image" type="image/webp"
-    imagesrcset="images/optimized/Ccøv49 - grå kledning-768w.webp 768w, images/optimized/Ccøv49 - grå kledning-1280w.webp 1280w, images/optimized/Ccøv49 - grå kledning-1920w.webp 1920w"
+  <link rel="preload" as="image" type="image/png"
+    imagesrcset="images/optimized/Ccøv49 - grå kledning-768w.png 768w, images/optimized/Ccøv49 - grå kledning-1280w.png 1280w, images/optimized/Ccøv49 - grå kledning-1920w.png 1920w"
     imagesizes="100vw">
 </head>
 
 <body>
+  <script>
+    (function() {
+      const savedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'light' || (!savedTheme && !prefersDark)) {
+        document.body.classList.add('light-mode');
+      }
+    })();
+  </script>
 
   <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
   <nav class="navbar" id="navbar">
     <div class="container">
-      <a href="index.html"><img src="Logo/02. Tekstlogo/Nobello_Tekstlogo_negativ.svg" alt="Nobello"
-          class="navbar__logo"></a>
+      <a href="index.html" class="navbar__link navbar__home-btn is-active">Forside</a>
       <div class="navbar__links">
-        <a href="planlosning.html" class="navbar__link">Planløsning</a>
-        <a href="#faq" class="navbar__link">FAQ</a>
+        <a href="enebolig.html" class="navbar__link">Eneboligen</a>
+        <a href="tomannsbolig.html" class="navbar__link">Tomannsboligen</a>
+        <a href="#faq" class="navbar__link" id="navFaqBtn">FAQ</a>
         <a href="#kontakt" class="navbar__cta">Kontakt oss</a>
+        <span class="navbar__passive-logo">
+          <img src="Logo/02. Tekstlogo/Nobello_Tekstlogo_negativ.svg" alt="Nobello" class="navbar__logo logo-dark-theme">
+          <img src="Logo/02. Tekstlogo/Nobello_Tekstlogo.svg" alt="Nobello" class="navbar__logo logo-light-theme">
+        </span>
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Bytt fargetema" title="Bytt fargetema">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
       </div>
     </div>
   </nav>
@@ -54,47 +83,161 @@
   <!-- ═══════════════════════ ① HERO ═══════════════════════ -->
   <section class="hero" id="hero">
     <div class="hero__bg">
+      <!-- Video commented out to remove crows and improve performance (falls back to static image)
+      <video autoplay muted loop playsinline poster="images/Ccøv49 - grå kledning.png" class="hero__video">
+        <source src="images/Hero-video.mp4" type="video/mp4">
+      </video>
+      -->
       <picture>
-        <source type="image/webp" srcset="images/optimized/Ccøv49 - grå kledning-768w.webp 768w,
-                 images/optimized/Ccøv49 - grå kledning-1280w.webp 1280w,
-                 images/optimized/Ccøv49 - grå kledning-1920w.webp 1920w" sizes="100vw">
-        <img src="images/Ccøv49 - grå kledning.png" alt="Eksteriør CØV49 – moderne boliger med grå trekledning i Bærum"
-          width="1920" height="1071">
+        <source type="image/png" srcset="images/optimized/Ccøv49 - grå kledning-768w.png 768w,
+                 images/optimized/Ccøv49 - grå kledning-1280w.png 1280w,
+                 images/optimized/Ccøv49 - grå kledning-1920w.png 1920w" sizes="100vw">
+        <img src="images/Ccøv49 - grå kledning.png"
+          alt="Eksteriør CØV49 – moderne boliger med grå trekledning i Bærum" width="1920" height="1071">
       </picture>
     </div>
     <div class="container">
-      <div class="hero__badge reveal">Arkitekttegnet</div>
+
       <h1 class="hero__title reveal reveal-delay-1">Caroline Øverlands<br>vei 49</h1>
       <p class="hero__sub reveal reveal-delay-2">Eksklusiv tomannsbolig og enebolig på Bekkestua</p>
-      <button class="hero__scroll reveal reveal-delay-2"
-        onclick="document.getElementById('konsept').scrollIntoView({behavior:'smooth'})">
-        Se boligene
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M8 2v12M3 9l5 5 5-5" />
-        </svg>
-      </button>
+
     </div>
   </section>
 
-  <!-- ═══════════════════════ ② KONSEPT ═══════════════════════ -->
+  <!-- ═══════════════════════ ② BOLIGENE ═══════════════════════ -->
+  <section class="boligene" id="boligene">
+    <div class="container">
+      <span class="section-label reveal">Boligene</span>
+      <h2 class="section-title reveal reveal-delay-1">Tre boliger. To konsepter.</h2>
+
+      <div class="bolig-cards">
+        <!-- ENEBOLIG -->
+        <div class="bolig-card reveal reveal-delay-2">
+          <div class="bolig-card__image">
+            <picture>
+              <source type="image/jpeg"
+                srcset="images/optimized/Enebolig front nede ferdig-768w.jpg 768w, images/optimized/Enebolig front nede ferdig-1280w.jpg 1280w, images/optimized/Enebolig front nede ferdig-1920w.jpg 1920w"
+                sizes="(max-width: 768px) 100vw, 50vw">
+              <img src="images/Enebolig front nede ferdig.jpg" alt="Enebolig CØV49 – stor og funksjonell enebolig med terrasse og hage" loading="lazy">
+            </picture>
+          </div>
+          <div class="bolig-card__badge">Eneboligen</div>
+          <h3 class="bolig-card__title">Funksjonell, stor enebolig med god takhøyde og justerbar planløsning.</h3>
+          <ul class="bolig-card__specs">
+            <li>
+              <span class="spec-label">Areal</span>
+              <span class="spec-value">218 m² BRA</span>
+            </li>
+            <li>
+              <span class="spec-label">Tomt</span>
+              <span class="spec-value">800 m²</span>
+            </li>
+            <li>
+              <span class="spec-label">Innhold</span>
+              <span class="spec-value">4 sov, 2 stuer, hybel, 3 bad + 1 wc</span>
+            </li>
+            <li>
+              <span class="spec-label">Kledning</span>
+              <span class="spec-value">Ædel stående, Bergene Holm</span>
+            </li>
+            <li>
+              <span class="spec-label">Parkering</span>
+              <span class="spec-value">Dobbelgarasje med 2 elbilladere</span>
+            </li>
+            <li>
+              <span class="spec-label">Gulv</span>
+              <span class="spec-value">Tregulv i herdet eik fra Bjelin</span>
+            </li>
+            <li>
+              <span class="spec-label">Smarthjem</span>
+              <span class="spec-value">Plejd trådløst lyssystem</span>
+            </li>
+            <li>
+              <span class="spec-label">Ventilasjon</span>
+              <span class="spec-value">Balansert ventilasjonsanlegg</span>
+            </li>
+          </ul>
+          <div class="bolig-card__actions">
+            <a href="enebolig.html" class="btn-primary">Se mer om eneboligen</a>
+            <a href="#kontakt" class="bolig-card__cta">Motta prospekt <span>→</span></a>
+          </div>
+        </div>
+
+        <!-- TOMANNSBOLIG -->
+        <div class="bolig-card reveal reveal-delay-3">
+          <div class="bolig-card__image">
+            <picture>
+              <source type="image/jpeg"
+                srcset="images/optimized/Tomannsbolig 49 B hage NY-768w.jpg 768w, images/optimized/Tomannsbolig 49 B hage NY-1280w.jpg 1280w, images/optimized/Tomannsbolig 49 B hage NY-1920w.jpg 1920w"
+                sizes="(max-width: 768px) 100vw, 50vw">
+              <img src="images/Tomannsbolig 49 B hage NY.jpg" alt="Tomannsbolig CØV49 – romslig familiebolig med utleiedel og hage"
+                loading="lazy">
+            </picture>
+          </div>
+          <div class="bolig-card__badge">Tomannsboligen · 2 enheter</div>
+          <h3 class="bolig-card__title">Innholdsrik familiebolig med hybel, carport og solrik hage.</h3>
+          <ul class="bolig-card__specs">
+            <li>
+              <span class="spec-label">Areal</span>
+              <span class="spec-value">209 m² BRA per enhet</span>
+            </li>
+            <li>
+              <span class="spec-label">Tomt</span>
+              <span class="spec-value">1 128 m²</span>
+            </li>
+            <li>
+              <span class="spec-label">Innhold</span>
+              <span class="spec-value">4 sov, 2 stuer, hybel, 3 bad + 1 wc</span>
+            </li>
+            <li>
+              <span class="spec-label">Kledning</span>
+              <span class="spec-value">Nord liggende, Bergene Holm</span>
+            </li>
+            <li>
+              <span class="spec-label">Parkering</span>
+              <span class="spec-value">Carport, elbil-klargjort</span>
+            </li>
+            <li>
+              <span class="spec-label">Gulv</span>
+              <span class="spec-value">Tregulv i herdet eik fra Bjelin</span>
+            </li>
+            <li>
+              <span class="spec-label">Smarthjem</span>
+              <span class="spec-value">Plejd trådløst lyssystem</span>
+            </li>
+            <li>
+              <span class="spec-label">Ventilasjon</span>
+              <span class="spec-value">Balansert ventilasjonsanlegg</span>
+            </li>
+          </ul>
+          <div class="bolig-card__actions">
+            <a href="tomannsbolig.html" class="btn-primary">Se mer om tomannsboligen</a>
+            <a href="#kontakt" class="bolig-card__cta">Bestill privatvisning <span>→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════ ③ KONSEPT ═══════════════════════ -->
   <section class="konsept" id="konsept">
     <div class="container">
       <div class="konsept__grid">
         <div class="konsept__image reveal">
           <picture>
-            <source type="image/webp" srcset="images/optimized/Ccøv49 - render Nano Banana grå kledning-768w.webp 768w,
-                     images/optimized/Ccøv49 - render Nano Banana grå kledning-1280w.webp 1280w,
-                     images/optimized/Ccøv49 - render Nano Banana grå kledning-1920w.webp 1920w"
-              sizes="(max-width: 768px) 100vw, 50vw">
-            <img src="images/Ccøv49 - render Nano Banana grå kledning.png"
-              alt="CØV49 eksteriør – Nano Banana grå kledning" loading="lazy" width="1920" height="1071">
+            <source type="image/jpeg" srcset="images/optimized/Tomannsbolig kjøkken ferdig-768w.jpg 768w,
+                     images/optimized/Tomannsbolig kjøkken ferdig-1280w.jpg 1280w,
+                     images/optimized/Tomannsbolig kjøkken ferdig-1920w.jpg 1920w" sizes="(max-width: 768px) 100vw, 50vw">
+            <img src="images/Tomannsbolig kjøkken ferdig.jpg"
+              alt="CØV49 tomannsbolig kjøkken – moderne kjøkkeninnredning i lys utførelse" loading="lazy" width="3042"
+              height="1408">
           </picture>
         </div>
         <div class="konsept__text">
           <span class="section-label reveal">Konsept</span>
-          <h2 class="section-title reveal reveal-delay-1">Arkitekttegnet for en<br>enklere hverdag</h2>
+          <h2 class="section-title reveal reveal-delay-1">Skreddersydd for en<br>enklere hverdag</h2>
           <div class="konsept__body reveal reveal-delay-2">
-            <p>Caroline Øverlands vei 49 er et arkitekttegnet prosjekt bestående av én enebolig og én tomannsbolig. Hver
+            <p>Caroline Øverlands vei 49 er et skreddersydd prosjekt bestående av én enebolig og én tomannsbolig. Hver
               kvadratmeter er planlagt med omhu for å skape en harmonisk balanse mellom dagslys, romfølelse og
               funksjonalitet.</p>
             <p>Her er ingenting overlatt til tilfeldighetene. Fra de store vindusflatene som inviterer naturen inn, til
@@ -106,207 +249,21 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════ ③ BOLIGENE ═══════════════════════ -->
-  <section class="boligene" id="boligene">
-    <div class="container">
-      <span class="section-label reveal">Boligene</span>
-      <h2 class="section-title reveal reveal-delay-1">Tre boliger. To konsepter.</h2>
-
-      <div class="bolig-cards">
-        <!-- ENEBOLIG -->
-        <div class="bolig-card reveal reveal-delay-2">
-          <div class="bolig-card__image">
-            <picture>
-              <source type="image/webp"
-                srcset="images/optimized/Enebolig - Zoom-768w.webp 768w, images/optimized/Enebolig - Zoom-1280w.webp 1280w, images/optimized/Enebolig - Zoom-1920w.webp 1920w"
-                sizes="(max-width: 768px) 100vw, 50vw">
-              <img src="images/Enebolig - Zoom.png" alt="Enebolig CØV49 – Ædel stående kledning" loading="lazy">
-            </picture>
-          </div>
-          <div class="bolig-card__badge">Enebolig</div>
-          <h3 class="bolig-card__title">Stående kledning i Ædelbrun Kald.<br>Dobbelgarasje. Privat hage.</h3>
-          <ul class="bolig-card__specs">
-            <li>
-              <span class="spec-label">Areal</span>
-              <span class="spec-value">ca. 200 m² BRA</span>
-            </li>
-            <li>
-              <span class="spec-label">Tomt</span>
-              <span class="spec-value">800 m²</span>
-            </li>
-            <li>
-              <span class="spec-label">Romprogram</span>
-              <span class="spec-value">4 sov, 2 stuer, hybel, 3 bad + 1 wc</span>
-            </li>
-            <li>
-              <span class="spec-label">Fasade</span>
-              <span class="spec-value">Ædel stående, Bergene Holm</span>
-            </li>
-            <li>
-              <span class="spec-label">Parkering</span>
-              <span class="spec-value">Dobbelgarasje med 2 elbilladere</span>
-            </li>
-            <li>
-              <span class="spec-label">Gulv</span>
-              <span class="spec-value">Herdet eik</span>
-            </li>
-            <li>
-              <span class="spec-label">Smart hjem</span>
-              <span class="spec-value">Plejd trådløst lyssystem</span>
-            </li>
-            <li>
-              <span class="spec-label">Ventilasjon</span>
-              <span class="spec-value">Balansert ventilasjonsanlegg</span>
-            </li>
-          </ul>
-          <a href="#kontakt" class="bolig-card__cta">Motta prospekt <span>→</span></a>
-
-          <!-- Floor plans -->
-          <div class="planlosning">
-            <h4 class="planlosning__title">Planløsninger enebolig</h4>
-            <div class="planlosning__tabs">
-              <button class="planlosning__tab is-active" data-plan="enebolig-1">Hovedetasje (planlagt)</button>
-              <button class="planlosning__tab" data-plan="enebolig-2">Hovedetasje (alternativ)</button>
-              <button class="planlosning__tab" data-plan="enebolig-3">Underetasje (planlagt)</button>
-              <button class="planlosning__tab" data-plan="enebolig-4">Underetasje (alternativ)</button>
-            </div>
-            <div class="planlosning__images">
-              <picture class="planlosning__img is-active" id="enebolig-1">
-                <source type="image/webp"
-                  srcset="images/optimized/CØV49 enebolig - første etasje stor stue-768w.webp 768w, images/optimized/CØV49 enebolig - første etasje stor stue-1182w.webp 1182w"
-                  sizes="(max-width: 768px) 100vw, 50vw">
-                <img src="images/CØV49 enebolig - første etasje stor stue.jpg"
-                  alt="Planløsning enebolig 1. etasje – stor stue" loading="lazy">
-              </picture>
-              <picture class="planlosning__img" id="enebolig-2">
-                <source type="image/webp"
-                  srcset="images/optimized/CØV49 enebolig - første etasje ekstra soverom-768w.webp 768w, images/optimized/CØV49 enebolig - første etasje ekstra soverom-1221w.webp 1221w"
-                  sizes="(max-width: 768px) 100vw, 50vw">
-                <img src="images/CØV49 enebolig - første etasje ekstra soverom.jpg"
-                  alt="Planløsning enebolig 1. etasje – ekstra soverom" loading="lazy">
-              </picture>
-              <picture class="planlosning__img" id="enebolig-3">
-                <source type="image/webp"
-                  srcset="images/optimized/CØV49 enebolig - underetasje 4 soverom og hybel-768w.webp 768w, images/optimized/CØV49 enebolig - underetasje 4 soverom og hybel-1140w.webp 1140w"
-                  sizes="(max-width: 768px) 100vw, 50vw">
-                <img src="images/CØV49 enebolig - underetasje 4 soverom og hybel.jpg"
-                  alt="Planløsning enebolig underetasje – 4 soverom og hybel" loading="lazy">
-              </picture>
-              <picture class="planlosning__img" id="enebolig-4">
-                <source type="image/webp"
-                  srcset="images/optimized/CØV49 enebolig - underetasje med stor stue og uten bad i hybel-768w.webp 768w, images/optimized/CØV49 enebolig - underetasje med stor stue og uten bad i hybel-1118w.webp 1118w"
-                  sizes="(max-width: 768px) 100vw, 50vw">
-                <img src="images/CØV49 enebolig - underetasje med stor stue og uten bad i hybel.jpg"
-                  alt="Planløsning enebolig underetasje – stor stue uten bad i hybel" loading="lazy">
-              </picture>
-            </div>
-            <p class="planlosning__note">Utforsk rommene i <a href="planlosning.html">interaktiv planløsning</a></p>
-          </div>
-        </div>
-
-        <!-- TOMANNSBOLIG -->
-        <div class="bolig-card reveal reveal-delay-3">
-          <div class="bolig-card__image">
-            <picture>
-              <source type="image/webp"
-                srcset="images/optimized/Tomannsbolig - Zoom-768w.webp 768w, images/optimized/Tomannsbolig - Zoom-1280w.webp 1280w, images/optimized/Tomannsbolig - Zoom-1920w.webp 1920w"
-                sizes="(max-width: 768px) 100vw, 50vw">
-              <img src="images/Tomannsbolig - Zoom.png" alt="Tomannsbolig CØV49 – Nord liggende kledning"
-                loading="lazy">
-            </picture>
-          </div>
-          <div class="bolig-card__badge">Tomannsbolig · 2 enheter</div>
-          <h3 class="bolig-card__title">Liggende Nord-kledning.<br>Carport. Felles beliggenhet.</h3>
-          <ul class="bolig-card__specs">
-            <li>
-              <span class="spec-label">Areal</span>
-              <span class="spec-value">ca. 200 m² BRA</span>
-            </li>
-            <li>
-              <span class="spec-label">Tomt</span>
-              <span class="spec-value">1 128 m²</span>
-            </li>
-            <li>
-              <span class="spec-label">Romprogram</span>
-              <span class="spec-value">4 sov, 2 stuer, hybel, 3 bad + 1 wc</span>
-            </li>
-            <li>
-              <span class="spec-label">Fasade</span>
-              <span class="spec-value">Nord liggende, Bergene Holm</span>
-            </li>
-            <li>
-              <span class="spec-label">Parkering</span>
-              <span class="spec-value">Carport, elbil-klargjort</span>
-            </li>
-            <li>
-              <span class="spec-label">Gulv</span>
-              <span class="spec-value">Herdet eik</span>
-            </li>
-            <li>
-              <span class="spec-label">Smart hjem</span>
-              <span class="spec-value">Plejd trådløst lyssystem</span>
-            </li>
-            <li>
-              <span class="spec-label">Ventilasjon</span>
-              <span class="spec-value">Balansert ventilasjonsanlegg</span>
-            </li>
-          </ul>
-          <a href="#kontakt" class="bolig-card__cta">Bestill privatvisning <span>→</span></a>
-
-          <!-- Floor plans -->
-          <div class="planlosning">
-            <h4 class="planlosning__title">Planløsninger tomannsbolig</h4>
-            <div class="planlosning__tabs">
-              <button class="planlosning__tab is-active" data-plan="tomanns-1">1. etasje</button>
-              <button class="planlosning__tab" data-plan="tomanns-2">2. etasje</button>
-              <button class="planlosning__tab" data-plan="tomanns-3">Underetasje</button>
-            </div>
-            <div class="planlosning__images">
-              <picture class="planlosning__img is-active" id="tomanns-1">
-                <source type="image/webp"
-                  srcset="images/optimized/CØV49 tomannsbolig - første etasje-768w.webp 768w, images/optimized/CØV49 tomannsbolig - første etasje-1280w.webp 1280w, images/optimized/CØV49 tomannsbolig - første etasje-1690w.webp 1690w"
-                  sizes="(max-width: 768px) 100vw, 50vw">
-                <img src="images/CØV49 tomannsbolig - første etasje.jpg" alt="Planløsning tomannsbolig 1. etasje"
-                  loading="lazy">
-              </picture>
-              <picture class="planlosning__img" id="tomanns-2">
-                <source type="image/webp"
-                  srcset="images/optimized/CØV49 tomannsbolig - andre etasje-768w.webp 768w, images/optimized/CØV49 tomannsbolig - andre etasje-1280w.webp 1280w, images/optimized/CØV49 tomannsbolig - andre etasje-1879w.webp 1879w"
-                  sizes="(max-width: 768px) 100vw, 50vw">
-                <img src="images/CØV49 tomannsbolig - andre etasje.jpg" alt="Planløsning tomannsbolig 2. etasje"
-                  loading="lazy">
-              </picture>
-              <picture class="planlosning__img" id="tomanns-3">
-                <source type="image/webp"
-                  srcset="images/optimized/CØV49 tomannsbolig - underetasje-768w.webp 768w, images/optimized/CØV49 tomannsbolig - underetasje-1280w.webp 1280w, images/optimized/CØV49 tomannsbolig - underetasje-1519w.webp 1519w"
-                  sizes="(max-width: 768px) 100vw, 50vw">
-                <img src="images/CØV49 tomannsbolig - underetasje.jpg" alt="Planløsning tomannsbolig underetasje"
-                  loading="lazy">
-              </picture>
-            </div>
-            <p class="planlosning__note">Utforsk rommene i <a href="planlosning.html">interaktiv planløsning</a></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ═══════════════════════ ④ KVALITETER ═══════════════════════ -->
   <section class="kvaliteter" id="kvaliteter">
     <div class="container">
       <span class="section-label reveal">Kvaliteter</span>
       <h2 class="section-title reveal reveal-delay-1">Materialer som varer</h2>
-      <p class="section-intro reveal reveal-delay-2">Vi velger materialer som tåler tid – og som blir vakrere med årene.
-      </p>
+      <p class="section-intro reveal reveal-delay-2">Boligene leveres med kvalitetsmaterialer med fokus på rene linjer, god slitestyrke og et tidløst uttrykk.</p>
 
       <!-- Kitchen render -->
       <div class="kvaliteter__hero reveal reveal-delay-2">
         <picture>
-          <source type="image/webp"
-            srcset="images/optimized/Kjøkken-768w.webp 768w, images/optimized/Kjøkken-1280w.webp 1280w, images/optimized/Kjøkken-1920w.webp 1920w"
+          <source type="image/jpeg"
+            srcset="images/optimized/Enebolig kjøkken påkostet ferdig-768w.jpg 768w, images/optimized/Enebolig kjøkken påkostet ferdig-1280w.jpg 1280w, images/optimized/Enebolig kjøkken påkostet ferdig-1920w.jpg 1920w"
             sizes="100vw">
-          <img src="images/Kjøkken.png" alt="Kjøkken med moderne innredning – CØV49" loading="lazy" width="1920"
-            height="851">
+          <img src="images/Enebolig kjøkken påkostet ferdig.jpg" alt="Påkostet kjøkken med moderne innredning i enebolig – CØV49" loading="lazy" width="1920"
+            height="882">
         </picture>
       </div>
 
@@ -345,7 +302,7 @@
               <span class="kvalitet-item__photo-label">Nord liggende</span>
             </div>
           </div>
-          <h3 class="kvalitet-item__title">Bergene Holm kledning</h3>
+          <h3 class="kvalitet-item__title">Kledning fra Bergene Holm</h3>
           <p class="kvalitet-item__desc">Norskprodusert kledning med karakter. Enebolig i Ædel stående, tomannsbolig i
             Nord liggende.</p>
         </div>
@@ -394,9 +351,9 @@
         <div class="kvalitet-item reveal reveal-delay-5">
           <div class="kvalitet-item__photo">
             <picture>
-              <source type="image/webp" srcset="images/optimized/Tapwell - Kran Kjøkken-720w.webp 720w"
+              <source type="image/png" srcset="images/optimized/Tapwell kran kjøkken-720w.png 720w"
                 sizes="(max-width: 768px) 100vw, 33vw">
-              <img src="images/Tapwell - Kran Kjøkken.png" alt="Tapwell krom armatur" loading="lazy">
+              <img src="images/Tapwell kran kjøkken.png" alt="Tapwell krom kjøkkenkran" loading="lazy">
             </picture>
           </div>
           <h3 class="kvalitet-item__title">Tapwell krom armaturer</h3>
@@ -412,7 +369,7 @@
     <div class="container">
       <div class="smarthjem__grid">
         <div>
-          <span class="section-label reveal">Smart hjem</span>
+          <span class="section-label reveal">Smarthjem</span>
           <h2 class="section-title reveal reveal-delay-1">Teknologi du kjenner,<br>men ikke ser</h2>
           <p class="section-intro reveal reveal-delay-2">Boligene leveres med Plejd smart-hjem-system – trådløse brytere
             og dimmere du styrer fra veggen, appen, eller stemmen.</p>
@@ -682,12 +639,14 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════ FAQ ═══════════════════════ -->
-  <section class="faq" id="faq">
-    <div class="container">
-      <span class="section-label reveal">FAQ</span>
-      <h2 class="section-title reveal reveal-delay-1">Ofte stilte spørsmål</h2>
-      <div class="faq__list reveal reveal-delay-2">
+  <!-- ====== FAQ MODAL ====== -->
+  <div class="faq-modal" id="faqModal" role="dialog" aria-modal="true" aria-labelledby="faqModalTitle">
+    <div class="faq-modal__overlay" id="faqModalCloseBg"></div>
+    <div class="faq-modal__content">
+      <button class="faq-modal__close" id="faqModalCloseBtn" aria-label="Lukk">&times;</button>
+      <span class="section-label">FAQ</span>
+      <h2 class="section-title" id="faqModalTitle">Ofte stilte spørsmål</h2>
+      <div class="faq__list">
         <details class="faq__item">
           <summary class="faq__question">Når forventes boligene å være innflyttingsklare?</summary>
           <div class="faq__answer">
@@ -708,7 +667,7 @@
         </details>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- ═══════════════════════ ⑧ KONTAKT ═══════════════════════ -->
   <section class="kontakt" id="kontakt">
@@ -778,15 +737,11 @@
   <footer class="footer">
     <div class="container">
       <span class="footer__text">&copy; 2026 Nobello AS</span>
-      <img src="Logo/02. Tekstlogo/Nobello_Tekstlogo_negativ.svg" alt="Nobello" class="footer__logo">
+      <img src="Logo/02. Tekstlogo/Nobello_Tekstlogo_negativ.svg" alt="Nobello" class="footer__logo logo-dark-theme">
+      <img src="Logo/02. Tekstlogo/Nobello_Tekstlogo.svg" alt="Nobello" class="footer__logo logo-light-theme">
     </div>
   </footer>
 
-  <!-- ====== LIGHTBOX MODAL ====== -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Forstørret bilde">
-    <button class="lightbox__close" aria-label="Lukk">&times;</button>
-    <img class="lightbox__img" id="lightboxImg" src="" alt="">
-  </div>
 
   <!-- ═══════════════════════ STICKY MOBILE CTA ═══════════════════════ -->
   <div class="sticky-cta" id="stickyCta">
