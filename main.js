@@ -509,4 +509,91 @@
     updateGallery();
   }
 
+  // ── Navbar Dropdowns ─────────────────────────
+  const navDropdowns = document.querySelectorAll('.navbar__dropdown');
+  navDropdowns.forEach((dropdown) => {
+    const trigger = dropdown.querySelector('.navbar__link');
+    const menu = dropdown.querySelector('.navbar__dropdown-panel');
+
+    if (trigger && menu) {
+      trigger.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          dropdown.classList.toggle('is-open');
+        }
+      });
+
+      menu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          dropdown.classList.remove('is-open');
+        });
+      });
+    }
+  });
+
+  document.addEventListener('click', (e) => {
+    navDropdowns.forEach((dropdown) => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('is-open');
+      }
+    });
+  });
+
+  // ── Floating Section Scroll Tracker ─────────────────
+  const scrollTracker = document.getElementById('scrollTracker');
+  const scrollTrackerProgress = document.getElementById('scrollTrackerProgress');
+  const scrollTopBtn = document.getElementById('scrollTopBtn');
+  const trackerItems = document.querySelectorAll('.scroll-tracker__item');
+
+  if (scrollTracker && trackerItems.length > 0) {
+    const trackedSectionIds = Array.from(trackerItems).map((item) => item.getAttribute('data-target'));
+    const trackedSections = trackedSectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el) => el !== null);
+
+    function updateScrollTracker() {
+      const scrollY = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+      if (scrollY > 120) {
+        scrollTracker.classList.add('is-visible');
+      } else {
+        scrollTracker.classList.remove('is-visible');
+      }
+
+      if (scrollTrackerProgress && docHeight > 0) {
+        const progress = Math.min(100, Math.max(0, (scrollY / docHeight) * 100));
+        scrollTrackerProgress.style.height = progress + '%';
+      }
+
+      let currentSectionId = 'hero';
+      const scrollMid = scrollY + window.innerHeight * 0.35;
+
+      for (let i = trackedSections.length - 1; i >= 0; i--) {
+        const sec = trackedSections[i];
+        if (sec.offsetTop <= scrollMid) {
+          currentSectionId = sec.id;
+          break;
+        }
+      }
+
+      trackerItems.forEach((item) => {
+        if (item.getAttribute('data-target') === currentSectionId) {
+          item.classList.add('is-active');
+        } else {
+          item.classList.remove('is-active');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', updateScrollTracker, { passive: true });
+    updateScrollTracker();
+
+    if (scrollTopBtn) {
+      scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    }
+  }
+
 })();

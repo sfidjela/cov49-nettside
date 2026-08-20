@@ -9,6 +9,14 @@
   min-height: 100vh;
 }
 
+.pl-intro-text,
+.pl-viewer,
+.pl-about-section,
+.pl-flexibility-section,
+.pl-gallery-section {
+  scroll-margin-top: 80px;
+}
+
 .pl-page .container {
   max-width: 1600px;
   width: 95%;

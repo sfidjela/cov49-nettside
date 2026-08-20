@@ -13,7 +13,7 @@
   <meta property="og:title" content="Caroline Øverlands vei 49 – Nobello">
   <meta property="og:description"
     content="Eksklusivt boligprosjekt i Bærum. Tre boliger med herdet eikegulv, Plejd smart-hjem og Bergene Holm kledning.">
-  <meta property="og:image" content="images/Ccøv49 - grå kledning.png">
+  <meta property="og:image" content="images/Nytt forsidebilde CØV49.jpg">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="nb_NO">
 
@@ -22,17 +22,17 @@
   <meta name="twitter:title" content="Caroline Øverlands vei 49 – Nobello">
   <meta name="twitter:description"
     content="Eksklusivt boligprosjekt i Bærum. Tre boliger med herdet eikegulv, Plejd smart-hjem og Bergene Holm kledning.">
-  <meta name="twitter:image" content="images/Ccøv49 - grå kledning.png">
+  <meta name="twitter:image" content="images/Nytt forsidebilde CØV49.jpg">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="Logo/01. Logo med ikon/Nobello_Logo med ikon.svg">
 
-  <link rel="stylesheet" href="index.css?v=2.1">
+  <link rel="stylesheet" href="index.css?v=2.4">
 
 
   <!-- Preload hero image -->
-  <link rel="preload" as="image" type="image/png"
-    imagesrcset="images/optimized/Ccøv49 - grå kledning-768w.png 768w, images/optimized/Ccøv49 - grå kledning-1280w.png 1280w, images/optimized/Ccøv49 - grå kledning-1920w.png 1920w"
+  <link rel="preload" as="image" type="image/jpeg"
+    imagesrcset="images/optimized/Nytt forsidebilde CØV49-768w.jpg 768w, images/optimized/Nytt forsidebilde CØV49-1280w.jpg 1280w, images/optimized/Nytt forsidebilde CØV49-1920w.jpg 1920w"
     imagesizes="100vw">
 </head>
 
@@ -50,10 +50,58 @@
   <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
   <nav class="navbar" id="navbar">
     <div class="container">
-      <a href="index.html" class="navbar__link navbar__home-btn is-active">Forside</a>
+      <div class="navbar__dropdown" id="navForsideDropdown">
+        <a href="index.html" class="navbar__link navbar__home-btn is-active" id="navForsideLink" aria-expanded="false" aria-haspopup="true">
+          Forside
+          <svg class="nav-dropdown-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 1l4 4 4-4"/>
+          </svg>
+        </a>
+        <div class="navbar__dropdown-panel" id="navForsideMenu">
+          <span class="dropdown-panel__title">Hopp til seksjon</span>
+          <a href="#boligene" class="dropdown-panel__item"><span class="item-idx">01</span>Boligene</a>
+          <a href="#konsept" class="dropdown-panel__item"><span class="item-idx">02</span>Konsept</a>
+          <a href="#kvaliteter" class="dropdown-panel__item"><span class="item-idx">03</span>Kvaliteter & Materialer</a>
+          <a href="#smarthjem" class="dropdown-panel__item"><span class="item-idx">04</span>Smart hjem</a>
+          <a href="#uteliv" class="dropdown-panel__item"><span class="item-idx">05</span>Beliggenhet & Utomhus</a>
+          <a href="#trygghet" class="dropdown-panel__item"><span class="item-idx">06</span>Kjøpsprosessen</a>
+          <a href="#galleri" class="dropdown-panel__item"><span class="item-idx">07</span>Bildegalleri</a>
+          <a href="#kontakt" class="dropdown-panel__item"><span class="item-idx">08</span>Kontakt oss</a>
+        </div>
+      </div>
       <div class="navbar__links">
-        <a href="enebolig.html" class="navbar__link">Eneboligen</a>
-        <a href="tomannsbolig.html" class="navbar__link">Tomannsboligen</a>
+        <div class="navbar__dropdown" id="navEneboligDropdown">
+          <a href="enebolig.html" class="navbar__link" id="navEneboligLink" aria-expanded="false" aria-haspopup="true">
+            Eneboligen
+            <svg class="nav-dropdown-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 1l4 4 4-4"/>
+            </svg>
+          </a>
+          <div class="navbar__dropdown-panel" id="navEneboligMenu">
+            <span class="dropdown-panel__title">Eneboligen</span>
+            <a href="enebolig.html#intro" class="dropdown-panel__item"><span class="item-idx">01</span>Oversikt</a>
+            <a href="enebolig.html#planlosning" class="dropdown-panel__item"><span class="item-idx">02</span>Plantegninger &amp; Rom</a>
+            <a href="enebolig.html#om-boligen" class="dropdown-panel__item"><span class="item-idx">03</span>Om boligen &amp; Nøkkelinfo</a>
+            <a href="enebolig.html#tilvalg" class="dropdown-panel__item"><span class="item-idx">04</span>Fleksibilitet &amp; Tilvalg</a>
+            <a href="enebolig.html#galleri" class="dropdown-panel__item"><span class="item-idx">05</span>Bildegalleri</a>
+          </div>
+        </div>
+        <div class="navbar__dropdown" id="navTomannsboligDropdown">
+          <a href="tomannsbolig.html" class="navbar__link" id="navTomannsboligLink" aria-expanded="false" aria-haspopup="true">
+            Tomannsboligen
+            <svg class="nav-dropdown-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 1l4 4 4-4"/>
+            </svg>
+          </a>
+          <div class="navbar__dropdown-panel" id="navTomannsboligMenu">
+            <span class="dropdown-panel__title">Tomannsboligen</span>
+            <a href="tomannsbolig.html#intro" class="dropdown-panel__item"><span class="item-idx">01</span>Oversikt</a>
+            <a href="tomannsbolig.html#planlosning" class="dropdown-panel__item"><span class="item-idx">02</span>Plantegninger &amp; Rom</a>
+            <a href="tomannsbolig.html#om-boligen" class="dropdown-panel__item"><span class="item-idx">03</span>Om boligen &amp; Nøkkelinfo</a>
+            <a href="tomannsbolig.html#tilvalg" class="dropdown-panel__item"><span class="item-idx">04</span>Fleksibilitet &amp; Tilvalg</a>
+            <a href="tomannsbolig.html#galleri" class="dropdown-panel__item"><span class="item-idx">05</span>Bildegalleri</a>
+          </div>
+        </div>
         <a href="#faq" class="navbar__link" id="navFaqBtn">FAQ</a>
         <a href="#kontakt" class="navbar__cta">Kontakt oss</a>
         <span class="navbar__passive-logo">
@@ -84,23 +132,21 @@
   <section class="hero" id="hero">
     <div class="hero__bg">
       <!-- Video commented out to remove crows and improve performance (falls back to static image)
-      <video autoplay muted loop playsinline poster="images/Ccøv49 - grå kledning.png" class="hero__video">
+      <video autoplay muted loop playsinline poster="images/Nytt forsidebilde CØV49.jpg" class="hero__video">
         <source src="images/Hero-video.mp4" type="video/mp4">
       </video>
       -->
       <picture>
-        <source type="image/png" srcset="images/optimized/Ccøv49 - grå kledning-768w.png 768w,
-                 images/optimized/Ccøv49 - grå kledning-1280w.png 1280w,
-                 images/optimized/Ccøv49 - grå kledning-1920w.png 1920w" sizes="100vw">
-        <img src="images/Ccøv49 - grå kledning.png"
-          alt="Eksteriør CØV49 – moderne boliger med grå trekledning i Bærum" width="1920" height="1071">
+        <source type="image/jpeg" srcset="images/optimized/Nytt forsidebilde CØV49-768w.jpg 768w,
+                 images/optimized/Nytt forsidebilde CØV49-1280w.jpg 1280w,
+                 images/optimized/Nytt forsidebilde CØV49-1920w.jpg 1920w" sizes="100vw">
+        <img src="images/Nytt forsidebilde CØV49.jpg"
+          alt="Eksteriør CØV49 – moderne boliger med grå trekledning i Bærum" width="1537" height="1023">
       </picture>
     </div>
     <div class="container">
-
       <h1 class="hero__title reveal reveal-delay-1">Caroline Øverlands<br>vei 49</h1>
       <p class="hero__sub reveal reveal-delay-2">Eksklusiv tomannsbolig og enebolig på Bekkestua</p>
-
     </div>
   </section>
 
@@ -343,16 +389,48 @@
         </div>
 
         <div class="kvalitet-item reveal reveal-delay-5">
-          <div class="kvalitet-item__photo">
+          <div class="kvalitet-item__photo kvalitet-item__photo--contain">
             <picture>
-              <source type="image/png" srcset="images/optimized/Tapwell kran kjøkken-720w.png 720w"
+              <source type="image/jpeg" srcset="images/optimized/tapwell 2-768w.jpg 768w"
                 sizes="(max-width: 768px) 100vw, 33vw">
-              <img src="images/Tapwell kran kjøkken.png" alt="Tapwell krom kjøkkenkran" loading="lazy">
+              <img src="images/tapwell 2.jpg" alt="Tapwell krom armatur" loading="lazy">
             </picture>
           </div>
           <h3 class="kvalitet-item__title">Tapwell krom armaturer</h3>
           <p class="kvalitet-item__desc">Bad med vegghengt WC, Tapwell krom armaturer og speil med innebygget, dimbart
             lys.</p>
+        </div>
+
+        <div class="kvalitet-item reveal">
+          <div class="kvalitet-item__photo">
+            <img src="images/dorhandtak_helix200_beslag_design_rbergersen-2.webp" alt="Helix 200 dørhåndtak fra Beslag Design" loading="lazy">
+          </div>
+          <h3 class="kvalitet-item__title">Helix 200 dørhåndtak</h3>
+          <p class="kvalitet-item__desc">Eksklusive dørhåndtak med riflet overflate og solid grep. Standard i eneboligen og tilvalg for tomannsboligen.</p>
+        </div>
+
+        <div class="kvalitet-item kvalitet-item--double reveal reveal-delay-1">
+          <div class="kvalitet-item__photos">
+            <div class="kvalitet-item__photo">
+              <img src="images/peis.png" alt="Peis som oppvarmingsløsning" loading="lazy">
+            </div>
+            <div class="kvalitet-item__photo">
+              <img src="images/varmepumpe.png" alt="Varmepumpe som oppvarmingsløsning" loading="lazy">
+            </div>
+          </div>
+          <h3 class="kvalitet-item__title">Peis &amp; varmepumpe</h3>
+          <p class="kvalitet-item__desc">Boligene leveres klargjort for både peis og varmepumpe. Du kan fritt velge én av løsningene eller kombinere begge.</p>
+        </div>
+
+        <div class="kvalitet-item reveal reveal-delay-2">
+          <div class="kvalitet-item__photo">
+            <picture>
+              <source type="image/jpeg" srcset="images/optimized/Kjokken utklipp-768w.jpg 768w, images/optimized/Kjokken utklipp-1280w.jpg 1280w" sizes="(max-width: 768px) 100vw, 33vw">
+              <img src="images/Kjøkken utklipp.png" alt="Påkostet kjøkken med hvit steinbenkeplate og eikefronter" loading="lazy">
+            </picture>
+          </div>
+          <h3 class="kvalitet-item__title">Påkostet kvalitetskjøkken</h3>
+          <p class="kvalitet-item__desc">Det leveres hvit steinbenkeplate i komposittstein og elegante fronter i eik, som gir et moderne, lunt og tidløst uttrykk.</p>
         </div>
       </div>
     </div>
@@ -535,10 +613,10 @@
 
   </section>
 
-  <!-- ═══════════════════════ ⑦ TRYGGHET ═══════════════════════ -->
+  <!-- ═══════════════════════ ⑦ KJØPSPROSESSEN ═══════════════════════ -->
   <section class="trygghet" id="trygghet">
     <div class="container">
-      <span class="section-label reveal">Prosess</span>
+      <span class="section-label reveal">Kjøpsprosessen</span>
       <h2 class="section-title reveal reveal-delay-1">En ryddig prosess<br>fra start til nøkkel</h2>
       <p class="trygghet__intro reveal reveal-delay-2">Vi vet at en ny bolig er en stor beslutning. Derfor er vi åpne om
         hva som er inkludert, hva som er tilvalg, og hvordan prosessen ser ut.</p>
@@ -859,7 +937,78 @@
     </div>
   </div>
 
-  <script src="main.js?v=2.1"></script>
+  <!-- ═══════════════════════ FLOATING SCROLL TRACKER ═══════════════════════ -->
+  <aside class="scroll-tracker" id="scrollTracker" aria-label="Seksjonsoversikt">
+    <div class="scroll-tracker__track">
+      <div class="scroll-tracker__progress" id="scrollTrackerProgress"></div>
+      <ul class="scroll-tracker__list">
+        <li>
+          <a href="#hero" class="scroll-tracker__item is-active" data-target="hero" aria-label="Topp / Forside">
+            <span class="scroll-tracker__dot"></span>
+            <span class="scroll-tracker__label">Topp</span>
+          </a>
+        </li>
+        <li>
+          <a href="#boligene" class="scroll-tracker__item" data-target="boligene" aria-label="Boligene">
+            <span class="scroll-tracker__dot"></span>
+            <span class="scroll-tracker__label">01 Boligene</span>
+          </a>
+        </li>
+        <li>
+          <a href="#konsept" class="scroll-tracker__item" data-target="konsept" aria-label="Konsept">
+            <span class="scroll-tracker__dot"></span>
+            <span class="scroll-tracker__label">02 Konsept</span>
+          </a>
+        </li>
+        <li>
+          <a href="#kvaliteter" class="scroll-tracker__item" data-target="kvaliteter" aria-label="Kvaliteter & Materialer">
+            <span class="scroll-tracker__dot"></span>
+            <span class="scroll-tracker__label">03 Kvaliteter</span>
+          </a>
+        </li>
+        <li>
+          <a href="#smarthjem" class="scroll-tracker__item" data-target="smarthjem" aria-label="Smart hjem">
+            <span class="scroll-tracker__dot"></span>
+            <span class="scroll-tracker__label">04 Smart hjem</span>
+          </a>
+        </li>
+        <li>
+          <a href="#uteliv" class="scroll-tracker__item" data-target="uteliv" aria-label="Beliggenhet & Utomhus">
+            <span class="scroll-tracker__dot"></span>
+            <span class="scroll-tracker__label">05 Beliggenhet</span>
+          </a>
+        </li>
+        <li>
+          <a href="#trygghet" class="scroll-tracker__item" data-target="trygghet" aria-label="Kjøpsprosessen">
+            <span class="scroll-tracker__dot"></span>
+            <span class="scroll-tracker__label">06 Kjøpsprosessen</span>
+          </a>
+        </li>
+        <li>
+          <a href="#galleri" class="scroll-tracker__item" data-target="galleri" aria-label="Bildegalleri">
+            <span class="scroll-tracker__dot"></span>
+            <span class="scroll-tracker__label">07 Galleri</span>
+          </a>
+        </li>
+        <li>
+          <a href="#kontakt" class="scroll-tracker__item" data-target="kontakt" aria-label="Kontakt & Visning">
+            <span class="scroll-tracker__dot"></span>
+            <span class="scroll-tracker__label">08 Kontakt</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <button class="scroll-tracker__top-btn" id="scrollTopBtn" title="Rull til toppen" aria-label="Rull til toppen">
+      <span class="scroll-tracker__label">Til toppen</span>
+      <div class="scroll-tracker__top-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="18 15 12 9 6 15"></polyline>
+        </svg>
+      </div>
+    </button>
+  </aside>
+
+  <script src="main.js?v=2.3"></script>
 </body>
 
 </html>

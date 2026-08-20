@@ -11,8 +11,8 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="Logo/01. Logo med ikon/Nobello_Logo med ikon.svg">
 
-    <link rel="stylesheet" href="index.css?v=2.1">
-    <link rel="stylesheet" href="planlosning.css?v=2.1">
+    <link rel="stylesheet" href="index.css?v=2.3">
+    <link rel="stylesheet" href="planlosning.css?v=2.2">
 </head>
 
 <body>
@@ -29,10 +29,58 @@
     <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
     <nav class="navbar scrolled" id="navbar">
         <div class="container">
-            <a href="index.html" class="navbar__link navbar__home-btn">Forside</a>
+            <div class="navbar__dropdown" id="navForsideDropdown">
+                <a href="index.html" class="navbar__link navbar__home-btn" id="navForsideLink" aria-expanded="false" aria-haspopup="true">
+                    Forside
+                    <svg class="nav-dropdown-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M1 1l4 4 4-4"/>
+                    </svg>
+                </a>
+                <div class="navbar__dropdown-panel" id="navForsideMenu">
+                    <span class="dropdown-panel__title">Forside</span>
+                    <a href="index.html#boligene" class="dropdown-panel__item"><span class="item-idx">01</span>Boligene</a>
+                    <a href="index.html#konsept" class="dropdown-panel__item"><span class="item-idx">02</span>Konsept</a>
+                    <a href="index.html#kvaliteter" class="dropdown-panel__item"><span class="item-idx">03</span>Kvaliteter &amp; Materialer</a>
+                    <a href="index.html#smarthjem" class="dropdown-panel__item"><span class="item-idx">04</span>Smart hjem</a>
+                    <a href="index.html#uteliv" class="dropdown-panel__item"><span class="item-idx">05</span>Beliggenhet &amp; Utomhus</a>
+                    <a href="index.html#trygghet" class="dropdown-panel__item"><span class="item-idx">06</span>Kjøpsprosessen</a>
+                    <a href="index.html#galleri" class="dropdown-panel__item"><span class="item-idx">07</span>Bildegalleri</a>
+                    <a href="index.html#kontakt" class="dropdown-panel__item"><span class="item-idx">08</span>Kontakt oss</a>
+                </div>
+            </div>
             <div class="navbar__links">
-                <a href="enebolig.html" class="navbar__link">Eneboligen</a>
-                <a href="tomannsbolig.html" class="navbar__link is-active">Tomannsboligen</a>
+                <div class="navbar__dropdown" id="navEneboligDropdown">
+                    <a href="enebolig.html" class="navbar__link" id="navEneboligLink" aria-expanded="false" aria-haspopup="true">
+                        Eneboligen
+                        <svg class="nav-dropdown-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 1l4 4 4-4"/>
+                        </svg>
+                    </a>
+                    <div class="navbar__dropdown-panel" id="navEneboligMenu">
+                        <span class="dropdown-panel__title">Eneboligen</span>
+                        <a href="enebolig.html#intro" class="dropdown-panel__item"><span class="item-idx">01</span>Oversikt</a>
+                        <a href="enebolig.html#planlosning" class="dropdown-panel__item"><span class="item-idx">02</span>Plantegninger &amp; Rom</a>
+                        <a href="enebolig.html#om-boligen" class="dropdown-panel__item"><span class="item-idx">03</span>Om boligen &amp; Nøkkelinfo</a>
+                        <a href="enebolig.html#tilvalg" class="dropdown-panel__item"><span class="item-idx">04</span>Fleksibilitet &amp; Tilvalg</a>
+                        <a href="enebolig.html#galleri" class="dropdown-panel__item"><span class="item-idx">05</span>Bildegalleri</a>
+                    </div>
+                </div>
+                <div class="navbar__dropdown" id="navTomannsboligDropdown">
+                    <a href="tomannsbolig.html" class="navbar__link is-active" id="navTomannsboligLink" aria-expanded="false" aria-haspopup="true">
+                        Tomannsboligen
+                        <svg class="nav-dropdown-chevron" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M1 1l4 4 4-4"/>
+                        </svg>
+                    </a>
+                    <div class="navbar__dropdown-panel" id="navTomannsboligMenu">
+                        <span class="dropdown-panel__title">Tomannsboligen</span>
+                        <a href="#intro" class="dropdown-panel__item"><span class="item-idx">01</span>Oversikt</a>
+                        <a href="#planlosning" class="dropdown-panel__item"><span class="item-idx">02</span>Plantegninger &amp; Rom</a>
+                        <a href="#om-boligen" class="dropdown-panel__item"><span class="item-idx">03</span>Om boligen &amp; Nøkkelinfo</a>
+                        <a href="#tilvalg" class="dropdown-panel__item"><span class="item-idx">04</span>Fleksibilitet &amp; Tilvalg</a>
+                        <a href="#galleri" class="dropdown-panel__item"><span class="item-idx">05</span>Bildegalleri</a>
+                    </div>
+                </div>
                 <a href="#faq" class="navbar__link" id="navFaqBtn">FAQ</a>
                 <a href="index.html#kontakt" class="navbar__cta">Kontakt oss</a>
                 <span class="navbar__passive-logo">
@@ -74,13 +122,13 @@
             </div>
 
             <!-- Intro Text -->
-            <div class="pl-intro-text">
+            <div class="pl-intro-text" id="intro">
                 <h1 class="section-title">Utforsk tomannsboligen</h1>
                 <p class="section-intro">Tomannsboligen har en attraktiv beliggenhet på et solrikt høydedrag ved Bekkestua. Boligene er prosjektert med fokus på moderne arkitektur, funksjonelle planløsninger og gode romkvaliteter som åpner for hele fire soverom og tre stuer. Tomannsboligen har atkomstvei med carport og praktisk utebod på oversiden av huset, og byr på en solfylt hage på nedsiden med flott utsikt mot Kolsåstoppen. Her får du innholdsrike og familievennlige løsninger med blant annet mulighet for å etablere hybel. Velg først etasje, og deretter tilhørende rom-illustrasjon for å utforske de ulike mulighetene.</p>
             </div>
 
             <!-- ═══════════════════════ ROM-VIEWER ═══════════════════════ -->
-            <div class="pl-viewer">
+            <div class="pl-viewer" id="planlosning">
                 <!-- Høyre kolonne: Romknapper + Visualisering -->
                 <div class="pl-display-column">
                     <div class="pl-selector-group">
@@ -170,7 +218,7 @@
             </div>
 
             <!-- ═══════════════════════ Om tomannsboligen ═══════════════════════ -->
-            <section class="pl-about-section">
+            <section class="pl-about-section" id="om-boligen">
                 <h2 class="pl-about-title">Om tomannsboligen</h2>
                 <div class="pl-about-grid">
                     <div class="pl-about-text">
@@ -228,7 +276,7 @@
             </section>
 
             <!-- ═══════════════════════ Fleksibilitet, endringer og tilvalg ═══════════════════════ -->
-            <section class="pl-flexibility-section">
+            <section class="pl-flexibility-section" id="tilvalg">
                 <h2 class="pl-flexibility-title">Fleksibilitet, endringer og tilvalg</h2>
                 <p class="pl-flexibility-intro">Selv om tomannsboligen i utgangspunktet er nøye planlagt, vet vi at ulike familier har ulike behov og ønsker. Derfor har vi tilrettelagt for gode løsninger som gjør det enkelt å tilpasse rominndelingen og utformingen underveis i prosessen slik at du kan skape ditt skreddersydde drømmehjem.</p>
                 
@@ -281,7 +329,7 @@
         </div> <!-- Closes container -->
 
             <!-- ═══════════════════════ ③ BILDER AV TOMANNSBOLIGEN ═══════════════════════ -->
-            <section class="pl-gallery-section">
+            <section class="pl-gallery-section" id="galleri">
                 <div class="container">
                     <h2 class="pl-gallery-title">Bildegalleri – Tomannsboligen</h2>
                     <p class="pl-gallery-subtitle">Utforsk alle illustrasjoner og eksteriørbilder av tomannsboligen samlet på ett sted. Klikk på et bilde for å se det i fullskjerm. Alle illustrasjoner er veiledende, og avvik fra endelig leveranse kan forekomme.</p>
@@ -411,7 +459,7 @@
         <img class="lightbox__img" id="lightboxImg" src="" alt="">
     </div>
 
-    <script src="planlosning.js?v=2.1"></script>
+    <script src="planlosning.js?v=2.2"></script>
 </body>
 
 </html>
