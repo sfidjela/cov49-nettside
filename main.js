@@ -144,6 +144,9 @@
     try {
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
+      if (data.email) {
+        data._replyto = data.email;
+      }
       const response = await fetch(form.action, {
         method: 'POST',
         body: JSON.stringify(data),
@@ -245,6 +248,9 @@
       const formData = new FormData(form);
       const selectedType = formData.get('boligtype') || 'Begge';
       const data = Object.fromEntries(formData.entries());
+      if (data.email) {
+        data._replyto = data.email;
+      }
       
       const response = await fetch(form.action, {
         method: 'POST',
