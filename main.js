@@ -234,6 +234,9 @@
   }
 
   if (navFaqBtn) navFaqBtn.addEventListener('click', openFaqModal);
+  document.querySelectorAll('a[href="#faq"], [data-open-faq]').forEach((el) => {
+    el.addEventListener('click', openFaqModal);
+  });
   if (faqModalCloseBtn) faqModalCloseBtn.addEventListener('click', closeFaqModal);
   if (faqModalCloseBg) faqModalCloseBg.addEventListener('click', closeFaqModal);
 
@@ -243,6 +246,12 @@
   window.addEventListener('hashchange', () => {
     if (window.location.hash === '#faq') {
       openFaqModal();
+    }
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('faq-open')) {
+      closeFaqModal();
     }
   });
 
@@ -313,10 +322,14 @@
       const slideWidthPercent = 100 / itemsPerScreen;
       galleryTrack.style.transform = `translateX(-${galleryIndex * slideWidthPercent}%)`;
 
-      if (thumb) {
+      if (thumb && scrollbar) {
         const thumbWidthPercent = (1 / (maxIndex + 1)) * 100;
         thumb.style.width = `${thumbWidthPercent}%`;
-        thumb.style.transform = `translateX(${galleryIndex * 100}%)`;
+        const rect = scrollbar.getBoundingClientRect();
+        const thumbWidth = (rect.width * thumbWidthPercent) / 100;
+        const availableWidth = Math.max(0, rect.width - thumbWidth);
+        const ratio = maxIndex > 0 ? galleryIndex / maxIndex : 0;
+        thumb.style.transform = `translateX(${ratio * availableWidth}px)`;
       }
 
       if (prevBtn) prevBtn.style.opacity = galleryIndex === 0 ? '0.35' : '1';
@@ -413,15 +426,86 @@
       window.addEventListener('mouseup', dragEnd);
     }
 
-    // Scrollbar click
-    if (scrollbar) {
-      scrollbar.addEventListener('click', (e) => {
+    // Scrollbar Drag / Click
+    let isDraggingScrollbar = false;
+
+    if (scrollbar && thumb) {
+      function getScrollbarRatio(clientX) {
         const rect = scrollbar.getBoundingClientRect();
-        const clickX = e.clientX - rect.left;
-        const ratio = Math.max(0, Math.min(1, clickX / rect.width));
-        galleryIndex = Math.round(ratio * getMaxIndex());
+        const thumbWidth = thumb.offsetWidth || ((1 / (getMaxIndex() + 1)) * rect.width);
+        const availableWidth = rect.width - thumbWidth;
+        if (availableWidth <= 0) return 0;
+        const relativeX = clientX - rect.left - (thumbWidth / 2);
+        return Math.max(0, Math.min(1, relativeX / availableWidth));
+      }
+
+      function handleScrollbarDrag(clientX) {
+        const maxIndex = getMaxIndex();
+        if (maxIndex <= 0) return;
+        const ratio = getScrollbarRatio(clientX);
+
+        const rect = scrollbar.getBoundingClientRect();
+        const thumbWidth = thumb.offsetWidth || ((1 / (maxIndex + 1)) * rect.width);
+        const availableWidth = Math.max(0, rect.width - thumbWidth);
+        const thumbX = ratio * availableWidth;
+
+        const itemsPerScreen = getItemsPerScreen();
+        const trackWidth = galleryTrack.offsetWidth;
+        const slideWidth = trackWidth / itemsPerScreen;
+        const maxTrackTranslate = maxIndex * slideWidth;
+        const trackX = ratio * maxTrackTranslate;
+
+        galleryTrack.style.transition = 'none';
+        thumb.style.transition = 'none';
+        thumb.style.transform = `translateX(${thumbX}px)`;
+        galleryTrack.style.transform = `translateX(-${trackX}px)`;
+
+        galleryIndex = Math.round(ratio * maxIndex);
+        if (prevBtn) prevBtn.style.opacity = galleryIndex === 0 ? '0.35' : '1';
+        if (nextBtn) nextBtn.style.opacity = galleryIndex === maxIndex ? '0.35' : '1';
+      }
+
+      function startScrollbarDrag(e) {
+        isDraggingScrollbar = true;
+        scrollbar.classList.add('is-dragging');
+        const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        handleScrollbarDrag(clientX);
+      }
+
+      function endScrollbarDrag() {
+        if (!isDraggingScrollbar) return;
+        isDraggingScrollbar = false;
+        scrollbar.classList.remove('is-dragging');
+        galleryTrack.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        thumb.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
         updateGallery();
+      }
+
+      scrollbar.addEventListener('mousedown', (e) => {
+        e.preventDefault();
+        startScrollbarDrag(e);
       });
+
+      scrollbar.addEventListener('touchstart', (e) => {
+        startScrollbarDrag(e);
+      }, { passive: true });
+
+      window.addEventListener('mousemove', (e) => {
+        if (isDraggingScrollbar) {
+          e.preventDefault();
+          handleScrollbarDrag(e.clientX);
+        }
+      });
+
+      window.addEventListener('touchmove', (e) => {
+        if (isDraggingScrollbar) {
+          handleScrollbarDrag(e.touches[0].clientX);
+        }
+      }, { passive: true });
+
+      window.addEventListener('mouseup', endScrollbarDrag);
+      window.addEventListener('touchend', endScrollbarDrag);
+      window.addEventListener('touchcancel', endScrollbarDrag);
     }
 
     // Lightbox Logic

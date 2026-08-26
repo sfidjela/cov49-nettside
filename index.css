@@ -2207,8 +2207,29 @@ body.light-mode .pl-gallery-nav {
   border-radius: 4px;
   margin: 28px auto 0;
   position: relative;
-  overflow: hidden;
-  cursor: pointer;
+  overflow: visible;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.pl-gallery-scrollbar.is-dragging {
+  cursor: grabbing;
+}
+
+.pl-gallery-scrollbar::before {
+  content: '';
+  position: absolute;
+  top: -14px;
+  bottom: -14px;
+  left: -12px;
+  right: -12px;
+  cursor: grab;
+}
+
+.pl-gallery-scrollbar.is-dragging::before {
+  cursor: grabbing;
 }
 
 .pl-gallery-scrollbar-thumb {
@@ -2221,6 +2242,11 @@ body.light-mode .pl-gallery-nav {
   border-radius: 4px;
   transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   transform-origin: left;
+  cursor: grab;
+}
+
+.pl-gallery-scrollbar.is-dragging .pl-gallery-scrollbar-thumb {
+  cursor: grabbing;
 }
 
 @media (min-width: 768px) {

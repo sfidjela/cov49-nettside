@@ -568,6 +568,7 @@
   // ══════════════════════════════════════════════════════════
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
   const lightboxClose = document.querySelector('.lightbox__close');
   const lightboxPrev = document.querySelector('.lightbox__prev');
   const lightboxNext = document.querySelector('.lightbox__next');
@@ -581,6 +582,11 @@
     const data = currentImages[currentIndex];
     lightboxImg.src = data.src;
     lightboxImg.alt = data.alt || '';
+
+    if (lightboxCaption) {
+      lightboxCaption.textContent = data.caption || '';
+      lightboxCaption.style.display = data.caption ? 'block' : 'none';
+    }
 
     if (lightboxCounter) {
       lightboxCounter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
@@ -691,10 +697,14 @@
       const slideWidthPercent = 100 / itemsPerScreen;
       galleryTrack.style.transform = `translateX(-${galleryIndex * slideWidthPercent}%)`;
 
-      if (thumb) {
+      if (thumb && scrollbar) {
         const thumbWidthPercent = (1 / (maxIndex + 1)) * 100;
         thumb.style.width = `${thumbWidthPercent}%`;
-        thumb.style.transform = `translateX(${galleryIndex * 100}%)`;
+        const rect = scrollbar.getBoundingClientRect();
+        const thumbWidth = (rect.width * thumbWidthPercent) / 100;
+        const availableWidth = Math.max(0, rect.width - thumbWidth);
+        const ratio = maxIndex > 0 ? galleryIndex / maxIndex : 0;
+        thumb.style.transform = `translateX(${ratio * availableWidth}px)`;
       }
 
       if (prevBtn) prevBtn.style.opacity = galleryIndex === 0 ? '0.4' : '1';
@@ -783,67 +793,102 @@
     wrapper.addEventListener('touchstart', dragStart, { passive: true });
     wrapper.addEventListener('touchmove', dragMove, { passive: true });
     wrapper.addEventListener('touchend', dragEnd);
-
     wrapper.addEventListener('mousedown', dragStart);
-    
-    // Track if we are dragging the track wrapper or the scrollbar
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDraggingScrollbar) {
+        dragMove(e);
+      }
+    });
+
+    window.addEventListener('mouseup', (e) => {
+      if (!isDraggingScrollbar) {
+        dragEnd();
+      }
+    });
+
+    // Scrollbar Drag / Click
     let isDraggingScrollbar = false;
     const scrollbar = document.querySelector('.pl-gallery-scrollbar');
 
-    if (scrollbar) {
-      function handleScrollbarAction(clientX) {
+    if (scrollbar && thumb) {
+      function getScrollbarRatio(clientX) {
         const rect = scrollbar.getBoundingClientRect();
-        const dragX = Math.max(0, Math.min(clientX - rect.left, rect.width));
-        const dragPercent = dragX / rect.width;
+        const thumbWidth = thumb.offsetWidth || ((1 / (getMaxIndex() + 1)) * rect.width);
+        const availableWidth = rect.width - thumbWidth;
+        if (availableWidth <= 0) return 0;
+        const relativeX = clientX - rect.left - (thumbWidth / 2);
+        return Math.max(0, Math.min(1, relativeX / availableWidth));
+      }
+
+      function handleScrollbarDrag(clientX) {
         const maxIndex = getMaxIndex();
-        galleryIndex = Math.round(dragPercent * maxIndex);
+        if (maxIndex <= 0) return;
+        const ratio = getScrollbarRatio(clientX);
+
+        const rect = scrollbar.getBoundingClientRect();
+        const thumbWidth = thumb.offsetWidth || ((1 / (maxIndex + 1)) * rect.width);
+        const availableWidth = Math.max(0, rect.width - thumbWidth);
+        const thumbX = ratio * availableWidth;
+
+        const itemsPerScreen = getItemsPerScreen();
+        const trackWidth = galleryTrack.offsetWidth;
+        const slideWidth = trackWidth / itemsPerScreen;
+        const maxTrackTranslate = maxIndex * slideWidth;
+        const trackX = ratio * maxTrackTranslate;
+
+        galleryTrack.style.transition = 'none';
+        thumb.style.transition = 'none';
+        thumb.style.transform = `translateX(${thumbX}px)`;
+        galleryTrack.style.transform = `translateX(-${trackX}px)`;
+
+        galleryIndex = Math.round(ratio * maxIndex);
+        if (prevBtn) prevBtn.style.opacity = galleryIndex === 0 ? '0.4' : '1';
+        if (nextBtn) nextBtn.style.opacity = galleryIndex === maxIndex ? '0.4' : '1';
+      }
+
+      function startScrollbarDrag(e) {
+        isDraggingScrollbar = true;
+        scrollbar.classList.add('is-dragging');
+        const clientX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        handleScrollbarDrag(clientX);
+      }
+
+      function endScrollbarDrag() {
+        if (!isDraggingScrollbar) return;
+        isDraggingScrollbar = false;
+        scrollbar.classList.remove('is-dragging');
+        galleryTrack.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        thumb.style.transition = 'transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
         updateGallery();
       }
 
       scrollbar.addEventListener('mousedown', (e) => {
-        e.preventDefault(); // Stop browser text selection/drag interference
-        isDraggingScrollbar = true;
-        handleScrollbarAction(e.clientX);
+        e.preventDefault();
+        startScrollbarDrag(e);
       });
 
       scrollbar.addEventListener('touchstart', (e) => {
-        isDraggingScrollbar = true;
-        handleScrollbarAction(e.touches[0].clientX);
+        startScrollbarDrag(e);
       }, { passive: true });
+
+      window.addEventListener('mousemove', (e) => {
+        if (isDraggingScrollbar) {
+          e.preventDefault();
+          handleScrollbarDrag(e.clientX);
+        }
+      });
+
+      window.addEventListener('touchmove', (e) => {
+        if (isDraggingScrollbar) {
+          handleScrollbarDrag(e.touches[0].clientX);
+        }
+      }, { passive: true });
+
+      window.addEventListener('mouseup', endScrollbarDrag);
+      window.addEventListener('touchend', endScrollbarDrag);
+      window.addEventListener('touchcancel', endScrollbarDrag);
     }
-
-    // Global mousemove / touchmove to coordinate multiple drags
-    window.addEventListener('mousemove', (e) => {
-      if (isDraggingScrollbar) {
-        handleScrollbarAction(e.clientX);
-      } else {
-        dragMove(e);
-      }
-    });
-
-    window.addEventListener('touchmove', (e) => {
-      if (isDraggingScrollbar) {
-        handleScrollbarAction(e.touches[0].clientX);
-      } else {
-        dragMove(e);
-      }
-    }, { passive: false });
-
-    window.addEventListener('mouseup', (e) => {
-      if (isDraggingScrollbar) {
-        isDraggingScrollbar = false;
-      } else {
-        dragEnd();
-      }
-    });
-
-    window.addEventListener('touchend', (e) => {
-      if (isDraggingScrollbar) {
-        isDraggingScrollbar = false;
-      } else {
-        dragEnd();
-      }
-    });
 
     let resizeTimeout;
     window.addEventListener('resize', () => {
@@ -858,7 +903,8 @@
       const caption = slide.querySelector('.pl-gallery-caption');
       return {
         src: img.src,
-        alt: caption ? caption.textContent : img.alt
+        alt: caption ? caption.textContent.trim() : img.alt,
+        caption: caption ? caption.textContent.trim() : ''
       };
     });
 
@@ -952,6 +998,9 @@
   }
 
   if (navFaqBtn) navFaqBtn.addEventListener('click', openFaqModal);
+  document.querySelectorAll('a[href="#faq"], [data-open-faq]').forEach((el) => {
+    el.addEventListener('click', openFaqModal);
+  });
   if (faqModalCloseBtn) faqModalCloseBtn.addEventListener('click', closeFaqModal);
   if (faqModalCloseBg) faqModalCloseBg.addEventListener('click', closeFaqModal);
 
@@ -962,6 +1011,14 @@
     if (window.location.hash === '#faq') {
       openFaqModal();
     }
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('faq-open')) {
+      closeFaqModal();
+    }
+  });
+
   // ── Navbar Dropdowns & Smooth Scroll ───────────────
   const navDropdowns = document.querySelectorAll('.navbar__dropdown');
   navDropdowns.forEach(dropdown => {

@@ -11,8 +11,8 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="Logo/01. Logo med ikon/Nobello_Logo med ikon.svg">
 
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="planlosning.css">
+    <link rel="stylesheet" href="index.css?v=2.6">
+    <link rel="stylesheet" href="planlosning.css?v=2.6">
 </head>
 
 <body>
@@ -34,7 +34,7 @@
                 <a href="enebolig.html" class="navbar__link">Eneboligen</a>
                 <a href="tomannsbolig.html" class="navbar__link">Tomannsboligen</a>
                 <a href="planlosning.html" class="navbar__link is-active">Planløsning</a>
-                <a href="index.html#faq" class="navbar__link">FAQ</a>
+                <a href="#faq" class="navbar__link" id="navFaqBtn">FAQ</a>
                 <a href="index.html#kontakt" class="navbar__cta">Kontakt oss</a>
                 <span class="navbar__passive-logo">
                     <img src="Logo/02. Tekstlogo/Nobello_Tekstlogo_negativ.svg" alt="Nobello" class="navbar__logo logo-dark-theme">
@@ -273,16 +273,63 @@
         </div>
     </footer>
 
+    <!-- ====== FAQ MODAL ====== -->
+    <div class="faq-modal" id="faqModal" role="dialog" aria-modal="true" aria-labelledby="faqModalTitle">
+        <div class="faq-modal__overlay" id="faqModalCloseBg"></div>
+        <div class="faq-modal__content">
+            <button class="faq-modal__close" id="faqModalCloseBtn" aria-label="Lukk">&times;</button>
+            <span class="section-label">FAQ</span>
+            <h2 class="section-title" id="faqModalTitle">Ofte stilte spørsmål</h2>
+            <div class="faq__list">
+                <details class="faq__item">
+                    <summary class="faq__question">Når forventes boligene å være innflyttingsklare?</summary>
+                    <div class="faq__answer">
+                        <p>Vi forventer ferdigstillelse rundt høsten 2027, forutsatt at prosjektet igangsettes høsten 2026.</p>
+                    </div>
+                </details>
+                <details class="faq__item">
+                    <summary class="faq__question">Er det mulighet for tilvalg og endringer?</summary>
+                    <div class="faq__answer">
+                        <p>Ja, det er store muligheter for tilpasning og endringer, blant annet:</p>
+                        <ul>
+                            <li>Endring av lettvegger for å slå sammen eller utvide rom</li>
+                            <li>Tilpasning på kjøkken eller leveranse av kjøkken</li>
+                            <li>Bad, overflater og produkter</li>
+                            <li>Tilpasninger av terrasser m.m.</li>
+                        </ul>
+                        <p>Ta gjerne kontakt med oss for ytterligere informasjon om muligheter og tilpasninger.</p>
+                    </div>
+                </details>
+                <details class="faq__item">
+                    <summary class="faq__question">Hva inngår i standardleveransen?</summary>
+                    <div class="faq__answer">
+                        <p>Boligene oppføres og leveres i henhold til gjeldende tekniske forskrifter (TEK17) med gjennomgående høy kvalitet. Standardleveransen inkluderer blant annet:</p>
+                        <ul>
+                            <li>Komplett og påkostet kjøkken med integrerte hvitevarer</li>
+                            <li>Ferdigstilte, delikate bad med 60x60 fliser og kvalitetsinnredning</li>
+                            <li>Elektrisk gulvvarme og balansert ventilasjon med varmegjenvinning</li>
+                            <li>Carport/garasje med klargjort trekkerør for elbillader</li>
+                        </ul>
+                        <p>Elementer som varmepumpe og peis er ikke inkludert som standard, men boligene er klargjort slik at kjøper kan gjøre personlige tilvalg. Se fullstendig leveransebeskrivelse for detaljert informasjon, eller kontakt oss for komplett underlag.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </div>
+
     <!-- LIGHTBOX (forstørret bilde) -->
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Forstørret bilde">
         <button class="lightbox__close" aria-label="Lukk">&times;</button>
         <button class="lightbox__prev" aria-label="Forrige bilde">&#10094;</button>
         <button class="lightbox__next" aria-label="Neste bilde">&#10095;</button>
         <div class="lightbox__counter">1 / 1</div>
-        <img class="lightbox__img" id="lightboxImg" src="" alt="">
+        <div class="lightbox__content">
+            <img class="lightbox__img" id="lightboxImg" src="" alt="">
+            <div class="lightbox__caption" id="lightboxCaption"></div>
+        </div>
     </div>
 
-    <script src="planlosning.js"></script>
+    <script src="planlosning.js?v=2.6"></script>
 </body>
 
 </html>
