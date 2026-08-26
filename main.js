@@ -780,13 +780,15 @@
     }
   }
 
-  // ── Meta Pixel & Cookie Consent Logic ───────────────────
+  // ── Analytics & Pixel (Cookie Consent Controlled) ───────
   const PIXEL_ID = '1027189313416777';
+  const GA4_ID = 'G-CJ26HJ9N8F';
 
-  function initMetaPixel() {
-    if (window.fbqInitialized) return;
-    window.fbqInitialized = true;
+  function initAnalytics() {
+    if (window.analyticsInitialized) return;
+    window.analyticsInitialized = true;
 
+    // 1. Meta Pixel
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -799,14 +801,34 @@
     fbq('init', PIXEL_ID);
     fbq('track', 'PageView');
     fbq('trackCustom', 'ViewProjectOverview');
+
+    // 2. Google Analytics (GA4)
+    const gaScript = document.createElement('script');
+    gaScript.async = true;
+    gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`;
+    document.head.appendChild(gaScript);
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA4_ID);
   }
 
   window.trackMetaLead = function(boligtype) {
-    if (window.fbq && localStorage.getItem('cookieConsent') === 'accepted') {
-      fbq('track', 'Lead', {
-        content_name: 'Prospekt CØV49',
-        content_category: boligtype || 'Generell'
-      });
+    if (localStorage.getItem('cookieConsent') === 'accepted') {
+      if (window.fbq) {
+        fbq('track', 'Lead', {
+          content_name: 'Prospekt CØV49',
+          content_category: boligtype || 'Generell'
+        });
+      }
+      if (window.gtag) {
+        gtag('event', 'generate_lead', {
+          event_category: 'Prospekt',
+          event_label: boligtype || 'Generell'
+        });
+      }
     }
   };
 
@@ -816,7 +838,7 @@
   const consent = localStorage.getItem('cookieConsent');
 
   if (consent === 'accepted') {
-    initMetaPixel();
+    initAnalytics();
   } else if (!consent && cookieBanner) {
     setTimeout(() => {
       cookieBanner.classList.add('is-visible');
@@ -827,7 +849,7 @@
     cookieAcceptBtn.addEventListener('click', () => {
       localStorage.setItem('cookieConsent', 'accepted');
       if (cookieBanner) cookieBanner.classList.remove('is-visible');
-      initMetaPixel();
+      initAnalytics();
     });
   }
 
