@@ -160,6 +160,10 @@
 
         const floatingNote = document.getElementById('floatingNote');
         if (floatingNote) floatingNote.classList.remove('is-visible');
+
+        if (window.trackMetaLead) {
+          window.trackMetaLead(data.boligtype || 'Generell');
+        }
       } else {
         throw new Error('Form submission failed');
       }
@@ -278,6 +282,10 @@
             if (tomannsA) tomannsA.classList.remove('secondary');
             if (tomannsB) tomannsB.classList.remove('secondary');
           }
+        }
+
+        if (window.trackMetaLead) {
+          window.trackMetaLead(selectedType);
         }
       } else {
         throw new Error('Form submission failed');
@@ -771,5 +779,70 @@
       });
     }
   }
+
+  // ── Meta Pixel & Cookie Consent Logic ───────────────────
+  const PIXEL_ID = '1027189313416777';
+
+  function initMetaPixel() {
+    if (window.fbqInitialized) return;
+    window.fbqInitialized = true;
+
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', PIXEL_ID);
+    fbq('track', 'PageView');
+    fbq('trackCustom', 'ViewProjectOverview');
+  }
+
+  window.trackMetaLead = function(boligtype) {
+    if (window.fbq && localStorage.getItem('cookieConsent') === 'accepted') {
+      fbq('track', 'Lead', {
+        content_name: 'Prospekt CØV49',
+        content_category: boligtype || 'Generell'
+      });
+    }
+  };
+
+  const cookieBanner = document.getElementById('cookieBanner');
+  const cookieAcceptBtn = document.getElementById('cookieAcceptBtn');
+  const cookieDeclineBtn = document.getElementById('cookieDeclineBtn');
+  const consent = localStorage.getItem('cookieConsent');
+
+  if (consent === 'accepted') {
+    initMetaPixel();
+  } else if (!consent && cookieBanner) {
+    setTimeout(() => {
+      cookieBanner.classList.add('is-visible');
+    }, 1500);
+  }
+
+  if (cookieAcceptBtn) {
+    cookieAcceptBtn.addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'accepted');
+      if (cookieBanner) cookieBanner.classList.remove('is-visible');
+      initMetaPixel();
+    });
+  }
+
+  if (cookieDeclineBtn) {
+    cookieDeclineBtn.addEventListener('click', () => {
+      localStorage.setItem('cookieConsent', 'declined');
+      if (cookieBanner) cookieBanner.classList.remove('is-visible');
+    });
+  }
+
+  document.querySelectorAll('.btn-prospekt-download').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const prospekt = this.getAttribute('data-prospekt') || 'Prospekt';
+      window.trackMetaLead(prospekt);
+    });
+  });
 
 })();
