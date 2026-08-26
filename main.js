@@ -210,17 +210,23 @@
   const prospektModalCloseBtn = document.getElementById('prospektModalCloseBtn');
   const prospektModalCloseBg = document.getElementById('prospektModalCloseBg');
 
-  function openProspektModal(e) {
+  function openProspektModal(e, preferredType) {
     if (e) e.preventDefault();
     document.body.classList.add('prospekt-open');
     if (floatingNote) floatingNote.classList.remove('is-visible');
+
+    const targetType = preferredType || (e && e.currentTarget && e.currentTarget.getAttribute('data-target-type'));
+    if (targetType) {
+      const radio = document.querySelector(`input[name="boligtype"][value="${targetType}"]`);
+      if (radio) radio.checked = true;
+    }
   }
 
   function closeProspektModal() {
     document.body.classList.remove('prospekt-open');
   }
 
-  document.querySelectorAll('#openProspektBtn, [data-open-prospekt], a[href="#prospekt"]').forEach((el) => {
+  document.querySelectorAll('#openProspektBtn, [data-open-prospekt], a[href="#prospekt"], .bolig-card__cta').forEach((el) => {
     el.addEventListener('click', openProspektModal);
   });
   if (prospektModalCloseBtn) prospektModalCloseBtn.addEventListener('click', closeProspektModal);
