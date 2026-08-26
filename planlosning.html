@@ -11,8 +11,8 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="Logo/01. Logo med ikon/Nobello_Logo med ikon.svg">
 
-    <link rel="stylesheet" href="index.css?v=2.6">
-    <link rel="stylesheet" href="planlosning.css?v=2.6">
+    <link rel="stylesheet" href="index.css?v=2.7">
+    <link rel="stylesheet" href="planlosning.css?v=2.7">
 </head>
 
 <body>
@@ -317,6 +317,87 @@
         </div>
     </div>
 
+    <!-- FLOATING CTA NOTE (Få tilsendt prospekt / Meld uforpliktende interesse) -->
+    <div class="floating-note" id="floatingNote">
+        <button class="floating-note__close" id="closeNote" aria-label="Lukk">&times;</button>
+        <button type="button" class="floating-note__content" id="openProspektBtn" aria-label="Meld interesse for prospekt">
+            <div class="floating-note__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+            </div>
+            <div class="floating-note__text">
+                <span class="floating-note__label">Få tilsendt prospekt</span>
+                <span class="floating-note__title">Meld uforpliktende interesse</span>
+            </div>
+        </button>
+    </div>
+
+    <!-- ====== PROSPEKT / INTERESSE MODAL ====== -->
+    <div class="prospekt-modal" id="prospektModal" role="dialog" aria-modal="true" aria-labelledby="prospektModalTitle">
+        <div class="prospekt-modal__overlay" id="prospektModalCloseBg"></div>
+        <div class="prospekt-modal__content">
+            <button class="prospekt-modal__close" id="prospektModalCloseBtn" aria-label="Lukk">&times;</button>
+            <span class="section-label">Få tilsendt prospekt</span>
+            <h2 class="section-title" id="prospektModalTitle">Meld uforpliktende interesse</h2>
+            <p class="prospekt-modal__subtitle">Registrer deg under for å motta komplett salgsprospekt, tegninger og prisinformasjon for Caroline Øverlands vei 49 så snart det foreligger.</p>
+            
+            <form class="prospekt__form" id="prospektForm" action="https://formsubmit.co/ajax/ds@nobello.no" method="POST" onsubmit="handleProspektSubmit(event)">
+                <!-- Honeypot -->
+                <input type="text" name="_honey" style="display:none">
+                <!-- Disable Captcha -->
+                <input type="hidden" name="_captcha" value="false">
+                <!-- Email Subject -->
+                <input type="hidden" name="_subject" value="Ny interessent (prospekt): Caroline Øverlands vei 49">
+                
+                <div class="form-group">
+                    <label class="form-label" for="prospekt-navn">Navn</label>
+                    <input class="form-input" type="text" id="prospekt-navn" name="navn" required autocomplete="name" placeholder="Ditt fulle navn">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="prospekt-epost">E-post</label>
+                    <input class="form-input" type="email" id="prospekt-epost" name="epost" required autocomplete="email" placeholder="din.epost@adresse.no">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="prospekt-telefon">Telefon</label>
+                    <input class="form-input" type="tel" id="prospekt-telefon" name="telefon" autocomplete="tel" placeholder="Ditt telefonnummer">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Hvilken boligtype interesserer deg?</label>
+                    <div class="form-radio-group">
+                        <input class="form-radio" type="radio" name="boligtype" id="modal-enebolig" value="Enebolig">
+                        <label class="form-radio-label" for="modal-enebolig">Enebolig</label>
+                        <input class="form-radio" type="radio" name="boligtype" id="modal-tomannsbolig" value="Tomannsbolig">
+                        <label class="form-radio-label" for="modal-tomannsbolig">Tomannsbolig</label>
+                        <input class="form-radio" type="radio" name="boligtype" id="modal-begge" value="Begge" checked>
+                        <label class="form-radio-label" for="modal-begge">Begge</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="prospekt-melding">Eventuell kommentar / spørsmål</label>
+                    <textarea class="form-textarea" id="prospekt-melding" name="melding" rows="2" placeholder="Valgfritt"></textarea>
+                </div>
+                
+                <button type="submit" class="btn-primary" id="prospektSubmitBtn">Få tilsendt prospekt</button>
+                
+                <div id="prospektSuccess" class="form-success" style="display:none; margin-top: 16px;">
+                    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 10l4 4 8-8" />
+                    </svg>
+                    <span>Takk! Din henvendelse er mottatt. Vi sender deg prospekt og oppdateringer så snart det er klart.</span>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- LIGHTBOX (forstørret bilde) -->
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Forstørret bilde">
         <button class="lightbox__close" aria-label="Lukk">&times;</button>
@@ -329,7 +410,7 @@
         </div>
     </div>
 
-    <script src="planlosning.js?v=2.6"></script>
+    <script src="planlosning.js?v=2.7"></script>
 </body>
 
 </html>

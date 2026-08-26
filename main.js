@@ -191,11 +191,78 @@
       sessionStorage.setItem('noteDismissed', 'true');
     });
 
-    // Close note when clicking content (it scrolls to #kontakt anyway)
-    floatingNote.querySelector('.floating-note__content').addEventListener('click', () => {
-      floatingNote.classList.remove('is-visible');
-    });
+    const noteContent = floatingNote.querySelector('.floating-note__content');
+    if (noteContent) {
+      noteContent.addEventListener('click', (e) => {
+        floatingNote.classList.remove('is-visible');
+        openProspektModal(e);
+      });
+    }
   }
+
+  // ── Prospekt / Interessent Modal Logic ───────────────────
+  const prospektModal = document.getElementById('prospektModal');
+  const prospektModalCloseBtn = document.getElementById('prospektModalCloseBtn');
+  const prospektModalCloseBg = document.getElementById('prospektModalCloseBg');
+
+  function openProspektModal(e) {
+    if (e) e.preventDefault();
+    document.body.classList.add('prospekt-open');
+    if (floatingNote) floatingNote.classList.remove('is-visible');
+  }
+
+  function closeProspektModal() {
+    document.body.classList.remove('prospekt-open');
+  }
+
+  document.querySelectorAll('#openProspektBtn, [data-open-prospekt], a[href="#prospekt"]').forEach((el) => {
+    el.addEventListener('click', openProspektModal);
+  });
+  if (prospektModalCloseBtn) prospektModalCloseBtn.addEventListener('click', closeProspektModal);
+  if (prospektModalCloseBg) prospektModalCloseBg.addEventListener('click', closeProspektModal);
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && document.body.classList.contains('prospekt-open')) {
+      closeProspektModal();
+    }
+  });
+
+  // Modal Form Submission (FormSubmit.co AJAX)
+  window.handleProspektSubmit = async (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const button = form.querySelector('button[type="submit"]');
+    const successMsg = document.getElementById('prospektSuccess');
+
+    const originalText = button.textContent;
+    button.disabled = true;
+    button.textContent = 'Sender...';
+
+    try {
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        form.reset();
+        if (successMsg) successMsg.style.display = 'flex';
+        button.style.display = 'none';
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      alert('Det oppsto en feil. Vennligst prøv igjen senere eller ring oss direkte.');
+      button.disabled = false;
+      button.textContent = originalText;
+    }
+  };
 
   // ── FAQ Accordion Logic ───────────────────────────────
   const faqItems = document.querySelectorAll('.faq__item');

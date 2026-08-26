@@ -1892,6 +1892,115 @@ body.faq-open .faq-modal__content {
 }
 
 /* ========================================================
+   PROSPEKT / INTERESSE MODAL
+   ======================================================== */
+.prospekt-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  padding: 16px;
+}
+
+body.prospekt-open .prospekt-modal {
+  opacity: 1;
+  visibility: visible;
+}
+
+.prospekt-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(6px);
+}
+
+.prospekt-modal__content {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 36px 36px 32px;
+  z-index: 10000;
+  transform: translateY(20px);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  max-height: 92vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.45);
+}
+
+body.prospekt-open .prospekt-modal__content {
+  transform: translateY(0);
+}
+
+.prospekt-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: 2.2rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.prospekt-modal__close:hover {
+  color: var(--color-accent);
+}
+
+.prospekt-modal .section-label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.prospekt-modal .section-title {
+  margin-bottom: 8px;
+  font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+}
+
+.prospekt-modal__subtitle {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+  margin-bottom: 22px;
+  line-height: 1.55;
+}
+
+.prospekt-modal .form-group {
+  margin-bottom: 15px;
+}
+
+.prospekt-modal .form-input,
+.prospekt-modal .form-textarea {
+  padding: 12px 16px;
+  font-size: var(--fs-small);
+}
+
+.prospekt-modal .form-textarea {
+  min-height: 64px;
+}
+
+.prospekt-modal .form-radio-label {
+  padding: 8px 16px;
+  font-size: var(--fs-small);
+}
+
+.prospekt-modal .btn-primary {
+  width: 100%;
+  justify-content: center;
+  padding: 14px 28px;
+  margin-top: 6px;
+  cursor: pointer;
+}
+
+/* ========================================================
    FLOATING CTA NOTE
    ======================================================== */
 .floating-note {
@@ -1900,7 +2009,7 @@ body.faq-open .faq-modal__content {
   /* Below the navbar */
   right: 32px;
   z-index: 99;
-  max-width: 280px;
+  max-width: 290px;
   opacity: 0;
   transform: translateY(-20px) scale(0.95);
   transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
@@ -1927,6 +2036,10 @@ body.faq-open .faq-modal__content {
   color: var(--color-text);
   transition: transform 0.3s var(--ease-out), border-color 0.3s;
   text-decoration: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  width: 100%;
 }
 
 .floating-note__content:hover {

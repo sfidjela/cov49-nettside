@@ -27,7 +27,7 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="Logo/01. Logo med ikon/Nobello_Logo med ikon.svg">
 
-  <link rel="stylesheet" href="index.css?v=2.6">
+  <link rel="stylesheet" href="index.css?v=2.7">
 
 
   <!-- Preload hero image -->
@@ -828,17 +828,16 @@
     </div>
   </div>
 
-  <!-- ═══════════════════════ ⑧ KONTAKT ═══════════════════════ -->
+  <!-- ═══════════════════════ ⑧ KONTAKT / INTERESSE ═══════════════════════ -->
   <section class="kontakt" id="kontakt">
     <div class="container">
       <div class="kontakt__grid">
         <div>
-          <span class="section-label reveal">Kontakt</span>
-          <h2 class="section-title reveal reveal-delay-1">Interessert?</h2>
-          <p class="kontakt__intro reveal reveal-delay-2">Fyll ut skjemaet så tar vi kontakt for en uforpliktende
-            samtale om boligene i Caroline Øverlands vei 49.</p>
+          <span class="section-label reveal">Interesse</span>
+          <h2 class="section-title reveal reveal-delay-1">Meld uforpliktende interesse</h2>
+          <p class="kontakt__intro reveal reveal-delay-2">Fyll ut skjemaet for å motta komplett salgsprospekt, tegninger og bli holdt oppdatert frem mot salgsstart av boligene i Caroline Øverlands vei 49.</p>
           <div class="kontakt__phone reveal reveal-delay-3">
-            Kontakt megler<br>
+            Ansvarlig megler<br>
             <strong>Jørgen Ek</strong> – <a href="tel:+4794853504">948 53 504</a><br>
             <a href="mailto:jorgen.ek@privatmegleren.no">jorgen.ek@privatmegleren.no</a>
           </div>
@@ -852,18 +851,18 @@
           <!-- Success Page -->
           <input type="hidden" name="_next" value="https://nobello.no/takk">
           <!-- Email Subject -->
-          <input type="hidden" name="_subject" value="Ny henvendelse: Caroline Øverlands vei 49">
+          <input type="hidden" name="_subject" value="Ny interessent (prospekt): Caroline Øverlands vei 49">
           <div class="form-group">
             <label class="form-label" for="navn">Navn</label>
-            <input class="form-input" type="text" id="navn" name="navn" required autocomplete="name">
+            <input class="form-input" type="text" id="navn" name="navn" required autocomplete="name" placeholder="Ditt fulle navn">
           </div>
           <div class="form-group">
             <label class="form-label" for="epost">E-post</label>
-            <input class="form-input" type="email" id="epost" name="epost" required autocomplete="email">
+            <input class="form-input" type="email" id="epost" name="epost" required autocomplete="email" placeholder="din.epost@adresse.no">
           </div>
           <div class="form-group">
             <label class="form-label" for="telefon">Telefon</label>
-            <input class="form-input" type="tel" id="telefon" name="telefon" autocomplete="tel">
+            <input class="form-input" type="tel" id="telefon" name="telefon" autocomplete="tel" placeholder="Ditt telefonnummer">
           </div>
           <div class="form-group">
             <label class="form-label">Hvilken boligtype interesserer deg?</label>
@@ -877,15 +876,15 @@
             </div>
           </div>
           <div class="form-group">
-            <label class="form-label" for="melding">Eventuell melding</label>
-            <textarea class="form-textarea" id="melding" name="melding" rows="3"></textarea>
+            <label class="form-label" for="melding">Eventuell kommentar / spørsmål</label>
+            <textarea class="form-textarea" id="melding" name="melding" rows="3" placeholder="Valgfritt"></textarea>
           </div>
-          <button type="submit" class="btn-primary">Send henvendelse</button>
+          <button type="submit" class="btn-primary">Få tilsendt prospekt</button>
           <div id="formSuccess" class="form-success" style="display:none;">
             <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M4 10l4 4 8-8" />
             </svg>
-            <span>Takk! Din henvendelse er sendt. Vi tar kontakt fortløpende.</span>
+            <span>Takk! Din henvendelse er mottatt. Vi sender deg prospekt og oppdateringer så snart det er klart.</span>
           </div>
         </form>
       </div>
@@ -904,25 +903,88 @@
 
   <!-- ═══════════════════════ STICKY MOBILE CTA ═══════════════════════ -->
   <div class="sticky-cta" id="stickyCta">
-    <a href="#kontakt" class="btn-primary">Kontakt oss</a>
+    <a href="#prospekt" class="btn-primary" data-open-prospekt>Få tilsendt prospekt</a>
   </div>
 
-  <!-- FLOATING CTA NOTE (appears after delay) -->
+  <!-- FLOATING CTA NOTE (Få tilsendt prospekt / Meld uforpliktende interesse) -->
   <div class="floating-note" id="floatingNote">
-    <button class="floating-note__close" id="closeNote">&times;</button>
-    <a href="#kontakt" class="floating-note__content">
+    <button class="floating-note__close" id="closeNote" aria-label="Lukk">&times;</button>
+    <button type="button" class="floating-note__content" id="openProspektBtn" aria-label="Meld interesse for prospekt">
       <div class="floating-note__icon">
-        <svg viewBox="0 0 20 20" fill="currentColor">
-          <path d="M2 5a2 2 0 012-2h7a2 2 0 012 2v4a2 2 0 01-2 2H9l-3 3v-3H4a2 2 0 01-2-2V5z" />
-          <path
-            d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
       </div>
       <div class="floating-note__text">
-        <span class="floating-note__label">Interessert?</span>
-        <span class="floating-note__title">Kontakt megler for mer info</span>
+        <span class="floating-note__label">Få tilsendt prospekt</span>
+        <span class="floating-note__title">Meld uforpliktende interesse</span>
       </div>
-    </a>
+    </button>
+  </div>
+
+  <!-- ====== PROSPEKT / INTERESSE MODAL ====== -->
+  <div class="prospekt-modal" id="prospektModal" role="dialog" aria-modal="true" aria-labelledby="prospektModalTitle">
+    <div class="prospekt-modal__overlay" id="prospektModalCloseBg"></div>
+    <div class="prospekt-modal__content">
+      <button class="prospekt-modal__close" id="prospektModalCloseBtn" aria-label="Lukk">&times;</button>
+      <span class="section-label">Få tilsendt prospekt</span>
+      <h2 class="section-title" id="prospektModalTitle">Meld uforpliktende interesse</h2>
+      <p class="prospekt-modal__subtitle">Registrer deg under for å motta komplett salgsprospekt, tegninger og prisinformasjon for Caroline Øverlands vei 49 så snart det foreligger.</p>
+      
+      <form class="prospekt__form" id="prospektForm" action="https://formsubmit.co/ajax/ds@nobello.no" method="POST" onsubmit="handleProspektSubmit(event)">
+        <!-- Honeypot -->
+        <input type="text" name="_honey" style="display:none">
+        <!-- Disable Captcha -->
+        <input type="hidden" name="_captcha" value="false">
+        <!-- Email Subject -->
+        <input type="hidden" name="_subject" value="Ny interessent (prospekt): Caroline Øverlands vei 49">
+        
+        <div class="form-group">
+          <label class="form-label" for="prospekt-navn">Navn</label>
+          <input class="form-input" type="text" id="prospekt-navn" name="navn" required autocomplete="name" placeholder="Ditt fulle navn">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="prospekt-epost">E-post</label>
+          <input class="form-input" type="email" id="prospekt-epost" name="epost" required autocomplete="email" placeholder="din.epost@adresse.no">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="prospekt-telefon">Telefon</label>
+          <input class="form-input" type="tel" id="prospekt-telefon" name="telefon" autocomplete="tel" placeholder="Ditt telefonnummer">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Hvilken boligtype interesserer deg?</label>
+          <div class="form-radio-group">
+            <input class="form-radio" type="radio" name="boligtype" id="modal-enebolig" value="Enebolig">
+            <label class="form-radio-label" for="modal-enebolig">Enebolig</label>
+            <input class="form-radio" type="radio" name="boligtype" id="modal-tomannsbolig" value="Tomannsbolig">
+            <label class="form-radio-label" for="modal-tomannsbolig">Tomannsbolig</label>
+            <input class="form-radio" type="radio" name="boligtype" id="modal-begge" value="Begge" checked>
+            <label class="form-radio-label" for="modal-begge">Begge</label>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label" for="prospekt-melding">Eventuell kommentar / spørsmål</label>
+          <textarea class="form-textarea" id="prospekt-melding" name="melding" rows="2" placeholder="Valgfritt"></textarea>
+        </div>
+        
+        <button type="submit" class="btn-primary" id="prospektSubmitBtn">Få tilsendt prospekt</button>
+        
+        <div id="prospektSuccess" class="form-success" style="display:none; margin-top: 16px;">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M4 10l4 4 8-8" />
+          </svg>
+          <span>Takk! Din henvendelse er mottatt. Vi sender deg prospekt og oppdateringer så snart det er klart.</span>
+        </div>
+      </form>
+    </div>
   </div>
 
   <!-- LIGHTBOX (forstørret bilde) -->
@@ -1008,7 +1070,7 @@
     </button>
   </aside>
 
-  <script src="main.js?v=2.6"></script>
+  <script src="main.js?v=2.7"></script>
 </body>
 
 </html>
