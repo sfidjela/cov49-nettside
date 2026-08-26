@@ -137,10 +137,9 @@
     const button = form.querySelector('button[type="submit"]');
     const successMsg = document.getElementById('formSuccess');
 
-    // Button loading state
     const originalText = button.textContent;
     button.disabled = true;
-    button.textContent = 'Sender...';
+    button.textContent = 'Registrerer...';
 
     try {
       const formData = new FormData(form);
@@ -156,17 +155,16 @@
 
       if (response.ok) {
         form.reset();
-        successMsg.style.display = 'flex';
+        if (successMsg) successMsg.style.display = 'block';
         button.style.display = 'none';
 
-        // Also hide the floating note if it was the trigger
         const floatingNote = document.getElementById('floatingNote');
         if (floatingNote) floatingNote.classList.remove('is-visible');
       } else {
         throw new Error('Form submission failed');
       }
     } catch (error) {
-      alert('Det oppsto en feil. Vennligst prøv igjen senere eller ring oss direkte.');
+      alert('Det oppsto en feil. Vennligst prøv igjen senere eller ring megler direkte.');
       button.disabled = false;
       button.textContent = originalText;
     }
@@ -227,20 +225,23 @@
     }
   });
 
-  // Modal Form Submission (FormSubmit.co AJAX)
+  // Modal Form Submission (FormSubmit.co AJAX + Instant Download View)
   window.handleProspektSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;
     const button = form.querySelector('button[type="submit"]');
-    const successMsg = document.getElementById('prospektSuccess');
+    const modalContent = form.closest('.prospekt-modal__content');
+    const successMsg = modalContent ? modalContent.querySelector('.prospekt-success') : document.getElementById('prospektSuccess');
 
     const originalText = button.textContent;
     button.disabled = true;
-    button.textContent = 'Sender...';
+    button.textContent = 'Registrerer...';
 
     try {
       const formData = new FormData(form);
+      const selectedType = formData.get('boligtype') || 'Begge';
       const data = Object.fromEntries(formData.entries());
+      
       const response = await fetch(form.action, {
         method: 'POST',
         body: JSON.stringify(data),
@@ -251,14 +252,38 @@
       });
 
       if (response.ok) {
-        form.reset();
-        if (successMsg) successMsg.style.display = 'flex';
-        button.style.display = 'none';
+        form.style.display = 'none';
+        if (modalContent) {
+          const headerTitle = modalContent.querySelector('#prospektModalTitle');
+          const headerSubtitle = modalContent.querySelector('.prospekt-modal__subtitle');
+          const headerLabel = modalContent.querySelector('.section-label');
+          if (headerLabel) headerLabel.style.display = 'none';
+          if (headerTitle) headerTitle.style.display = 'none';
+          if (headerSubtitle) headerSubtitle.style.display = 'none';
+        }
+        if (successMsg) {
+          successMsg.style.display = 'flex';
+          
+          // Reorder or highlight buttons based on selection
+          const eneboligBtn = successMsg.querySelector('[data-prospekt="enebolig"]');
+          const tomannsA = successMsg.querySelector('[data-prospekt="tomanns-a"]');
+          const tomannsB = successMsg.querySelector('[data-prospekt="tomanns-b"]');
+          
+          if (selectedType === 'Enebolig') {
+            if (eneboligBtn) eneboligBtn.classList.remove('secondary');
+            if (tomannsA) tomannsA.classList.add('secondary');
+            if (tomannsB) tomannsB.classList.add('secondary');
+          } else if (selectedType === 'Tomannsbolig') {
+            if (eneboligBtn) eneboligBtn.classList.add('secondary');
+            if (tomannsA) tomannsA.classList.remove('secondary');
+            if (tomannsB) tomannsB.classList.remove('secondary');
+          }
+        }
       } else {
         throw new Error('Form submission failed');
       }
     } catch (error) {
-      alert('Det oppsto en feil. Vennligst prøv igjen senere eller ring oss direkte.');
+      alert('Det oppsto en feil ved registrering. Vennligst prøv igjen eller ring megler direkte.');
       button.disabled = false;
       button.textContent = originalText;
     }

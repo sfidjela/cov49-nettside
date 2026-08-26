@@ -11,8 +11,8 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="Logo/01. Logo med ikon/Nobello_Logo med ikon.svg">
 
-    <link rel="stylesheet" href="index.css?v=2.7">
-    <link rel="stylesheet" href="planlosning.css?v=2.7">
+    <link rel="stylesheet" href="index.css?v=2.8">
+    <link rel="stylesheet" href="planlosning.css?v=2.8">
 </head>
 
 <body>
@@ -477,13 +477,17 @@
             <button class="prospekt-modal__close" id="prospektModalCloseBtn" aria-label="Lukk">&times;</button>
             <span class="section-label">Få tilsendt prospekt</span>
             <h2 class="section-title" id="prospektModalTitle">Meld uforpliktende interesse</h2>
-            <p class="prospekt-modal__subtitle">Registrer deg under for å motta komplett salgsprospekt, tegninger og prisinformasjon for Caroline Øverlands vei 49 så snart det foreligger.</p>
+            <p class="prospekt-modal__subtitle">Registrer deg under for å motta komplett salgsprospekt, tegninger og prisinformasjon for Caroline Øverlands vei 49.</p>
             
             <form class="prospekt__form" id="prospektForm" action="https://formsubmit.co/ajax/ds@nobello.no" method="POST" onsubmit="handleProspektSubmit(event)">
                 <!-- Honeypot -->
                 <input type="text" name="_honey" style="display:none">
                 <!-- Disable Captcha -->
                 <input type="hidden" name="_captcha" value="false">
+                <!-- CC Megler -->
+                <input type="hidden" name="_cc" value="jorgen.ek@privatmegleren.no">
+                <!-- Auto-reply -->
+                <input type="hidden" name="_autoresponse" value="Takk for at du meldte interesse for Caroline Øverlands vei 49. Ansvarlig megler Jørgen Ek og Nobello AS har mottatt din henvendelse og vil følge opp. Du kan også laste ned prospektene direkte fra nettsiden.">
                 <!-- Email Subject -->
                 <input type="hidden" name="_subject" value="Ny interessent (prospekt): Tomannsbolig - Caroline Øverlands vei 49">
                 
@@ -520,14 +524,44 @@
                 </div>
                 
                 <button type="submit" class="btn-primary" id="prospektSubmitBtn">Få tilsendt prospekt</button>
-                
-                <div id="prospektSuccess" class="form-success" style="display:none; margin-top: 16px;">
-                    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M4 10l4 4 8-8" />
-                    </svg>
-                    <span>Takk! Din henvendelse er mottatt. Vi sender deg prospekt og oppdateringer så snart det er klart.</span>
-                </div>
             </form>
+
+            <!-- SUCCESS / DOWNLOAD VIEW -->
+            <div class="prospekt-success" id="prospektSuccess">
+                <div class="prospekt-success__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+                <h3 class="prospekt-success__title">Takk for din interesse!</h3>
+                <p class="prospekt-success__desc">Din henvendelse er registrert og oversendt til ansvarlig megler <strong>Jørgen Ek</strong>. Du kan nå laste ned salgsprospektene direkte under:</p>
+                
+                <div class="prospekt-downloads">
+                    <a href="Prospekt%20C%C3%98V49/Prospekt%20C%C3%98V%2049A%20Tomannsbolig.pdf" target="_blank" class="btn-prospekt-download" data-prospekt="tomanns-a" download>
+                        <span class="btn-prospekt-download__label">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Prospekt: Tomannsbolig 49A
+                        </span>
+                        <span class="btn-prospekt-download__tag">PDF &bull; 10.0 MB</span>
+                    </a>
+
+                    <a href="Prospekt%20C%C3%98V49/Prospekt%20C%C3%98V%2049B%20Tomannsbolig.pdf" target="_blank" class="btn-prospekt-download" data-prospekt="tomanns-b" download>
+                        <span class="btn-prospekt-download__label">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Prospekt: Tomannsbolig 49B
+                        </span>
+                        <span class="btn-prospekt-download__tag">PDF &bull; 10.0 MB</span>
+                    </a>
+
+                    <a href="Prospekt%20C%C3%98V49/Prospekt%20-%20C%C3%98V%2049%20Enebolig.pdf" target="_blank" class="btn-prospekt-download secondary" data-prospekt="enebolig" download>
+                        <span class="btn-prospekt-download__label">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Prospekt: Enebolig
+                        </span>
+                        <span class="btn-prospekt-download__tag">PDF &bull; 9.8 MB</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -543,7 +577,7 @@
         </div>
     </div>
 
-    <script src="planlosning.js?v=2.7"></script>
+    <script src="planlosning.js?v=2.8"></script>
 </body>
 
 </html>
