@@ -1081,16 +1081,17 @@ body.light-mode .hero__bg::after {
 }
 
 .map-overlay__inner {
-  background: rgba(14, 14, 12, 0.88);
+  background: rgba(18, 18, 16, 0.92);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
-  padding: 28px 24px;
+  padding: 26px 22px;
   height: 100%;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4);
 }
 
 .map-overlay__header {
@@ -1102,27 +1103,27 @@ body.light-mode .hero__bg::after {
 
 .map-overlay__pin {
   flex-shrink: 0;
-  color: var(--color-accent);
+  color: var(--color-accent-light, #d4af37);
 }
 
 .map-overlay__title {
   font-family: var(--font);
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  color: var(--color-text);
+  color: #ffffff !important;
   letter-spacing: 0.01em;
 }
 
 .map-overlay__subtitle {
-  font-size: 0.8rem;
-  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.75) !important;
   margin-top: 2px;
 }
 
 .map-overlay__divider {
   height: 1px;
-  background: rgba(255, 255, 255, 0.08);
-  margin: 20px 0;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 18px 0;
 }
 
 /* POI groups */
@@ -1135,12 +1136,12 @@ body.light-mode .hero__bg::after {
 }
 
 .poi-group__label {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-accent);
-  margin-bottom: 10px;
+  color: var(--color-accent-light, #d4af37) !important;
+  margin-bottom: 8px;
 }
 
 .poi-item {
@@ -1148,7 +1149,7 @@ body.light-mode .hero__bg::after {
   justify-content: space-between;
   align-items: baseline;
   padding: 6px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .poi-item:last-child {
@@ -1156,16 +1157,18 @@ body.light-mode .hero__bg::after {
 }
 
 .poi-item__name {
-  font-size: 0.85rem;
-  color: var(--color-text);
+  font-size: 0.88rem;
+  color: #f3f3f0 !important;
+  transition: color 0.15s ease;
 }
 
 .poi-item__dist {
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.75) !important;
   white-space: nowrap;
   margin-left: 12px;
   font-variant-numeric: tabular-nums;
+  transition: color 0.15s ease;
 }
 
 .poi-item[data-dest] {
@@ -1177,19 +1180,34 @@ body.light-mode .hero__bg::after {
 }
 
 .poi-item[data-dest]:hover {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.poi-item[data-dest]:hover .poi-item__name {
+  color: #ffffff !important;
+}
+
+.poi-item[data-dest]:hover .poi-item__dist {
+  color: var(--color-accent-light, #d4af37) !important;
 }
 
 .poi-item[data-dest].is-active {
-  background: rgba(201, 169, 110, 0.15);
+  background: rgba(201, 169, 110, 0.22);
 }
 
 .poi-item[data-dest].is-active .poi-item__name {
-  color: var(--color-accent);
+  color: #f7e09e !important;
+  font-weight: 600;
+}
+
+.poi-item[data-dest].is-active .poi-item__dist {
+  color: #ffffff !important;
+  font-weight: 600;
 }
 
 .poi-item[data-dest].is-active .poi-item__dist::before {
   content: '→ ';
+  color: var(--color-accent-light, #d4af37);
 }
 
 /* -- Outdoor features strip -- */
@@ -2857,7 +2875,7 @@ body.light-mode .navbar__dropdown-panel {
    ======================================================== */
 .scroll-tracker {
   position: fixed;
-  right: 20px;
+  right: 16px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 90;
@@ -2865,7 +2883,7 @@ body.light-mode .navbar__dropdown-panel {
   flex-direction: column;
   align-items: center;
   gap: 12px;
-  padding: 10px 8px;
+  padding: 0;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -2876,17 +2894,6 @@ body.light-mode .navbar__dropdown-panel {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-}
-
-/* Generous hover zone extending to the left */
-.scroll-tracker::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  bottom: -20px;
-  right: -15px;
-  left: -200px;
-  z-index: -1;
 }
 
 .scroll-tracker__track {
@@ -2976,7 +2983,7 @@ body.light-mode .scroll-tracker__dot {
   box-shadow: 0 0 10px rgba(139, 111, 78, 0.7);
 }
 
-/* Section Labels - hidden by default, ALL pop out when hovering anywhere on tracker */
+/* Section Labels - hidden by default, pops out only when hovering on the scroll tracker bar */
 .scroll-tracker__label {
   position: absolute;
   right: calc(100% + 14px);
@@ -3012,12 +3019,11 @@ body.light-mode .scroll-tracker__label {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
-/* Reveal ALL labels when hovering the scroll tracker or surrounding area */
+/* Reveal labels ONLY when hovering directly on the scroll tracker pill */
 .scroll-tracker:hover .scroll-tracker__label {
   opacity: 1;
   visibility: visible;
   transform: translateY(-50%) translateX(0);
-  pointer-events: auto;
 }
 
 /* Active item label styling */
