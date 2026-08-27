@@ -31,15 +31,16 @@ Markedsføringsnettside for et eksklusivt boligprosjekt i Bekkestua, Bærum. Pro
 - **Bilder:** Bruk alltid `srcset` med WebP-varianter fra `images/optimized/`
 - **Animasjoner:** Scroll-trigget via `IntersectionObserver` og klassen `.reveal` (med `.reveal-delay-1` osv.)
 
-## Seksjoner på siden (i rekkefølge)
-1. Hero – CTA med kontaktlenke
-2. Konsept – prosjektbeskrivelse
-3. Boliger – enebolig og tomannsbolig med plantegninger og faner
-4. Materialer/kvalitet – overflater og leveransebeskrivelse
+## Seksjoner på forsiden (i rekkefølge)
+1. Hero – Hovedbilde & introduksjon
+2. Boligene – Enebolig og tomannsbolig
+3. Konsept – Prosjektbeskrivelse og arkitektur
+4. Kvaliteter & Materialer – Overflater og leveranse
 5. Smart hjem – Plejd-system og tekniske detaljer
-6. Beliggenhet og utomhus
-7. Prosess/fremdrift
-8. Kontaktskjema
+6. Bildegalleri – 20 illustrasjoner med filter
+7. Kjøpsprosessen – Trinn-for-trinn og tilvalg
+8. Beliggenhet & Nærområde – Utsikt og interaktivt kart
+9. Kontakt oss – Skjema og prospektnedlasting
 
 ## Viktige mønstre i JavaScript (`main.js`)
 - Alt er pakket i én IIFE for å unngå global scope
