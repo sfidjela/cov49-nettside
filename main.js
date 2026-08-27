@@ -109,7 +109,7 @@
 
   // ── Map POI click-to-navigate ───────────────────────
   const mapFrame = document.getElementById('mapFrame');
-  const defaultMapSrc = 'https://www.google.com/maps?q=59.9081,10.5654&z=15&output=embed';
+  const defaultMapSrc = 'https://www.google.com/maps?q=' + encodeURIComponent('Caroline Øverlands vei 49, 1356 Bekkestua') + '&z=16&output=embed';
 
   document.querySelectorAll('.poi-item[data-dest]').forEach((item) => {
     item.addEventListener('click', () => {
