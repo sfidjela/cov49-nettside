@@ -125,7 +125,7 @@
       } else {
         item.classList.add('is-active');
         const dest = item.dataset.dest;
-        mapFrame.src = 'https://www.google.com/maps?saddr=' + encodeURIComponent('Caroline Øverlands vei 49, Bekkestua') + '&daddr=' + dest + '&output=embed';
+        mapFrame.src = 'https://www.google.com/maps?saddr=' + encodeURIComponent('Caroline Øverlands vei 49, 1356 Bekkestua') + '&daddr=' + dest + '&dirflg=w&output=embed';
       }
     });
   });
