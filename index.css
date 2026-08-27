@@ -3003,6 +3003,7 @@ body.light-mode .scroll-tracker__dot {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+  cursor: pointer;
   transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
               visibility 0.25s,
@@ -3012,6 +3013,17 @@ body.light-mode .scroll-tracker__dot {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
 }
 
+/* Seamless bridge between label and dot so mouse doesn't lose hover in the gap */
+.scroll-tracker__label::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  bottom: -6px;
+  right: -20px;
+  left: 0;
+  background: transparent;
+}
+
 body.light-mode .scroll-tracker__label {
   background: rgba(245, 242, 235, 0.95);
   color: var(--color-text);
@@ -3019,11 +3031,12 @@ body.light-mode .scroll-tracker__label {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
 }
 
-/* Reveal labels ONLY when hovering directly on the scroll tracker pill */
+/* Reveal labels and make them clickable when hovering tracker or labels */
 .scroll-tracker:hover .scroll-tracker__label {
   opacity: 1;
   visibility: visible;
   transform: translateY(-50%) translateX(0);
+  pointer-events: auto;
 }
 
 /* Active item label styling */
