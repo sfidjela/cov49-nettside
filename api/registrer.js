@@ -78,11 +78,11 @@ export default async function handler(req, res) {
     </div>
 
     <p style="font-size: 13px; color: #8f8b82; line-height: 1.6;">
-      Har du spørsmål om leveranse, planløsning, tilvalgsmuligheter eller fremdrift, er du hjertelig velkommen til å kontakte megler eller svare direkte på denne e-posten.
+      Har du spørsmål om leveranse, planløsning, tilvalgsmuligheter eller fremdrift, er du hjertelig velkommen til å kontakte megler ved å svare direkte på denne e-posten.
     </p>
 
     <div class="footer">
-      Nobello AS · Caroline Øverlands vei 49, 1356 Bekkestua<br>
+      Nobello EMP AS · Caroline Øverlands vei 49, 1356 Bekkestua<br>
       <a href="https://cøv49.no" style="color: #b8956d; text-decoration: none;">www.cøv49.no</a>
     </div>
   </div>
@@ -134,9 +134,9 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         from: 'Nobello | Caroline Øverlands vei 49 <post@mail.nobello.no>',
-        reply_to: 'Didrik Skinlo <ds@nobello.no>',
+        reply_to: 'Jørgen Ek <jorgen.ek@privatmegleren.no>',
         to: [email],
-        subject: 'Salgsprospekt – Caroline Øverlands vei 49',
+        subject: 'Caroline Øverlands vei 49 - Salgsprospekt',
         html: buyerHtml
       })
     });
