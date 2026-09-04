@@ -35,31 +35,31 @@
     Cache-Control = "public, max-age=86400"
 
 [[redirects]]
-  from = "https://cov49.no/*"
-  to = "https://cøv49.no/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "https://www.cov49.no/*"
-  to = "https://cøv49.no/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://www.cøv49.no/*"
-  to = "https://cøv49.no/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "http://cov49.no/*"
-  to = "https://cøv49.no/:splat"
+  to = "https://cov49.no/:splat"
   status = 301
   force = true
 
 [[redirects]]
   from = "http://www.cov49.no/*"
-  to = "https://cøv49.no/:splat"
+  to = "https://cov49.no/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://cov49.no/*"
+  to = "https://cov49.no/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://cøv49.no/*"
+  to = "https://cov49.no/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.cøv49.no/*"
+  to = "https://cov49.no/:splat"
   status = 301
   force = true
