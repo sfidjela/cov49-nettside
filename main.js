@@ -130,7 +130,7 @@
     });
   });
 
-  // ── Contact Form Handling (FormSubmit.co AJAX Fallback) ──
+  // ── Contact Form Handling (Vercel API / Resend + FormSubmit Fallback) ──
   window.handleSubmit = async (event) => {
     event.preventDefault();
     const form = event.target;
@@ -144,19 +144,31 @@
     try {
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
-      if (data.email) {
-        data._replyto = data.email;
-      }
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
-      });
+      data.kilde = 'Kontaktskjema (hovedside)';
+      if (data.email) data._replyto = data.email;
 
-      if (response.ok) {
+      let isSuccess = false;
+      try {
+        const apiRes = await fetch('/api/registrer', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (apiRes.ok) isSuccess = true;
+      } catch (err) {
+        console.warn('API call failed, attempting fallback...', err);
+      }
+
+      if (!isSuccess && form.action) {
+        const fbRes = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (fbRes.ok) isSuccess = true;
+      }
+
+      if (isSuccess) {
         form.reset();
         if (successMsg) successMsg.style.display = 'block';
         button.style.display = 'none';
@@ -254,20 +266,31 @@
       const formData = new FormData(form);
       const selectedType = formData.get('boligtype') || 'Begge';
       const data = Object.fromEntries(formData.entries());
-      if (data.email) {
-        data._replyto = data.email;
-      }
+      data.kilde = 'Prospekt modal';
+      if (data.email) data._replyto = data.email;
       
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        }
-      });
+      let isSuccess = false;
+      try {
+        const apiRes = await fetch('/api/registrer', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (apiRes.ok) isSuccess = true;
+      } catch (err) {
+        console.warn('API call failed, attempting fallback...', err);
+      }
 
-      if (response.ok) {
+      if (!isSuccess && form.action) {
+        const fbRes = await fetch(form.action, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (fbRes.ok) isSuccess = true;
+      }
+
+      if (isSuccess) {
         form.style.display = 'none';
         if (modalContent) {
           const headerTitle = modalContent.querySelector('#prospektModalTitle');
