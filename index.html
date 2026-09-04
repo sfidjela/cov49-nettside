@@ -729,8 +729,13 @@
 
     <!-- Utsikt panorama -->
     <div class="utsikt-banner reveal">
-      <img src="images/Utsikt CØV49.JPG" alt="Utsikt fra CØV49 – panorama over Bærum" loading="lazy" width="1920" height="760">
-      <div class="utsikt-banner__caption">Utsikten fra tomten</div>
+      <picture>
+        <source type="image/jpeg"
+          srcset="images/optimized/Utsikt CØV49-768w.jpg 768w, images/optimized/Utsikt CØV49-1280w.jpg 1280w, images/optimized/Utsikt CØV49-1920w.jpg 1920w"
+          sizes="100vw">
+        <img src="images/Utsikt CØV49.JPG" alt="Utsikt fra CØV49 – panorama over Bærum og mot Kolsåstoppen" loading="lazy" width="1920" height="823">
+      </picture>
+      <div class="utsikt-banner__caption">Utsikten fra tomten mot Kolsåstoppen</div>
     </div>
 
     <!-- Full-width map with overlay -->

@@ -899,13 +899,18 @@ body.light-mode .hero__bg::after {
 .utsikt-banner {
   position: relative;
   width: 100%;
+  max-height: clamp(360px, 38vw, 540px);
   overflow: hidden;
   margin-top: 32px;
 }
 
+.utsikt-banner picture,
 .utsikt-banner img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  max-height: clamp(360px, 38vw, 540px);
+  object-fit: cover;
+  object-position: center bottom;
   display: block;
 }
 
