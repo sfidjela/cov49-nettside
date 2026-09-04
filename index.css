@@ -899,9 +899,9 @@ body.light-mode .hero__bg::after {
 .utsikt-banner {
   position: relative;
   width: 100%;
-  max-width: 1920px;
+  max-width: 100%;
   margin: 40px auto 64px;
-  padding: 0 clamp(16px, 2.5vw, 48px);
+  padding: 0 clamp(12px, 1.5vw, 24px);
 }
 
 .utsikt-banner__inner {
