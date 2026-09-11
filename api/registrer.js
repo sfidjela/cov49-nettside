@@ -157,18 +157,21 @@ export default async function handler(req, res) {
       })
     });
 
-    const [buyerRes, teamRes] = await Promise.all([sendBuyer, sendTeam]);
-    const buyerData = await buyerRes.json();
-    const teamData = await teamRes.json();
-
-    if (!buyerRes.ok && !teamRes.ok) {
-      console.error('Resend delivery failed:', { buyerData, teamData });
-      return res.status(500).json({ error: 'E-postutsendelse feilet', details: buyerData });
+    const [buyerResult, teamResult] = await Promise.allSettled([sendBuyer, sendTeam]);
+    // A confirmation to the buyer alone must not count as a delivered lead.
+    if (teamResult.status !== 'fulfilled' || !teamResult.value.ok) {
+      console.error('Internal lead notification was not accepted by the email provider');
+      return res.status(502).json({ error: 'Registreringen kunne ikke leveres. Prøv igjen eller kontakt megler direkte.' });
     }
+    const teamData = await teamResult.value.json().catch(() => ({}));
+    const buyerAccepted = buyerResult.status === 'fulfilled' && buyerResult.value.ok;
+    const buyerData = buyerAccepted ? await buyerResult.value.json().catch(() => ({})) : {};
+    if (!buyerAccepted) console.error('Buyer confirmation was not accepted; team notification succeeded');
 
     return res.status(200).json({
       success: true,
-      message: 'Interesse registrert og e-post sendt!',
+      message: 'Interesse registrert!',
+      confirmationSent: buyerAccepted,
       buyerId: buyerData.id,
       teamId: teamData.id
     });

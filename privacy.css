@@ -1,0 +1,19 @@
+.privacy-footer {display:flex; flex-wrap:wrap; justify-content:center; gap:1rem; padding:1rem; font-size:var(--fs-small);}
+.privacy-footer button {font:inherit; color:inherit; background:none; border:0; text-decoration:underline; cursor:pointer;}
+.privacy-form-note {font-size:var(--fs-small); color:var(--color-text-muted); line-height:1.5; margin-top:1rem;}
+.privacy-form-note a,.privacy-footer a,.cookie-banner a,.privacy-page a {text-decoration:underline; text-underline-offset:3px;}
+.cookie-banner {max-height:85vh; overflow-y:auto;}
+.cookie-banner__actions {flex-wrap:wrap;}
+.cookie-banner .btn-cookie-decline,.cookie-banner .btn-cookie-accept {min-height:44px; border:1px solid var(--color-border-strong);}
+.cookie-banner .btn-cookie-decline {background:var(--color-bg-input); color:var(--color-text);}
+.cookie-banner details {margin-top:.75rem;}
+.cookie-banner summary {cursor:pointer; padding:.5rem 0; text-decoration:underline;}
+.cookie-banner details label {display:flex; align-items:center; gap:.65rem; padding:.5rem 0;}
+.cookie-banner input[type=checkbox] {width:20px; height:20px; accent-color:var(--color-accent-light); flex-shrink:0;}
+.cookie-banner details p {font-size:.85rem; margin-bottom:.7rem;}
+.privacy-page {max-width:850px; margin:auto; padding:clamp(24px,5vw,72px) 24px 100px;}
+.privacy-page h1 {font-size:clamp(2rem,5vw,3.3rem); line-height:1.15; margin:1.5rem 0;}
+.privacy-page h2 {font-size:clamp(1.25rem,3vw,1.7rem); margin:2rem 0 .75rem;}
+.privacy-page p {line-height:1.7; margin:.8rem 0;}
+.privacy-page .section-label {margin-top:3rem;}
+@media(max-width:600px) {.cookie-banner__content {gap:1rem;}.cookie-banner__actions {display:grid; grid-template-columns:1fr 1fr; width:100%;}.cookie-banner__actions button {padding:.75rem .6rem; font-size:.85rem;}}

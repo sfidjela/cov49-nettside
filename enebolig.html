@@ -29,6 +29,7 @@
 
     <link rel="stylesheet" href="index.css?v=3.9">
     <link rel="stylesheet" href="planlosning.css?v=3.9">
+  <link rel="stylesheet" href="privacy.css?v=20260911">
 </head>
 
 <body>
@@ -491,7 +492,8 @@
             <img src="Logo/02. Tekstlogo/Nobello_Tekstlogo_negativ.svg" alt="Nobello" class="footer__logo logo-dark-theme">
             <img src="Logo/02. Tekstlogo/Nobello_Tekstlogo.svg" alt="Nobello" class="footer__logo logo-light-theme">
         </div>
-    </footer>
+    <div class="privacy-footer"><a href="personvern.html">Personvern</a><button type="button" data-cookie-settings>Endre informasjonskapsler</button></div>
+</footer>
 
     <!-- ====== FAQ MODAL ====== -->
     <div class="faq-modal" id="faqModal" role="dialog" aria-modal="true" aria-labelledby="faqModalTitle">
@@ -614,7 +616,8 @@
                 </div>
                 
                 <button type="submit" class="btn-primary" id="prospektSubmitBtn">Få tilsendt prospekt</button>
-            </form>
+            <p class="privacy-form-note">Nobello og megler bruker kontaktopplysningene til å følge opp din interesse i prosjektet. <a href="personvern.html">Les mer om personvern</a>.</p>
+</form>
 
             <!-- SUCCESS / DOWNLOAD VIEW -->
             <div class="prospekt-success" id="prospektSuccess">
@@ -669,19 +672,26 @@
 
     <!-- ====== COOKIE CONSENT BANNER ====== -->
     <div class="cookie-banner" id="cookieBanner" role="dialog" aria-modal="false" aria-label="Informasjonskapsler">
-        <div class="cookie-banner__content">
-            <div class="cookie-banner__text">
-                <strong>Informasjonskapsler (Cookies)</strong>
-                <p>Vi bruker cookies for å forbedre brukeropplevelsen og måle interesse for Caroline Øverlands vei 49. Du velger selv om du ønsker å godta markedsføringscookies.</p>
-            </div>
-            <div class="cookie-banner__actions">
-                <button type="button" class="btn-cookie-decline" id="cookieDeclineBtn">Kun nødvendige</button>
-                <button type="button" class="btn-cookie-accept" id="cookieAcceptBtn">Godta alle</button>
-            </div>
-        </div>
+  <div class="cookie-banner__content">
+    <div class="cookie-banner__text">
+      <strong>Ditt valg av informasjonskapsler</strong>
+      <p>Med ditt samtykke bruker vi Google Analytics til besøksstatistikk og Meta-pikselen til å måle annonser og tilpasse markedsføring. Meta kan knytte besøk og handlinger til din profil og bruke data til egne tjenester. Du kan bruke nettsiden og kontakte megler uten å godta dette. <a href="personvern.html">Les om personvern og informasjonskapsler</a>.</p>
+      <details id="cookieOptions"><summary>Tilpass valget</summary>
+        <label><input type="checkbox" id="consentAnalytics"> Statistikk – Google Analytics</label>
+        <label><input type="checkbox" id="consentMarketing"> Markedsføring – Meta</label>
+        <p>Valget lagres i denne nettleseren i inntil 180 dager. Du kan endre det nederst på siden.</p>
+        <button type="button" class="btn-cookie-decline" id="cookieSaveBtn">Lagre valget</button>
+      </details>
     </div>
+    <div class="cookie-banner__actions">
+      <button type="button" class="btn-cookie-decline" id="cookieDeclineBtn">Kun nødvendige</button>
+      <button type="button" class="btn-cookie-accept" id="cookieAcceptBtn">Godta alle</button>
+    </div>
+  </div>
+</div>
 
-    <script src="planlosning.js?v=3.1"></script>
+  <script src="tracking.js?v=20260911"></script>
+  <script src="planlosning.js?v=20260911"></script>
 </body>
 
 </html>

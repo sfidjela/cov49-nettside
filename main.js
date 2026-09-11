@@ -144,7 +144,7 @@
     try {
       const formData = new FormData(form);
       const data = Object.fromEntries(formData.entries());
-      data.kilde = 'Kontaktskjema (hovedside)';
+      data.kilde = window.covCampaignSource('Kontaktskjema (hovedside)');
       if (data.email) data._replyto = data.email;
 
       let isSuccess = false;
@@ -156,17 +156,9 @@
         });
         if (apiRes.ok) isSuccess = true;
       } catch (err) {
-        console.warn('API call failed, attempting fallback...', err);
+        console.warn('Registrering kunne ikke bekreftes.');
       }
 
-      if (!isSuccess && form.action) {
-        const fbRes = await fetch(form.action, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        if (fbRes.ok) isSuccess = true;
-      }
 
       if (isSuccess) {
         form.reset();
@@ -266,7 +258,7 @@
       const formData = new FormData(form);
       const selectedType = formData.get('boligtype') || 'Begge';
       const data = Object.fromEntries(formData.entries());
-      data.kilde = 'Prospekt modal';
+      data.kilde = window.covCampaignSource('Prospekt modal');
       if (data.email) data._replyto = data.email;
       
       let isSuccess = false;
@@ -278,17 +270,9 @@
         });
         if (apiRes.ok) isSuccess = true;
       } catch (err) {
-        console.warn('API call failed, attempting fallback...', err);
+        console.warn('Registrering kunne ikke bekreftes.');
       }
 
-      if (!isSuccess && form.action) {
-        const fbRes = await fetch(form.action, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        if (fbRes.ok) isSuccess = true;
-      }
 
       if (isSuccess) {
         form.style.display = 'none';
@@ -815,91 +799,5 @@
     }
   }
 
-  // ── Analytics & Pixel (Cookie Consent Controlled) ───────
-  const PIXEL_ID = '1027189313416777';
-  const GA4_ID = 'G-CJ26HJ9N8F';
-
-  function initAnalytics() {
-    if (window.analyticsInitialized) return;
-    window.analyticsInitialized = true;
-
-    // 1. Meta Pixel
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-
-    fbq('init', PIXEL_ID);
-    fbq('track', 'PageView');
-    fbq('trackCustom', 'ViewProjectOverview');
-
-    // 2. Google Analytics (GA4)
-    const gaScript = document.createElement('script');
-    gaScript.async = true;
-    gaScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`;
-    document.head.appendChild(gaScript);
-
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    window.gtag = gtag;
-    gtag('js', new Date());
-    gtag('config', GA4_ID);
-  }
-
-  window.trackMetaLead = function(boligtype) {
-    if (localStorage.getItem('cookieConsent') === 'accepted') {
-      if (window.fbq) {
-        fbq('track', 'Lead', {
-          content_name: 'Prospekt CØV49',
-          content_category: boligtype || 'Generell'
-        });
-      }
-      if (window.gtag) {
-        gtag('event', 'generate_lead', {
-          event_category: 'Prospekt',
-          event_label: boligtype || 'Generell'
-        });
-      }
-    }
-  };
-
-  const cookieBanner = document.getElementById('cookieBanner');
-  const cookieAcceptBtn = document.getElementById('cookieAcceptBtn');
-  const cookieDeclineBtn = document.getElementById('cookieDeclineBtn');
-  const consent = localStorage.getItem('cookieConsent');
-
-  if (consent === 'accepted') {
-    initAnalytics();
-  } else if (!consent && cookieBanner) {
-    setTimeout(() => {
-      cookieBanner.classList.add('is-visible');
-    }, 1500);
-  }
-
-  if (cookieAcceptBtn) {
-    cookieAcceptBtn.addEventListener('click', () => {
-      localStorage.setItem('cookieConsent', 'accepted');
-      if (cookieBanner) cookieBanner.classList.remove('is-visible');
-      initAnalytics();
-    });
-  }
-
-  if (cookieDeclineBtn) {
-    cookieDeclineBtn.addEventListener('click', () => {
-      localStorage.setItem('cookieConsent', 'declined');
-      if (cookieBanner) cookieBanner.classList.remove('is-visible');
-    });
-  }
-
-  document.querySelectorAll('.btn-prospekt-download').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const prospekt = this.getAttribute('data-prospekt') || 'Prospekt';
-      window.trackMetaLead(prospekt);
-    });
-  });
 
 })();
