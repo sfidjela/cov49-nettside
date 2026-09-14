@@ -712,36 +712,6 @@
     updateGallery();
   }
 
-  // ── Navbar Dropdowns ─────────────────────────
-  const navDropdowns = document.querySelectorAll('.navbar__dropdown');
-  navDropdowns.forEach((dropdown) => {
-    const trigger = dropdown.querySelector('.navbar__link');
-    const menu = dropdown.querySelector('.navbar__dropdown-panel');
-
-    if (trigger && menu) {
-      trigger.addEventListener('click', (e) => {
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          dropdown.classList.toggle('is-open');
-        }
-      });
-
-      menu.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', () => {
-          dropdown.classList.remove('is-open');
-        });
-      });
-    }
-  });
-
-  document.addEventListener('click', (e) => {
-    navDropdowns.forEach((dropdown) => {
-      if (!dropdown.contains(e.target)) {
-        dropdown.classList.remove('is-open');
-      }
-    });
-  });
-
   // ── Floating Section Scroll Tracker ─────────────────
   const scrollTracker = document.getElementById('scrollTracker');
   const scrollTrackerProgress = document.getElementById('scrollTrackerProgress');
