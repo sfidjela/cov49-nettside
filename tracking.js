@@ -6,7 +6,7 @@
   const ADS_ID = 'AW-18444880845';
   const ADS_LEAD = ADS_ID + '/zAXYCOO__PccEM2XmttE';
   const CONSENT_KEY = 'cov49Consent';
-  const VERSION = 1;
+  const VERSION = 2; // Nytt valg: markedsføring omfatter nå også Google Ads.
   const MAX_AGE = 180 * 24 * 60 * 60 * 1000;
   const production = ['xn--cv49-gra.no', 'cov49.no', 'www.cov49.no'].includes(location.hostname);
   let consent = { analytics: false, marketing: false };
