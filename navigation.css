@@ -1,5 +1,5 @@
 /* Shared navigation: keep every destination reachable on narrow screens. */
-.navbar__mobile-header { display: none; }
+.navbar__mobile-header, .navbar__gallery-shortcut { display: none; }
 @media (max-width: 1024px) {
   .navbar.has-mobile-menu,
   .navbar.has-mobile-menu.scrolled { padding: 10px 0; }
