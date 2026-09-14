@@ -48,7 +48,7 @@
 
   /* Typography */
   --font: 'Brown', -apple-system, 'Segoe UI', sans-serif;
-  --fs-hero: clamp(2.8rem, 6vw, 5.5rem);
+  --fs-hero: clamp(2.4rem, 4vw, 3.5rem);
   --fs-hero-sub: clamp(1rem, 2vw, 1.35rem);
   --fs-section: clamp(1.8rem, 3.5vw, 3rem);
   --fs-card-title: clamp(1.2rem, 2vw, 1.5rem);
@@ -421,57 +421,36 @@ section {
    ======================================================== */
 .hero {
   position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: flex-end;
-  padding-bottom: clamp(30px, 6vh, 70px);
-  overflow: hidden;
+  min-height: 0;
+  display: block;
+  padding: clamp(72px, 7vw, 88px) 0 0;
+  background: var(--color-bg);
 }
 
 .hero__bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
+  position: relative;
 }
 
-.hero__bg img,
-.hero__video {
+.hero__bg picture {
+  display: block;
+}
+
+/* Ikke fyll en stående skjerm ved å klippe bort boligene i sidene. */
+.hero__bg img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
-}
-
-.hero__bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(14, 14, 12, 0.45) 0%,
-    rgba(14, 14, 12, 0.15) 10%,
-    rgba(0, 0, 0, 0) 22%,
-    rgba(0, 0, 0, 0) 88%,
-    rgba(14, 14, 12, 0.5) 95%,
-    rgba(14, 14, 12, 0.98) 100%
-  );
-}
-
-body.light-mode .hero__bg::after {
-  background: linear-gradient(
-    to bottom,
-    rgba(245, 242, 235, 0.55) 0%,
-    rgba(245, 242, 235, 0.2) 10%,
-    rgba(245, 242, 235, 0) 22%,
-    rgba(245, 242, 235, 0) 88%,
-    rgba(245, 242, 235, 0.5) 95%,
-    rgba(245, 242, 235, 0.98) 100%
-  );
+  height: auto;
+  max-height: 60vh;
+  max-height: 60svh;
+  object-fit: contain;
+  object-position: center;
 }
 
 .hero .container {
   position: relative;
-  z-index: 1;
+  padding-top: clamp(24px, 3vw, 40px);
+  padding-bottom: clamp(32px, 4vw, 56px);
+  text-align: center;
 }
 
 .hero__title {
@@ -479,8 +458,7 @@ body.light-mode .hero__bg::after {
   font-weight: 400;
   line-height: 1.05;
   letter-spacing: 0.02em;
-  color: #ffffff;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.4);
+  color: var(--color-text);
 }
 
 .hero__badge {
@@ -499,10 +477,10 @@ body.light-mode .hero__bg::after {
 .hero__sub {
   font-size: var(--fs-hero-sub);
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.95);
-  margin-bottom: 20px;
+  color: var(--color-text-muted);
+  margin-top: 16px;
+  margin-bottom: 0;
   letter-spacing: 0.02em;
-  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.5), 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .hero__scroll {

@@ -28,12 +28,12 @@
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="Logo/01. Logo med ikon/Nobello_Logo med ikon.svg">
 
-  <link rel="stylesheet" href="index.css?v=3.9">
+  <link rel="stylesheet" href="index.css?v=20260914-forside">
 
 
   <!-- Preload hero image -->
   <link rel="preload" as="image" type="image/jpeg"
-    imagesrcset="images/optimized/Nytt forsidebilde CØV49-768w.jpg 768w, images/optimized/Nytt forsidebilde CØV49-1280w.jpg 1280w, images/optimized/Nytt forsidebilde CØV49-1920w.jpg 1920w"
+    imagesrcset="images/optimized/Nytt%20forsidebilde%20C%C3%98V49-768w.jpg 768w, images/optimized/Nytt%20forsidebilde%20C%C3%98V49-1280w.jpg 1280w, images/optimized/Nytt%20forsidebilde%20C%C3%98V49-1920w.jpg 1296w"
     imagesizes="100vw">
   <link rel="stylesheet" href="privacy.css?v=20260911">
 </head>
@@ -133,22 +133,19 @@
   <!-- ═══════════════════════ ① HERO ═══════════════════════ -->
   <section class="hero" id="hero">
     <div class="hero__bg">
-      <!-- Video commented out to remove crows and improve performance (falls back to static image)
-      <video autoplay muted loop playsinline poster="images/Nytt forsidebilde CØV49.jpg" class="hero__video">
-        <source src="images/Hero-video.mp4" type="video/mp4">
-      </video>
-      -->
+      <!-- Hele prosjektillustrasjonen beholdes på alle skjermstørrelser. -->
       <picture>
-        <source type="image/jpeg" srcset="images/optimized/Nytt forsidebilde CØV49-768w.jpg 768w,
-                 images/optimized/Nytt forsidebilde CØV49-1280w.jpg 1280w,
-                 images/optimized/Nytt forsidebilde CØV49-1920w.jpg 1920w" sizes="100vw">
+        <source type="image/jpeg" srcset="images/optimized/Nytt%20forsidebilde%20C%C3%98V49-768w.jpg 768w,
+                 images/optimized/Nytt%20forsidebilde%20C%C3%98V49-1280w.jpg 1280w,
+                 images/optimized/Nytt%20forsidebilde%20C%C3%98V49-1920w.jpg 1296w" sizes="100vw">
         <img src="images/Nytt forsidebilde CØV49.jpg"
-          alt="Eksteriør CØV49 – moderne boliger med grå trekledning i Bærum" width="1537" height="1023">
+          alt="CØV49 – eneboligen til venstre og begge halvpartene av tomannsboligen til høyre"
+          width="1296" height="862" fetchpriority="high">
       </picture>
     </div>
     <div class="container">
-      <h1 class="hero__title reveal reveal-delay-1">Caroline Øverlands<br>vei 49</h1>
-      <p class="hero__sub reveal reveal-delay-2">Eksklusiv tomannsbolig og enebolig på Bekkestua</p>
+      <h1 class="hero__title reveal reveal-delay-1">Caroline Øverlands vei 49</h1>
+      <p class="hero__sub reveal reveal-delay-2">Tre nye hjem på Bekkestua – enebolig og tomannsbolig</p>
     </div>
   </section>
 
