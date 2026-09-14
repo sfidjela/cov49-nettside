@@ -3,6 +3,8 @@
   'use strict';
   const PIXEL_ID = '1077885631875451';
   const GA4_ID = 'G-CJ26HJ9N8F';
+  const ADS_ID = 'AW-18444880845';
+  const ADS_LEAD = ADS_ID + '/zAXYCOO__PccEM2XmttE';
   const CONSENT_KEY = 'cov49Consent';
   const VERSION = 1;
   const MAX_AGE = 180 * 24 * 60 * 60 * 1000;
@@ -11,6 +13,8 @@
   let saved = false;
   let metaStarted = false;
   let googleStarted = false;
+  let analyticsStarted = false;
+  let adsStarted = false;
   let returnFocus;
 
   try {
@@ -40,17 +44,24 @@
       ad_personalization: consent.marketing ? 'granted' : 'denied'
     });
     if (!production) return; // Forhåndsvisning sender ingen måledata.
-    if (consent.analytics && !googleStarted) {
+    if ((consent.analytics || consent.marketing) && !googleStarted) {
       googleStarted = true;
       window.gtag('js', new Date());
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + (consent.analytics ? GA4_ID : ADS_ID);
+      document.head.appendChild(script);
+    }
+    if (consent.analytics && !analyticsStarted) {
+      analyticsStarted = true;
       window.gtag('config', GA4_ID, {
         allow_google_signals: consent.marketing,
         allow_ad_personalization_signals: consent.marketing
       });
-      const script = document.createElement('script');
-      script.async = true;
-      script.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_ID;
-      document.head.appendChild(script);
+    }
+    if (consent.marketing && !adsStarted) {
+      adsStarted = true;
+      window.gtag('config', ADS_ID, { allow_enhanced_conversions: false });
     }
     if (consent.marketing && !metaStarted) {
       metaStarted = true;
@@ -137,7 +148,11 @@
     if (consent.marketing && metaStarted && window.fbq) {
       window.fbq(standard ? 'track' : 'trackCustom', metaEvent, { content_name: 'CØV49', content_category: category });
     }
-    if (consent.analytics && googleStarted) window.gtag('event', googleEvent, { content_group: category });
+    if (consent.analytics && analyticsStarted) window.gtag('event', googleEvent, { send_to: GA4_ID, content_group: category });
+    if (standard && metaEvent === 'Lead' && consent.marketing && adsStarted) {
+      // Samme serverbekreftede innsending som Meta; ingen kontaktdata eller salgsverdi.
+      window.gtag('event', 'conversion', { send_to: ADS_LEAD });
+    }
   }
   // Kalles bare etter at skjemaets mottak er bekreftet av serveren.
   window.trackMetaLead = kind => track('Lead', 'generate_lead', kind, true);
