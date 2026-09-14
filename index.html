@@ -37,9 +37,10 @@
     imagesizes="100vw">
   <link rel="stylesheet" href="privacy.css?v=20260911">
   <link rel="stylesheet" href="navigation.css?v=20260915">
+  <link rel="stylesheet" href="page-flow.css?v=20260915">
 </head>
 
-<body>
+<body class="gallery-first">
   <script>
     (function() {
       const savedTheme = localStorage.getItem('theme');
@@ -62,15 +63,16 @@
         </a>
         <div class="navbar__dropdown-panel" id="navForsideMenu">
           <span class="dropdown-panel__title">Hopp til seksjon</span>
-          <a href="#boligene" class="dropdown-panel__item"><span class="item-idx">01</span>Boligene</a>
-          <a href="#konsept" class="dropdown-panel__item"><span class="item-idx">02</span>Konsept</a>
-          <a href="#kvaliteter" class="dropdown-panel__item"><span class="item-idx">03</span>Kvaliteter & Materialer</a>
-          <a href="#smarthjem" class="dropdown-panel__item"><span class="item-idx">04</span>Smart hjem</a>
-          <a href="#galleri" class="dropdown-panel__item"><span class="item-idx">05</span>Bildegalleri</a>
-          <a href="#trygghet" class="dropdown-panel__item"><span class="item-idx">06</span>Kjøpsprosessen</a>
-          <a href="#uteliv" class="dropdown-panel__item"><span class="item-idx">07</span>Beliggenhet & Nærområde</a>
-          <a href="#kontakt" class="dropdown-panel__item"><span class="item-idx">08</span>Kontakt oss</a>
-        </div>
+<a href="#velg-bolig" class="dropdown-panel__item"><span class="item-idx">01</span>Velg bolig</a>
+<a href="#galleri" class="dropdown-panel__item"><span class="item-idx">02</span>Bildegalleri</a>
+<a href="#boligene" class="dropdown-panel__item"><span class="item-idx">03</span>Pris og nøkkelinfo</a>
+<a href="#uteliv" class="dropdown-panel__item"><span class="item-idx">04</span>Beliggenhet & nærområde</a>
+<a href="#konsept" class="dropdown-panel__item"><span class="item-idx">05</span>Konsept</a>
+<a href="#kvaliteter" class="dropdown-panel__item"><span class="item-idx">06</span>Kvaliteter & materialer</a>
+<a href="#smarthjem" class="dropdown-panel__item"><span class="item-idx">07</span>Smart hjem</a>
+<a href="#trygghet" class="dropdown-panel__item"><span class="item-idx">08</span>Kjøpsprosessen</a>
+<a href="#kontakt" class="dropdown-panel__item"><span class="item-idx">09</span>Kontakt oss</a>
+</div>
       </div>
       <div class="navbar__links">
         <div class="navbar__dropdown" id="navEneboligDropdown">
@@ -82,12 +84,13 @@
           </a>
           <div class="navbar__dropdown-panel" id="navEneboligMenu">
             <span class="dropdown-panel__title">Eneboligen</span>
-            <a href="enebolig.html#intro" class="dropdown-panel__item"><span class="item-idx">01</span>Oversikt</a>
-            <a href="enebolig.html#planlosning" class="dropdown-panel__item"><span class="item-idx">02</span>Plantegninger &amp; Rom</a>
-            <a href="enebolig.html#om-boligen" class="dropdown-panel__item"><span class="item-idx">03</span>Om boligen &amp; Nøkkelinfo</a>
-            <a href="enebolig.html#tilvalg" class="dropdown-panel__item"><span class="item-idx">04</span>Fleksibilitet &amp; Tilvalg</a>
-            <a href="enebolig.html#galleri" class="dropdown-panel__item"><span class="item-idx">05</span>Bildegalleri</a>
-          </div>
+<a href="enebolig.html#intro" class="dropdown-panel__item"><span class="item-idx">01</span>Oversikt</a>
+<a href="enebolig.html#galleri" class="dropdown-panel__item"><span class="item-idx">02</span>Bildegalleri</a>
+<a href="enebolig.html#pris" class="dropdown-panel__item"><span class="item-idx">03</span>Pris og nøkkelinfo</a>
+<a href="enebolig.html#planlosning" class="dropdown-panel__item"><span class="item-idx">04</span>Plantegninger & rom</a>
+<a href="enebolig.html#om-boligen" class="dropdown-panel__item"><span class="item-idx">05</span>Om boligen</a>
+<a href="enebolig.html#tilvalg" class="dropdown-panel__item"><span class="item-idx">06</span>Fleksibilitet & tilvalg</a>
+</div>
         </div>
         <div class="navbar__dropdown" id="navTomannsboligDropdown">
           <a href="tomannsbolig.html" class="navbar__link" id="navTomannsboligLink" aria-expanded="false" aria-haspopup="true">
@@ -98,12 +101,13 @@
           </a>
           <div class="navbar__dropdown-panel" id="navTomannsboligMenu">
             <span class="dropdown-panel__title">Tomannsboligen</span>
-            <a href="tomannsbolig.html#intro" class="dropdown-panel__item"><span class="item-idx">01</span>Oversikt</a>
-            <a href="tomannsbolig.html#planlosning" class="dropdown-panel__item"><span class="item-idx">02</span>Plantegninger &amp; Rom</a>
-            <a href="tomannsbolig.html#om-boligen" class="dropdown-panel__item"><span class="item-idx">03</span>Om boligen &amp; Nøkkelinfo</a>
-            <a href="tomannsbolig.html#tilvalg" class="dropdown-panel__item"><span class="item-idx">04</span>Fleksibilitet &amp; Tilvalg</a>
-            <a href="tomannsbolig.html#galleri" class="dropdown-panel__item"><span class="item-idx">05</span>Bildegalleri</a>
-          </div>
+<a href="tomannsbolig.html#intro" class="dropdown-panel__item"><span class="item-idx">01</span>Oversikt</a>
+<a href="tomannsbolig.html#galleri" class="dropdown-panel__item"><span class="item-idx">02</span>Bildegalleri</a>
+<a href="tomannsbolig.html#pris" class="dropdown-panel__item"><span class="item-idx">03</span>Pris og nøkkelinfo</a>
+<a href="tomannsbolig.html#planlosning" class="dropdown-panel__item"><span class="item-idx">04</span>Plantegninger & rom</a>
+<a href="tomannsbolig.html#om-boligen" class="dropdown-panel__item"><span class="item-idx">05</span>Om boligen</a>
+<a href="tomannsbolig.html#tilvalg" class="dropdown-panel__item"><span class="item-idx">06</span>Fleksibilitet & tilvalg</a>
+</div>
         </div>
         <a href="#faq" class="navbar__link" id="navFaqBtn">FAQ</a>
         <a href="#kontakt" class="navbar__cta">Kontakt oss</a>
@@ -131,8 +135,7 @@
     </div>
   </nav>
 
-  <!-- ═══════════════════════ ① HERO ═══════════════════════ -->
-  <section class="hero" id="hero">
+<section class="hero" id="hero">
     <div class="hero__bg">
       <!-- Hele prosjektillustrasjonen beholdes på alle skjermstørrelser. -->
       <picture>
@@ -150,11 +153,129 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════ ② BOLIGENE ═══════════════════════ -->
-  <section class="boligene" id="boligene">
+<section class="home-choice" id="velg-bolig" aria-label="Velg bolig">
+    <div class="container">
+      <h2>Finn ditt nye hjem</h2>
+      <div class="home-choice__links">
+        <a href="enebolig.html"><span>Eneboligen</span><small>To etasjer · Dobbelgarasje</small><b aria-hidden="true">↗</b></a>
+        <a href="tomannsbolig.html"><span>Tomannsboligene</span><small>Tre etasjer · Hage og carport</small><b aria-hidden="true">↗</b></a>
+      </div>
+      <a class="home-choice__gallery" href="#galleri">Se bilder av begge boligtypene ↓</a>
+    </div>
+  </section>
+
+<section class="pl-gallery-section" id="galleri">
+    <div class="container">
+      <span class="section-label reveal">Galleri</span>
+      <h2 class="section-title reveal reveal-delay-1">Bildegalleri</h2>
+      <p class="pl-gallery-subtitle reveal reveal-delay-2">Bla gjennom bildene, eller trykk for fullskjerm. Illustrasjoner – avvik og tilvalg kan forekomme.</p>
+
+      <!-- Filterknapper -->
+      <div class="gallery-filter-tabs reveal reveal-delay-2">
+        <button class="gallery-filter-btn is-active" data-filter="all">Alle (20)</button>
+        <button class="gallery-filter-btn" data-filter="enebolig">Eneboligen (11)</button>
+        <button class="gallery-filter-btn" data-filter="tomannsbolig">Tomannsboligen (9)</button>
+      </div>
+    </div>
+
+    <div class="pl-gallery-container">
+      <div class="pl-gallery-track-wrapper">
+        <div class="pl-gallery-track">
+<div class="pl-gallery-slide" data-category="enebolig">
+            <img src="images/optimized/Enebolig kjøkken påkostet ferdig-1280w.jpg" alt="Enebolig – Kjøkken" class="pl-gallery-img">
+            <span class="pl-gallery-caption">Eksklusivt og påkostet Svane-kjøkken med integrerte hvitevarer, lekker hvit steinbenkeplate, stor kjøkkenøy og ekstra høye skap tilpasset den generøse takhøyden.</span>
+          </div>
+<div class="pl-gallery-slide" data-category="tomannsbolig">
+            <img src="images/Ferdige illustrasjoner/Tomannsbolig stue ferdig.jpg" alt="Tomannsbolig – Stue" class="pl-gallery-img">
+            <span class="pl-gallery-caption">Lys og luftig stue i første etasje med vinduer fra tre sider, mye lysinnslipp og direkte utgang til både vestvendt balkong og en romslig terrasse.</span>
+          </div>
+<div class="pl-gallery-slide" data-category="enebolig">
+            <img src="images/optimized/Enebolig stue stor ferdig-1280w.jpg" alt="Enebolig – Stor stue" class="pl-gallery-img">
+            <span class="pl-gallery-caption">Lys og luftig stue preget av sjenerøs takhøyde og store vindusflater. Den åpne løsningen gir gode muligheter for inndeling i flere trivelige soner.</span>
+          </div>
+<div class="pl-gallery-slide" data-category="tomannsbolig">
+            <img src="images/optimized/Tomannsbolig kjøkken ferdig-1280w.jpg" alt="Tomannsbolig – Kjøkken" class="pl-gallery-img">
+            <span class="pl-gallery-caption">Nydelig kjøkken fra Svane Kjøkkenet med hvit steinbenkeplate, stor kjøkkenøy og integrerte kvalitetshvitevarer.</span>
+          </div>
+<div class="pl-gallery-slide" data-category="enebolig">
+            <img src="images/optimized/Enebolig front nede ferdig-1280w.jpg" alt="Enebolig – Uteplasser" class="pl-gallery-img">
+            <span class="pl-gallery-caption">Solfylte uteplasser med både en stor terrasse og en hyggelig balkong. Terrassen har god plass til sittegrupper, grilling og soling med direkte adkomst fra underetasjens TV-stue, mens balkongen har direkte tilkomst fra kjøkkenet.</span>
+          </div>
+<div class="pl-gallery-slide" data-category="tomannsbolig">
+            <img src="images/optimized/Tomannsbolig 49 B hage NY-1280w.jpg" alt="Tomannsbolig – Uteområde" class="pl-gallery-img">
+            <span class="pl-gallery-caption">Moderne, innholdsrik og vertikaldelt tomannsbolig over tre plan – med solrike uteplasser og fantastiske lysforhold.</span>
+          </div>
+<div class="pl-gallery-slide" data-category="enebolig">
+            <img src="images/optimized/Enebolig terrasse boblebad ferdig-1280w.jpg" alt="Enebolig – Stor enebolig" class="pl-gallery-img">
+            <span class="pl-gallery-caption">En stor og flott enebolig med mye vindusflater og nydelig utsikt. God takhøyde i etasjene.</span>
+          </div>
+<div class="pl-gallery-slide" data-category="enebolig">
+            <img src="images/optimized/Enebolig fasade hage ferdig-1280w.jpg" alt="Enebolig – Uteplass bak garasje" class="pl-gallery-img">
+            <span class="pl-gallery-caption">En lun og skjermet uteplass bak garasjen med mange bruksmuligheter. Vist med opparbeidet terrasse, pergola og jacuzzi som eksempler (uteplass, pergola og jacuzzi medfølger ikke i standard leveranse).</span>
+          </div>
+<div class="pl-gallery-slide" data-category="tomannsbolig">
+            <img src="images/Ferdige illustrasjoner/Tomannsbolig 49B hage ferdig NY.jpg" alt="Tomannsbolig – Hage og terrasse" class="pl-gallery-img">
+            <span class="pl-gallery-caption">Stort hageområde på nedsiden av boligen. Her kan terrassens form og størrelse bestemmes etter kjøpers ønske (leveres ikke som standard).</span>
+          </div>
+<div class="pl-gallery-slide" data-category="tomannsbolig">
+            <img src="images/Ferdige illustrasjoner/Tomannsbolig inngang ferdig.jpg" alt="Tomannsbolig – Inngangsparti" class="pl-gallery-img">
+            <span class="pl-gallery-caption">Flott og gruset adkomst frem til inngangspartiet, med en separat utvendig trapp ned til kjellerstuen i underetasjen.</span>
+          </div>
+<div class="pl-gallery-slide" data-category="tomannsbolig">
+            <img src="images/Ferdige illustrasjoner/Tomannsbolig gårdsplass ferdig.jpg" alt="Tomannsbolig – Gårdsplass" class="pl-gallery-img">
+            <span class="pl-gallery-caption">Gårdsplass med carport klargjort for elbillader, samt en praktisk utebod i bakkant av carporten.</span>
+          </div>
+<div class="pl-gallery-slide" data-category="enebolig">
+            <img src="images/optimized/Enebolig stue ferdig-1280w.jpg" alt="Enebolig – Stue" class="pl-gallery-img">
+            <span class="pl-gallery-caption">Fleksibel stue med romslige soner for både avslapning og hygge. Vist i en løsning med adskilt kontor eller ekstra soverom i tilknytning til entréen.</span>
+          </div>
+<div class="pl-gallery-slide" data-category="tomannsbolig">
+            <img src="images/Ferdige illustrasjoner/Tomannsbolig loftstue ferdig.jpg" alt="Tomannsbolig – Loftstue" class="pl-gallery-img">
+            <span class="pl-gallery-caption">Her er det ene soverommet i andre etasje gjort om til en loftstue for å skape et ekstra, koselig oppholdsrom for hele familien.</span>
+          </div>
+<div class="pl-gallery-slide" data-category="enebolig">
+            <img src="images/optimized/Enebolig tv-stue stor ferdig-1280w.jpg" alt="Enebolig – TV-stue stor" class="pl-gallery-img">
+            <span class="pl-gallery-caption">TV-stuen i underetasjen vist i den store, utvidede løsningen, som gir et ekstra romslig og sosialt oppholdsrom for hele familien.</span>
+          </div>
+<div class="pl-gallery-slide" data-category="enebolig">
+            <img src="images/optimized/Enebolig tv-stue liten ferdig-1280w.jpg" alt="Enebolig – TV-stue liten" class="pl-gallery-img">
+            <span class="pl-gallery-caption">TV-stuen i underetasjen vist i den mindre løsningen. Dette er en koselig og lun sone som gjør det mulig å prioritere ekstra soverom i boligen.</span>
+          </div>
+<div class="pl-gallery-slide" data-category="enebolig">
+            <img src="images/optimized/Enebolig gang ferdig-1280w.jpg" alt="Enebolig – Entré" class="pl-gallery-img">
+            <span class="pl-gallery-caption">Lyst, elegant og funksjonelt inngangsparti med god plass til skreddersydde garderobeløsninger og et ryddig førsteinntrykk (garderobeinnredning medfølger ikke).</span>
+          </div>
+<div class="pl-gallery-slide" data-category="enebolig">
+            <img src="images/optimized/Enebolig hovedsoverom ferdig-1280w.jpg" alt="Enebolig – Masterfløy" class="pl-gallery-img">
+            <span class="pl-gallery-caption">Flott masterfløy med et romslig hovedsoverom, walk-in-garderobe og eget tilhørende bad (garderobeinnredning medfølger ikke).</span>
+          </div>
+<div class="pl-gallery-slide" data-category="tomannsbolig">
+            <img src="images/Ferdige illustrasjoner/Tomannsbolig soverom ferdig.jpg" alt="Tomannsbolig – Hovedsoverom" class="pl-gallery-img">
+            <span class="pl-gallery-caption">Stort og romslig hovedsoverom i andre etasje med god plass til garderobeskap.</span>
+          </div>
+<div class="pl-gallery-slide" data-category="tomannsbolig">
+            <img src="images/Ferdige illustrasjoner/Familiebad tomannsbolig ferdig.jpg" alt="Tomannsbolig – Bad" class="pl-gallery-img">
+            <span class="pl-gallery-caption">Delikat og romslig familiebad i andre etasje med 60x60 fliser, dobbel servant og egen våtsone. Badekar og sotet glassdør til toalett leveres som tilvalg.</span>
+          </div>
+<div class="pl-gallery-slide" data-category="enebolig">
+            <img src="images/optimized/Enebolig hybel ferdig-1280w.jpg" alt="Enebolig – Hybelavdeling" class="pl-gallery-img">
+            <span class="pl-gallery-caption">Innholdsrik avdeling med over 4 meter takhøyde, noe som gir stor fleksibilitet til bruk som hybel, ungdoms- eller gjesteavdeling. Planløsningen kan tilpasses etter behov med enten eget bad, ekstra bod eller andre funksjoner.</span>
+          </div>
+</div>
+      </div>
+      <button class="pl-gallery-nav prev" aria-label="Forrige bilde">&#10094;</button>
+      <button class="pl-gallery-nav next" aria-label="Neste bilde">&#10095;</button>
+
+      <div class="pl-gallery-scrollbar">
+        <div class="pl-gallery-scrollbar-thumb"></div>
+      </div>
+    </div>
+  </section>
+
+<section class="boligene" id="boligene">
     <div class="container">
       <span class="section-label reveal">Boligene</span>
-      <h2 class="section-title reveal reveal-delay-1">Tre boliger. To konsepter.</h2>
+      <h2 class="section-title reveal reveal-delay-1">Boligene – pris og nøkkelinfo</h2>
 
       <div class="bolig-cards">
         <!-- ENEBOLIG -->
@@ -168,7 +289,7 @@
             </picture>
           </div>
           <div class="bolig-card__badge">Eneboligen</div>
-          <h3 class="bolig-card__title">Funksjonell, stor enebolig med god takhøyde og justerbar planløsning.</h3>
+          <h3 class="bolig-card__title">Enebolig over to etasjer</h3>
           <div class="bolig-card__pricing">
             <div class="bolig-card__price-main">
               <span class="bolig-card__price-label">Prisantydning</span>
@@ -179,40 +300,31 @@
               <span>Omk.: <strong>97 740 kr</strong></span>
             </div>
           </div>
-          <ul class="bolig-card__specs">
-            <li>
+          <ul class="bolig-card__specs"><li>
               <span class="spec-label">Areal</span>
               <span class="spec-value">218 m² BRA</span>
-            </li>
-            <li>
+            </li></ul><details class="home-specs"><summary>Flere opplysninger om boligen</summary><ul class="bolig-card__specs"><li>
               <span class="spec-label">Tomt</span>
               <span class="spec-value">800 m²</span>
-            </li>
-            <li>
+            </li><li>
               <span class="spec-label">Innhold</span>
               <span class="spec-value">4 sov, 2 stuer, hybel, 3 bad + 1 wc</span>
-            </li>
-            <li>
+            </li><li>
               <span class="spec-label">Kledning</span>
               <span class="spec-value">Ædel stående, Bergene Holm</span>
-            </li>
-            <li>
+            </li><li>
               <span class="spec-label">Parkering</span>
               <span class="spec-value">Dobbelgarasje med 2 elbilladere</span>
-            </li>
-            <li>
+            </li><li>
               <span class="spec-label">Gulv</span>
               <span class="spec-value">Tregulv i herdet eik fra Bjelin</span>
-            </li>
-            <li>
+            </li><li>
               <span class="spec-label">Smarthjem</span>
               <span class="spec-value">Plejd trådløst lyssystem</span>
-            </li>
-            <li>
+            </li><li>
               <span class="spec-label">Ventilasjon</span>
               <span class="spec-value">Balansert ventilasjonsanlegg</span>
-            </li>
-          </ul>
+            </li></ul></details>
           <div class="bolig-card__actions">
             <a href="enebolig.html" class="btn-primary">Se mer om eneboligen</a>
             <a href="https://www.finn.no/realestate/projectsingle/ad.html?finnkode=464258959" target="_blank" rel="noopener noreferrer" class="btn-finn" title="Gå til FINN-annonsen for eneboligen"><span class="btn-finn__logo">FINN</span> Gå til FINN-annonsen <span class="btn-arrow">↗</span></a>
@@ -232,7 +344,7 @@
             </picture>
           </div>
           <div class="bolig-card__badge">Tomannsboligen · 2 enheter</div>
-          <h3 class="bolig-card__title">Innholdsrik familiebolig med hybel, carport og solrik hage.</h3>
+          <h3 class="bolig-card__title">To tomannsboliger med hage</h3>
           <div class="bolig-card__pricing">
             <div class="bolig-card__price-main">
               <span class="bolig-card__price-label">Prisantydning</span>
@@ -243,40 +355,31 @@
               <span>Omk.: <strong>97 740 kr</strong> (per enhet)</span>
             </div>
           </div>
-          <ul class="bolig-card__specs">
-            <li>
+          <ul class="bolig-card__specs"><li>
               <span class="spec-label">Areal</span>
               <span class="spec-value">209 m² BRA per enhet</span>
-            </li>
-            <li>
+            </li></ul><details class="home-specs"><summary>Flere opplysninger om boligen</summary><ul class="bolig-card__specs"><li>
               <span class="spec-label">Tomt</span>
               <span class="spec-value">1 128 m²</span>
-            </li>
-            <li>
+            </li><li>
               <span class="spec-label">Innhold</span>
               <span class="spec-value">4 sov, 2 stuer, hybel, 3 bad + 1 wc</span>
-            </li>
-            <li>
+            </li><li>
               <span class="spec-label">Kledning</span>
               <span class="spec-value">Nord liggende, Bergene Holm</span>
-            </li>
-            <li>
+            </li><li>
               <span class="spec-label">Parkering</span>
               <span class="spec-value">Carport, elbil-klargjort</span>
-            </li>
-            <li>
+            </li><li>
               <span class="spec-label">Gulv</span>
               <span class="spec-value">Tregulv i herdet eik fra Bjelin</span>
-            </li>
-            <li>
+            </li><li>
               <span class="spec-label">Smarthjem</span>
               <span class="spec-value">Plejd trådløst lyssystem</span>
-            </li>
-            <li>
+            </li><li>
               <span class="spec-label">Ventilasjon</span>
               <span class="spec-value">Balansert ventilasjonsanlegg</span>
-            </li>
-          </ul>
+            </li></ul></details>
           <div class="bolig-card__actions">
             <a href="tomannsbolig.html" class="btn-primary">Se mer om tomannsboligen</a>
             <div class="bolig-card__finn-group">
@@ -293,8 +396,102 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════ ③ KONSEPT ═══════════════════════ -->
-  <section class="konsept" id="konsept">
+<section class="uteliv" id="uteliv">
+    <div class="container">
+      <span class="section-label reveal">Beliggenhet & Nærområde</span>
+      <h2 class="section-title reveal reveal-delay-1">Utsikt mot kveldssol<br>og Kolsåstoppen</h2>
+      <p class="section-intro reveal reveal-delay-2">Se utsikten fra tomten, og utforsk kartet under for å se hvor nært alt i hverdagen ligger.</p>
+    </div>
+
+    <!-- Utsikt panorama -->
+    <div class="utsikt-banner reveal">
+      <div class="utsikt-banner__inner">
+        <picture>
+          <source type="image/jpeg"
+            srcset="images/optimized/Utsikt CØV49-768w.jpg?v=3 768w, images/optimized/Utsikt CØV49-1280w.jpg?v=3 1280w, images/optimized/Utsikt CØV49-1920w.jpg?v=3 1920w"
+            sizes="100vw">
+          <img src="images/Utsikt CØV49.JPG?v=3" alt="Utsikt fra CØV49 – panorama over Bærum og mot Kolsåstoppen" loading="lazy" width="1920" height="1020">
+        </picture>
+        <div class="utsikt-banner__caption">Utsikten fra tomten mot Kolsåstoppen</div>
+      </div>
+    </div>
+
+    <!-- Full-width map with overlay -->
+    <div class="map-section reveal">
+      <div class="map-section__iframe">
+        <iframe id="mapFrame" src="https://www.google.com/maps?q=Caroline+Øverlands+vei+49,+1356+Bekkestua&z=16&output=embed" width="100%"
+          height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Kart – Caroline Øverlands vei 49, Bekkestua">
+        </iframe>
+      </div>
+      <div class="map-overlay">
+        <div class="map-overlay__inner">
+          <div class="map-overlay__header">
+            <svg class="map-overlay__pin" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor"
+              stroke-width="1.5">
+              <path d="M8 1C5.2 1 3 3.2 3 6c0 4 5 9 5 9s5-5 5-9c0-2.8-2.2-5-5-5z" />
+              <circle cx="8" cy="6" r="1.5" fill="currentColor" />
+            </svg>
+            <div>
+              <div class="map-overlay__title">Caroline Øverlands vei 49</div>
+              <div class="map-overlay__subtitle">Bekkestua, Bærum</div>
+            </div>
+          </div>
+          <div class="map-overlay__divider"></div>
+          <div class="poi-group">
+            <div class="poi-group__label">Transport</div>
+            <div class="poi-item" data-dest="Ekeberg+bussholdeplass,+Kirkeveien,+1356+Bekkestua"><span class="poi-item__name">Ekeberg
+                bussholdeplass</span><span class="poi-item__dist">5 min (400 m)</span></div>
+            <div class="poi-item" data-dest="Gjønnes+stasjon,+Kolsåsbanen,+1357+Bekkestua"><span class="poi-item__name">Gjønnes
+                T-bane</span><span class="poi-item__dist">16 min (1,2 km)</span></div>
+            <div class="poi-item" data-dest="Haslum+stasjon,+Kolsåsbanen,+1344+Haslum"><span class="poi-item__name">Haslum
+                T-bane</span><span class="poi-item__dist">19 min (1,3 km)</span></div>
+          </div>
+          <div class="poi-group">
+            <div class="poi-group__label">Skole</div>
+            <div class="poi-item" data-dest="Ramstad+skole,+Høvikveien+30,+1363+Høvik"><span class="poi-item__name">Ramstad
+                skole (ungdomstrinn)</span><span class="poi-item__dist">10 min (750 m)</span></div>
+            <div class="poi-item" data-dest="Høvik+skole,+Sandviksveien+11,+1363+Høvik"><span
+                class="poi-item__name">Høvik skole (barnetrinn)</span><span class="poi-item__dist">13 min (950 m)</span></div>
+            <div class="poi-item" data-dest="Bærum+Montessoriskole,+Ballerud+allé+1,+1363+Høvik"><span class="poi-item__name">Bærum
+                Montessoriskole</span><span class="poi-item__dist">16 min (1,2 km)</span></div>
+            <div class="poi-item" data-dest="Nadderud+videregående+skole,+Gjønnesjordet+30,+1357+Bekkestua"><span class="poi-item__name">Nadderud
+                VGS</span><span class="poi-item__dist">22 min (1,6 km)</span></div>
+          </div>
+          <div class="poi-group">
+            <div class="poi-group__label">Barnehage</div>
+            <div class="poi-item" data-dest="Ekebergparken+barnehage,+Ekebergveien+5,+1356+Bekkestua"><span class="poi-item__name">Ekebergparken
+                barnehage</span><span class="poi-item__dist">9 min (650 m)</span></div>
+            <div class="poi-item" data-dest="Trygg+Start+familiebarnehage,+Ekebergveien+44,+1356+Bekkestua"><span class="poi-item__name">Trygg
+                Start familiebarnehage</span><span class="poi-item__dist">11 min (750 m)</span></div>
+            <div class="poi-item" data-dest="Søråsen+barnehage,+Søråsen+20,+1356+Bekkestua"><span class="poi-item__name">Søråsen
+                barnehage</span><span class="poi-item__dist">20 min (1,4 km)</span></div>
+          </div>
+          <div class="poi-group">
+            <div class="poi-group__label">Handel</div>
+            <div class="poi-item" data-dest="Coop+Prix+Løkeberg,+Kirkeveien+56,+1363+Høvik"><span class="poi-item__name">Coop
+                Prix Løkeberg</span><span class="poi-item__dist">7 min (500 m)</span></div>
+            <div class="poi-item" data-dest="Høvikveien+Kjøtt+og+Kolonial,+Høvikveien+62,+1356+Bekkestua"><span
+                class="poi-item__name">Høvikveien Kjøtt &amp; Kolonial</span><span class="poi-item__dist">8 min (600 m)</span></div>
+            <div class="poi-item" data-dest="Kiwi+Dragveien,+Dragveien+25A,+1363+Høvik"><span class="poi-item__name">Kiwi
+                Dragveien</span><span class="poi-item__dist">9 min (600 m)</span></div>
+            <div class="poi-item" data-dest="Bekkestua+Senter,+Gamle+Ringeriksvei+34,+1357+Bekkestua"><span class="poi-item__name">Bekkestua
+                Sentrum</span><span class="poi-item__dist">26 min (1,9 km)</span></div>
+          </div>
+          <div class="poi-group">
+            <div class="poi-group__label">Fritid</div>
+            <div class="poi-item" data-dest="Ekeberglia+lekeplass,+Ekeberglia,+1356+Bekkestua"><span class="poi-item__name">Ekeberglia
+                lekeplass</span><span class="poi-item__dist">8 min (550 m)</span></div>
+            <div class="poi-item" data-dest="Ballerud+Golfklubb,+Ballerud+Allé+1B,+1363+Høvik"><span
+                class="poi-item__name">Ballerud Golfklubb</span><span class="poi-item__dist">19 min (1,5 km)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+<section class="konsept" id="konsept">
     <div class="container">
       <div class="konsept__grid">
         <div class="konsept__image reveal">
@@ -323,8 +520,7 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════ ④ KVALITETER ═══════════════════════ -->
-  <section class="kvaliteter" id="kvaliteter">
+<section class="kvaliteter" id="kvaliteter">
     <div class="container">
       <span class="section-label reveal">Kvaliteter</span>
       <h2 class="section-title reveal reveal-delay-1">Materialer som varer</h2>
@@ -464,8 +660,7 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════ ⑤ SMART HJEM ═══════════════════════ -->
-  <section class="smarthjem" id="smarthjem">
+<section class="smarthjem" id="smarthjem">
     <div class="container">
       <div class="smarthjem__grid">
         <div>
@@ -553,120 +748,7 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════ ⑤ BILDEGALLERI ═══════════════════════ -->
-  <section class="pl-gallery-section" id="galleri">
-    <div class="container">
-      <span class="section-label reveal">Galleri</span>
-      <h2 class="section-title reveal reveal-delay-1">Bildegalleri</h2>
-      <p class="pl-gallery-subtitle reveal reveal-delay-2">Utforsk alle illustrasjoner og eksteriørbilder fra prosjektet. Klikk på et bilde for å se det i fullskjerm. Alle illustrasjoner er veiledende, og avvik fra endelig leveranse kan forekomme.</p>
-      
-      <!-- Filterknapper -->
-      <div class="gallery-filter-tabs reveal reveal-delay-2">
-        <button class="gallery-filter-btn is-active" data-filter="all">Alle (20)</button>
-        <button class="gallery-filter-btn" data-filter="enebolig">Eneboligen (11)</button>
-        <button class="gallery-filter-btn" data-filter="tomannsbolig">Tomannsboligen (9)</button>
-      </div>
-    </div>
-
-    <div class="pl-gallery-container">
-      <div class="pl-gallery-track-wrapper">
-        <div class="pl-gallery-track">
-          <!-- ── EKSTERIØR / UTEOMRÅDER (7 stk) ── -->
-          <div class="pl-gallery-slide" data-category="enebolig">
-            <img src="images/optimized/Enebolig terrasse boblebad ferdig-1280w.jpg" alt="Enebolig – Stor enebolig" class="pl-gallery-img">
-            <span class="pl-gallery-caption">En stor og flott enebolig med mye vindusflater og nydelig utsikt. God takhøyde i etasjene.</span>
-          </div>
-          <div class="pl-gallery-slide" data-category="enebolig">
-            <img src="images/optimized/Enebolig front nede ferdig-1280w.jpg" alt="Enebolig – Uteplasser" class="pl-gallery-img">
-            <span class="pl-gallery-caption">Solfylte uteplasser med både en stor terrasse og en hyggelig balkong. Terrassen har god plass til sittegrupper, grilling og soling med direkte adkomst fra underetasjens TV-stue, mens balkongen har direkte tilkomst fra kjøkkenet.</span>
-          </div>
-          <div class="pl-gallery-slide" data-category="enebolig">
-            <img src="images/optimized/Enebolig fasade hage ferdig-1280w.jpg" alt="Enebolig – Uteplass bak garasje" class="pl-gallery-img">
-            <span class="pl-gallery-caption">En lun og skjermet uteplass bak garasjen med mange bruksmuligheter. Vist med opparbeidet terrasse, pergola og jacuzzi som eksempler (uteplass, pergola og jacuzzi medfølger ikke i standard leveranse).</span>
-          </div>
-          <div class="pl-gallery-slide" data-category="tomannsbolig">
-            <img src="images/optimized/Tomannsbolig 49 B hage NY-1280w.jpg" alt="Tomannsbolig – Uteområde" class="pl-gallery-img">
-            <span class="pl-gallery-caption">Moderne, innholdsrik og vertikaldelt tomannsbolig over tre plan – med solrike uteplasser og fantastiske lysforhold.</span>
-          </div>
-          <div class="pl-gallery-slide" data-category="tomannsbolig">
-            <img src="images/Ferdige illustrasjoner/Tomannsbolig 49B hage ferdig NY.jpg" alt="Tomannsbolig – Hage og terrasse" class="pl-gallery-img">
-            <span class="pl-gallery-caption">Stort hageområde på nedsiden av boligen. Her kan terrassens form og størrelse bestemmes etter kjøpers ønske (leveres ikke som standard).</span>
-          </div>
-          <div class="pl-gallery-slide" data-category="tomannsbolig">
-            <img src="images/Ferdige illustrasjoner/Tomannsbolig inngang ferdig.jpg" alt="Tomannsbolig – Inngangsparti" class="pl-gallery-img">
-            <span class="pl-gallery-caption">Flott og gruset adkomst frem til inngangspartiet, med en separat utvendig trapp ned til kjellerstuen i underetasjen.</span>
-          </div>
-          <div class="pl-gallery-slide" data-category="tomannsbolig">
-            <img src="images/Ferdige illustrasjoner/Tomannsbolig gårdsplass ferdig.jpg" alt="Tomannsbolig – Gårdsplass" class="pl-gallery-img">
-            <span class="pl-gallery-caption">Gårdsplass med carport klargjort for elbillader, samt en praktisk utebod i bakkant av carporten.</span>
-          </div>
-
-          <!-- ── INTERIØR (13 stk) ── -->
-          <div class="pl-gallery-slide" data-category="enebolig">
-            <img src="images/optimized/Enebolig stue stor ferdig-1280w.jpg" alt="Enebolig – Stor stue" class="pl-gallery-img">
-            <span class="pl-gallery-caption">Lys og luftig stue preget av sjenerøs takhøyde og store vindusflater. Den åpne løsningen gir gode muligheter for inndeling i flere trivelige soner.</span>
-          </div>
-          <div class="pl-gallery-slide" data-category="enebolig">
-            <img src="images/optimized/Enebolig stue ferdig-1280w.jpg" alt="Enebolig – Stue" class="pl-gallery-img">
-            <span class="pl-gallery-caption">Fleksibel stue med romslige soner for både avslapning og hygge. Vist i en løsning med adskilt kontor eller ekstra soverom i tilknytning til entréen.</span>
-          </div>
-          <div class="pl-gallery-slide" data-category="tomannsbolig">
-            <img src="images/Ferdige illustrasjoner/Tomannsbolig stue ferdig.jpg" alt="Tomannsbolig – Stue" class="pl-gallery-img">
-            <span class="pl-gallery-caption">Lys og luftig stue i første etasje med vinduer fra tre sider, mye lysinnslipp og direkte utgang til både vestvendt balkong og en romslig terrasse.</span>
-          </div>
-          <div class="pl-gallery-slide" data-category="tomannsbolig">
-            <img src="images/Ferdige illustrasjoner/Tomannsbolig loftstue ferdig.jpg" alt="Tomannsbolig – Loftstue" class="pl-gallery-img">
-            <span class="pl-gallery-caption">Her er det ene soverommet i andre etasje gjort om til en loftstue for å skape et ekstra, koselig oppholdsrom for hele familien.</span>
-          </div>
-          <div class="pl-gallery-slide" data-category="enebolig">
-            <img src="images/optimized/Enebolig tv-stue stor ferdig-1280w.jpg" alt="Enebolig – TV-stue stor" class="pl-gallery-img">
-            <span class="pl-gallery-caption">TV-stuen i underetasjen vist i den store, utvidede løsningen, som gir et ekstra romslig og sosialt oppholdsrom for hele familien.</span>
-          </div>
-          <div class="pl-gallery-slide" data-category="enebolig">
-            <img src="images/optimized/Enebolig tv-stue liten ferdig-1280w.jpg" alt="Enebolig – TV-stue liten" class="pl-gallery-img">
-            <span class="pl-gallery-caption">TV-stuen i underetasjen vist i den mindre løsningen. Dette er en koselig og lun sone som gjør det mulig å prioritere ekstra soverom i boligen.</span>
-          </div>
-          <div class="pl-gallery-slide" data-category="enebolig">
-            <img src="images/optimized/Enebolig kjøkken påkostet ferdig-1280w.jpg" alt="Enebolig – Kjøkken" class="pl-gallery-img">
-            <span class="pl-gallery-caption">Eksklusivt og påkostet Svane-kjøkken med integrerte hvitevarer, lekker hvit steinbenkeplate, stor kjøkkenøy og ekstra høye skap tilpasset den generøse takhøyden.</span>
-          </div>
-          <div class="pl-gallery-slide" data-category="tomannsbolig">
-            <img src="images/optimized/Tomannsbolig kjøkken ferdig-1280w.jpg" alt="Tomannsbolig – Kjøkken" class="pl-gallery-img">
-            <span class="pl-gallery-caption">Nydelig kjøkken fra Svane Kjøkkenet med hvit steinbenkeplate, stor kjøkkenøy og integrerte kvalitetshvitevarer.</span>
-          </div>
-          <div class="pl-gallery-slide" data-category="enebolig">
-            <img src="images/optimized/Enebolig gang ferdig-1280w.jpg" alt="Enebolig – Entré" class="pl-gallery-img">
-            <span class="pl-gallery-caption">Lyst, elegant og funksjonelt inngangsparti med god plass til skreddersydde garderobeløsninger og et ryddig førsteinntrykk (garderobeinnredning medfølger ikke).</span>
-          </div>
-          <div class="pl-gallery-slide" data-category="enebolig">
-            <img src="images/optimized/Enebolig hovedsoverom ferdig-1280w.jpg" alt="Enebolig – Masterfløy" class="pl-gallery-img">
-            <span class="pl-gallery-caption">Flott masterfløy med et romslig hovedsoverom, walk-in-garderobe og eget tilhørende bad (garderobeinnredning medfølger ikke).</span>
-          </div>
-          <div class="pl-gallery-slide" data-category="tomannsbolig">
-            <img src="images/Ferdige illustrasjoner/Tomannsbolig soverom ferdig.jpg" alt="Tomannsbolig – Hovedsoverom" class="pl-gallery-img">
-            <span class="pl-gallery-caption">Stort og romslig hovedsoverom i andre etasje med god plass til garderobeskap.</span>
-          </div>
-          <div class="pl-gallery-slide" data-category="tomannsbolig">
-            <img src="images/Ferdige illustrasjoner/Familiebad tomannsbolig ferdig.jpg" alt="Tomannsbolig – Bad" class="pl-gallery-img">
-            <span class="pl-gallery-caption">Delikat og romslig familiebad i andre etasje med 60x60 fliser, dobbel servant og egen våtsone. Badekar og sotet glassdør til toalett leveres som tilvalg.</span>
-          </div>
-          <div class="pl-gallery-slide" data-category="enebolig">
-            <img src="images/optimized/Enebolig hybel ferdig-1280w.jpg" alt="Enebolig – Hybelavdeling" class="pl-gallery-img">
-            <span class="pl-gallery-caption">Innholdsrik avdeling med over 4 meter takhøyde, noe som gir stor fleksibilitet til bruk som hybel, ungdoms- eller gjesteavdeling. Planløsningen kan tilpasses etter behov med enten eget bad, ekstra bod eller andre funksjoner.</span>
-          </div>
-        </div>
-      </div>
-      <button class="pl-gallery-nav prev" aria-label="Forrige bilde">&#10094;</button>
-      <button class="pl-gallery-nav next" aria-label="Neste bilde">&#10095;</button>
-      
-      <div class="pl-gallery-scrollbar">
-        <div class="pl-gallery-scrollbar-thumb"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════ ⑥ KJØPSPROSESSEN ═══════════════════════ -->
-  <section class="trygghet" id="trygghet">
+<section class="trygghet" id="trygghet">
     <div class="container">
       <span class="section-label reveal">Kjøpsprosessen</span>
       <h2 class="section-title reveal reveal-delay-1">En ryddig prosess<br>fra start til nøkkel</h2>
@@ -724,148 +806,7 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════ ⑦ BELIGGENHET & NÆROMRÅDE ═══════════════════════ -->
-  <section class="uteliv" id="uteliv">
-    <div class="container">
-      <span class="section-label reveal">Beliggenhet & Nærområde</span>
-      <h2 class="section-title reveal reveal-delay-1">Utsikt mot kveldssol<br>og Kolsåstoppen</h2>
-      <p class="section-intro reveal reveal-delay-2">Se utsikten fra tomten, og utforsk kartet under for å se hvor nært alt i hverdagen ligger.</p>
-    </div>
-
-    <!-- Utsikt panorama -->
-    <div class="utsikt-banner reveal">
-      <div class="utsikt-banner__inner">
-        <picture>
-          <source type="image/jpeg"
-            srcset="images/optimized/Utsikt CØV49-768w.jpg?v=3 768w, images/optimized/Utsikt CØV49-1280w.jpg?v=3 1280w, images/optimized/Utsikt CØV49-1920w.jpg?v=3 1920w"
-            sizes="100vw">
-          <img src="images/Utsikt CØV49.JPG?v=3" alt="Utsikt fra CØV49 – panorama over Bærum og mot Kolsåstoppen" loading="lazy" width="1920" height="1020">
-        </picture>
-        <div class="utsikt-banner__caption">Utsikten fra tomten mot Kolsåstoppen</div>
-      </div>
-    </div>
-
-    <!-- Full-width map with overlay -->
-    <div class="map-section reveal">
-      <div class="map-section__iframe">
-        <iframe id="mapFrame" src="https://www.google.com/maps?q=Caroline+Øverlands+vei+49,+1356+Bekkestua&z=16&output=embed" width="100%"
-          height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-          title="Kart – Caroline Øverlands vei 49, Bekkestua">
-        </iframe>
-      </div>
-      <div class="map-overlay">
-        <div class="map-overlay__inner">
-          <div class="map-overlay__header">
-            <svg class="map-overlay__pin" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor"
-              stroke-width="1.5">
-              <path d="M8 1C5.2 1 3 3.2 3 6c0 4 5 9 5 9s5-5 5-9c0-2.8-2.2-5-5-5z" />
-              <circle cx="8" cy="6" r="1.5" fill="currentColor" />
-            </svg>
-            <div>
-              <div class="map-overlay__title">Caroline Øverlands vei 49</div>
-              <div class="map-overlay__subtitle">Bekkestua, Bærum</div>
-            </div>
-          </div>
-          <div class="map-overlay__divider"></div>
-          <div class="poi-group">
-            <div class="poi-group__label">Transport</div>
-            <div class="poi-item" data-dest="Ekeberg+bussholdeplass,+Kirkeveien,+1356+Bekkestua"><span class="poi-item__name">Ekeberg
-                bussholdeplass</span><span class="poi-item__dist">5 min (400 m)</span></div>
-            <div class="poi-item" data-dest="Gjønnes+stasjon,+Kolsåsbanen,+1357+Bekkestua"><span class="poi-item__name">Gjønnes
-                T-bane</span><span class="poi-item__dist">16 min (1,2 km)</span></div>
-            <div class="poi-item" data-dest="Haslum+stasjon,+Kolsåsbanen,+1344+Haslum"><span class="poi-item__name">Haslum
-                T-bane</span><span class="poi-item__dist">19 min (1,3 km)</span></div>
-          </div>
-          <div class="poi-group">
-            <div class="poi-group__label">Skole</div>
-            <div class="poi-item" data-dest="Ramstad+skole,+Høvikveien+30,+1363+Høvik"><span class="poi-item__name">Ramstad
-                skole (ungdomstrinn)</span><span class="poi-item__dist">10 min (750 m)</span></div>
-            <div class="poi-item" data-dest="Høvik+skole,+Sandviksveien+11,+1363+Høvik"><span
-                class="poi-item__name">Høvik skole (barnetrinn)</span><span class="poi-item__dist">13 min (950 m)</span></div>
-            <div class="poi-item" data-dest="Bærum+Montessoriskole,+Ballerud+allé+1,+1363+Høvik"><span class="poi-item__name">Bærum
-                Montessoriskole</span><span class="poi-item__dist">16 min (1,2 km)</span></div>
-            <div class="poi-item" data-dest="Nadderud+videregående+skole,+Gjønnesjordet+30,+1357+Bekkestua"><span class="poi-item__name">Nadderud
-                VGS</span><span class="poi-item__dist">22 min (1,6 km)</span></div>
-          </div>
-          <div class="poi-group">
-            <div class="poi-group__label">Barnehage</div>
-            <div class="poi-item" data-dest="Ekebergparken+barnehage,+Ekebergveien+5,+1356+Bekkestua"><span class="poi-item__name">Ekebergparken
-                barnehage</span><span class="poi-item__dist">9 min (650 m)</span></div>
-            <div class="poi-item" data-dest="Trygg+Start+familiebarnehage,+Ekebergveien+44,+1356+Bekkestua"><span class="poi-item__name">Trygg
-                Start familiebarnehage</span><span class="poi-item__dist">11 min (750 m)</span></div>
-            <div class="poi-item" data-dest="Søråsen+barnehage,+Søråsen+20,+1356+Bekkestua"><span class="poi-item__name">Søråsen
-                barnehage</span><span class="poi-item__dist">20 min (1,4 km)</span></div>
-          </div>
-          <div class="poi-group">
-            <div class="poi-group__label">Handel</div>
-            <div class="poi-item" data-dest="Coop+Prix+Løkeberg,+Kirkeveien+56,+1363+Høvik"><span class="poi-item__name">Coop
-                Prix Løkeberg</span><span class="poi-item__dist">7 min (500 m)</span></div>
-            <div class="poi-item" data-dest="Høvikveien+Kjøtt+og+Kolonial,+Høvikveien+62,+1356+Bekkestua"><span
-                class="poi-item__name">Høvikveien Kjøtt &amp; Kolonial</span><span class="poi-item__dist">8 min (600 m)</span></div>
-            <div class="poi-item" data-dest="Kiwi+Dragveien,+Dragveien+25A,+1363+Høvik"><span class="poi-item__name">Kiwi
-                Dragveien</span><span class="poi-item__dist">9 min (600 m)</span></div>
-            <div class="poi-item" data-dest="Bekkestua+Senter,+Gamle+Ringeriksvei+34,+1357+Bekkestua"><span class="poi-item__name">Bekkestua
-                Sentrum</span><span class="poi-item__dist">26 min (1,9 km)</span></div>
-          </div>
-          <div class="poi-group">
-            <div class="poi-group__label">Fritid</div>
-            <div class="poi-item" data-dest="Ekeberglia+lekeplass,+Ekeberglia,+1356+Bekkestua"><span class="poi-item__name">Ekeberglia
-                lekeplass</span><span class="poi-item__dist">8 min (550 m)</span></div>
-            <div class="poi-item" data-dest="Ballerud+Golfklubb,+Ballerud+Allé+1B,+1363+Høvik"><span
-                class="poi-item__name">Ballerud Golfklubb</span><span class="poi-item__dist">19 min (1,5 km)</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- ====== FAQ MODAL ====== -->
-  <div class="faq-modal" id="faqModal" role="dialog" aria-modal="true" aria-labelledby="faqModalTitle">
-    <div class="faq-modal__overlay" id="faqModalCloseBg"></div>
-    <div class="faq-modal__content">
-      <button class="faq-modal__close" id="faqModalCloseBtn" aria-label="Lukk">&times;</button>
-      <span class="section-label">FAQ</span>
-      <h2 class="section-title" id="faqModalTitle">Ofte stilte spørsmål</h2>
-      <div class="faq__list">
-        <details class="faq__item">
-          <summary class="faq__question">Når forventes boligene å være innflyttingsklare?</summary>
-          <div class="faq__answer">
-            <p>Vi forventer ferdigstillelse rundt høsten 2027, forutsatt at prosjektet igangsettes høsten 2026.</p>
-          </div>
-        </details>
-        <details class="faq__item">
-          <summary class="faq__question">Er det mulighet for tilvalg og endringer?</summary>
-          <div class="faq__answer">
-            <p>Ja, det er store muligheter for tilpasning og endringer, blant annet:</p>
-            <ul>
-              <li>Endring av lettvegger for å slå sammen eller utvide rom</li>
-              <li>Tilpasning på kjøkken eller leveranse av kjøkken</li>
-              <li>Bad, overflater og produkter</li>
-              <li>Tilpasninger av terrasser m.m.</li>
-            </ul>
-            <p>Ta gjerne kontakt med oss for ytterligere informasjon om muligheter og tilpasninger.</p>
-          </div>
-        </details>
-        <details class="faq__item">
-          <summary class="faq__question">Hva inngår i standardleveransen?</summary>
-          <div class="faq__answer">
-            <p>Boligene oppføres og leveres i henhold til gjeldende tekniske forskrifter (TEK17) med gjennomgående høy kvalitet. Standardleveransen inkluderer blant annet:</p>
-            <ul>
-              <li>Komplett og påkostet kjøkken med integrerte hvitevarer</li>
-              <li>Ferdigstilte, delikate bad med 60x60 fliser og kvalitetsinnredning</li>
-              <li>Elektrisk gulvvarme og balansert ventilasjon med varmegjenvinning</li>
-              <li>Carport/garasje med klargjort trekkerør for elbillader</li>
-            </ul>
-            <p>Elementer som varmepumpe og peis er ikke inkludert som standard, men boligene er klargjort slik at kjøper kan gjøre personlige tilvalg. Se fullstendig leveransebeskrivelse for detaljert informasjon, eller kontakt oss for komplett underlag.</p>
-          </div>
-        </details>
-      </div>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════ ⑧ KONTAKT / INTERESSE ═══════════════════════ -->
-  <section class="kontakt" id="kontakt">
+<section class="kontakt" id="kontakt">
     <div class="container">
       <div class="kontakt__grid">
         <div>
@@ -960,6 +901,50 @@
     </div>
   </section>
 
+  <!-- ====== FAQ MODAL ====== -->
+  <div class="faq-modal" id="faqModal" role="dialog" aria-modal="true" aria-labelledby="faqModalTitle">
+    <div class="faq-modal__overlay" id="faqModalCloseBg"></div>
+    <div class="faq-modal__content">
+      <button class="faq-modal__close" id="faqModalCloseBtn" aria-label="Lukk">&times;</button>
+      <span class="section-label">FAQ</span>
+      <h2 class="section-title" id="faqModalTitle">Ofte stilte spørsmål</h2>
+      <div class="faq__list">
+        <details class="faq__item">
+          <summary class="faq__question">Når forventes boligene å være innflyttingsklare?</summary>
+          <div class="faq__answer">
+            <p>Vi forventer ferdigstillelse rundt høsten 2027, forutsatt at prosjektet igangsettes høsten 2026.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__question">Er det mulighet for tilvalg og endringer?</summary>
+          <div class="faq__answer">
+            <p>Ja, det er store muligheter for tilpasning og endringer, blant annet:</p>
+            <ul>
+              <li>Endring av lettvegger for å slå sammen eller utvide rom</li>
+              <li>Tilpasning på kjøkken eller leveranse av kjøkken</li>
+              <li>Bad, overflater og produkter</li>
+              <li>Tilpasninger av terrasser m.m.</li>
+            </ul>
+            <p>Ta gjerne kontakt med oss for ytterligere informasjon om muligheter og tilpasninger.</p>
+          </div>
+        </details>
+        <details class="faq__item">
+          <summary class="faq__question">Hva inngår i standardleveransen?</summary>
+          <div class="faq__answer">
+            <p>Boligene oppføres og leveres i henhold til gjeldende tekniske forskrifter (TEK17) med gjennomgående høy kvalitet. Standardleveransen inkluderer blant annet:</p>
+            <ul>
+              <li>Komplett og påkostet kjøkken med integrerte hvitevarer</li>
+              <li>Ferdigstilte, delikate bad med 60x60 fliser og kvalitetsinnredning</li>
+              <li>Elektrisk gulvvarme og balansert ventilasjon med varmegjenvinning</li>
+              <li>Carport/garasje med klargjort trekkerør for elbillader</li>
+            </ul>
+            <p>Elementer som varmepumpe og peis er ikke inkludert som standard, men boligene er klargjort slik at kjøper kan gjøre personlige tilvalg. Se fullstendig leveransebeskrivelse for detaljert informasjon, eller kontakt oss for komplett underlag.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
   <!-- ═══════════════════════ FOOTER ═══════════════════════ -->
   <footer class="footer">
     <div class="container">
@@ -1004,7 +989,7 @@
       <span class="section-label">Få tilsendt prospekt</span>
       <h2 class="section-title" id="prospektModalTitle">Meld uforpliktende interesse</h2>
       <p class="prospekt-modal__subtitle">Registrer deg under for å motta komplett salgsprospekt, tegninger og prisinformasjon for Caroline Øverlands vei 49.</p>
-      
+
       <form class="prospekt__form" id="prospektForm" action="https://formsubmit.co/ajax/ds@nobello.no" method="POST" onsubmit="handleProspektSubmit(event)">
         <!-- Honeypot -->
         <input type="text" name="_honey" style="display:none">
@@ -1019,22 +1004,22 @@
         <input type="hidden" name="_autoresponse" value="Takk for at du meldte interesse for Caroline Øverlands vei 49. Ansvarlig megler Jørgen Ek og Nobello AS har mottatt din henvendelse og vil følge opp. Du kan også laste ned prospektene direkte fra nettsiden.">
         <!-- Email Subject -->
         <input type="hidden" name="_subject" value="Ny interessent (prospekt): Caroline Øverlands vei 49">
-        
+
         <div class="form-group">
           <label class="form-label" for="prospekt-navn">Navn</label>
           <input class="form-input" type="text" id="prospekt-navn" name="navn" required autocomplete="name" placeholder="Ditt fulle navn">
         </div>
-        
+
         <div class="form-group">
           <label class="form-label" for="prospekt-epost">E-post</label>
           <input class="form-input" type="email" id="prospekt-epost" name="email" required autocomplete="email" placeholder="din.epost@adresse.no">
         </div>
-        
+
         <div class="form-group">
           <label class="form-label" for="prospekt-telefon">Telefon</label>
           <input class="form-input" type="tel" id="prospekt-telefon" name="telefon" autocomplete="tel" placeholder="Ditt telefonnummer">
         </div>
-        
+
         <div class="form-group">
           <label class="form-label">Hvilken boligtype interesserer deg?</label>
           <div class="form-radio-group">
@@ -1046,12 +1031,12 @@
             <label class="form-radio-label" for="modal-begge">Begge</label>
           </div>
         </div>
-        
+
         <div class="form-group">
           <label class="form-label" for="prospekt-melding">Eventuell kommentar / spørsmål</label>
           <textarea class="form-textarea" id="prospekt-melding" name="melding" rows="2" placeholder="Valgfritt"></textarea>
         </div>
-        
+
         <button type="submit" class="btn-primary" id="prospektSubmitBtn">Få tilsendt prospekt</button>
       <p class="privacy-form-note">Nobello og megler bruker kontaktopplysningene til å følge opp din interesse i prosjektet. <a href="personvern.html">Les mer om personvern</a>.</p>
 </form>
@@ -1065,7 +1050,7 @@
         </div>
         <h3 class="prospekt-success__title">Takk for din interesse!</h3>
         <p class="prospekt-success__desc">Din henvendelse er registrert og oversendt til ansvarlig megler <strong>Jørgen Ek</strong>. Du kan nå laste ned salgsprospektene direkte under:</p>
-        
+
         <div class="prospekt-downloads">
           <a href="Prospekt%20C%C3%98V49/Prospekt%20-%20C%C3%98V%2049%20Enebolig.pdf" target="_blank" class="btn-prospekt-download" data-prospekt="enebolig" download>
             <span class="btn-prospekt-download__label">
@@ -1117,51 +1102,35 @@
             <span class="scroll-tracker__dot"></span>
             <span class="scroll-tracker__label">Topp</span>
           </a>
-        </li>
-        <li>
-          <a href="#boligene" class="scroll-tracker__item" data-target="boligene" aria-label="Boligene">
-            <span class="scroll-tracker__dot"></span>
-            <span class="scroll-tracker__label">01 Boligene</span>
-          </a>
-        </li>
-        <li>
-          <a href="#konsept" class="scroll-tracker__item" data-target="konsept" aria-label="Konsept">
-            <span class="scroll-tracker__dot"></span>
-            <span class="scroll-tracker__label">02 Konsept</span>
-          </a>
-        </li>
-        <li>
-          <a href="#kvaliteter" class="scroll-tracker__item" data-target="kvaliteter" aria-label="Kvaliteter & Materialer">
-            <span class="scroll-tracker__dot"></span>
-            <span class="scroll-tracker__label">03 Kvaliteter</span>
-          </a>
-        </li>
-        <li>
-          <a href="#smarthjem" class="scroll-tracker__item" data-target="smarthjem" aria-label="Smart hjem">
-            <span class="scroll-tracker__dot"></span>
-            <span class="scroll-tracker__label">04 Smart hjem</span>
-          </a>
-        </li>
-        <li>
-          <a href="#galleri" class="scroll-tracker__item" data-target="galleri" aria-label="Bildegalleri">
+<a href="#galleri" class="scroll-tracker__item" data-target="galleri" aria-label="Bildegalleri">
             <span class="scroll-tracker__dot"></span>
             <span class="scroll-tracker__label">05 Galleri</span>
           </a>
-        </li>
-        <li>
-          <a href="#trygghet" class="scroll-tracker__item" data-target="trygghet" aria-label="Kjøpsprosessen">
+<a href="#boligene" class="scroll-tracker__item" data-target="boligene" aria-label="Boligene">
             <span class="scroll-tracker__dot"></span>
-            <span class="scroll-tracker__label">06 Kjøpsprosessen</span>
+            <span class="scroll-tracker__label">01 Boligene</span>
           </a>
-        </li>
-        <li>
-          <a href="#uteliv" class="scroll-tracker__item" data-target="uteliv" aria-label="Beliggenhet & Nærområde">
+<a href="#uteliv" class="scroll-tracker__item" data-target="uteliv" aria-label="Beliggenhet & Nærområde">
             <span class="scroll-tracker__dot"></span>
             <span class="scroll-tracker__label">07 Beliggenhet</span>
           </a>
-        </li>
-        <li>
-          <a href="#kontakt" class="scroll-tracker__item" data-target="kontakt" aria-label="Kontakt & Visning">
+<a href="#konsept" class="scroll-tracker__item" data-target="konsept" aria-label="Konsept">
+            <span class="scroll-tracker__dot"></span>
+            <span class="scroll-tracker__label">02 Konsept</span>
+          </a>
+<a href="#kvaliteter" class="scroll-tracker__item" data-target="kvaliteter" aria-label="Kvaliteter & Materialer">
+            <span class="scroll-tracker__dot"></span>
+            <span class="scroll-tracker__label">03 Kvaliteter</span>
+          </a>
+<a href="#smarthjem" class="scroll-tracker__item" data-target="smarthjem" aria-label="Smart hjem">
+            <span class="scroll-tracker__dot"></span>
+            <span class="scroll-tracker__label">04 Smart hjem</span>
+          </a>
+<a href="#trygghet" class="scroll-tracker__item" data-target="trygghet" aria-label="Kjøpsprosessen">
+            <span class="scroll-tracker__dot"></span>
+            <span class="scroll-tracker__label">06 Kjøpsprosessen</span>
+          </a>
+<a href="#kontakt" class="scroll-tracker__item" data-target="kontakt" aria-label="Kontakt & Visning">
             <span class="scroll-tracker__dot"></span>
             <span class="scroll-tracker__label">08 Kontakt</span>
           </a>

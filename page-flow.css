@@ -1,0 +1,42 @@
+.home-choice { padding: 36px 0 24px; scroll-margin-top: 90px; }
+.home-choice h2 { font-size: 1.3rem; font-weight: 400; margin-bottom: 18px; }
+.home-choice__links { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.home-choice__links a { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; padding: 18px 22px; border: 1px solid var(--color-border-strong); color: var(--color-text); }
+.home-choice__links span { font-size: 1.2rem; }
+.home-choice__links small { grid-column: 1; color: var(--color-text-muted); }
+.home-choice__links b { grid-column: 2; grid-row: 1 / 3; align-self: center; font-weight: 400; }
+.home-choice__links a:hover { border-color: var(--color-accent); }
+.home-choice__gallery { display: inline-block; padding: 16px 0 0; text-decoration: underline; text-underline-offset: 4px; }
+.gallery-first > #galleri { margin-top: 0; padding-top: 32px; padding-bottom: 32px; }
+.gallery-first > #galleri .section-title { margin-bottom: 12px; }
+.gallery-first .home-specs { margin: 0 0 20px; }
+.home-specs summary { cursor: pointer; padding: 12px 0; color: var(--color-accent); }
+.gallery-first .pl-intro-text { margin-bottom: 20px; }
+.property-facts { color: var(--color-text-muted); margin: 10px 0; }
+.property-shortcuts { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+.property-shortcuts a { display: inline-flex; align-items: center; min-height: 44px; padding: 10px 16px; border: 1px solid var(--color-border-strong); color: var(--color-text); }
+.gallery-first .pl-intro-text + .pl-gallery-section { margin-top: 24px; padding-top: 24px; margin-bottom: 36px; }
+.gallery-first .pl-price-card { scroll-margin-top: 90px; }
+.plan-heading, .plan-help { grid-column: 1 / -1; margin: 0; }
+.plan-heading { font-size: 1.7rem; font-weight: 400; }
+.plan-help { color: var(--color-text-muted); }
+.home-choice a:focus-visible, .property-shortcuts a:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 4px; }
+@media (max-width: 768px) {
+  .home-choice { padding: 24px 0 12px; }
+  .home-choice__links { grid-template-columns: 1fr; gap: 10px; }
+  .home-choice__links a { padding: 12px 16px; }
+  .home-choice__links span { font-size: 1.05rem; }
+  .gallery-first .gallery-filter-tabs { flex-wrap: nowrap; gap: 8px; }
+  .gallery-first .gallery-filter-btn { padding: 10px 8px; min-height: 44px; font-size: 0.65rem; letter-spacing: 0.02em; }
+  .gallery-first #floatingNote { display: none; }
+  .gallery-first > #boligene, .gallery-first > #uteliv { padding-top: 48px; padding-bottom: 48px; }
+  .gallery-first .pl-header-image { margin-bottom: 20px; }
+  .gallery-first .pl-intro-text .section-title { font-size: 2rem; }
+  .gallery-first .pl-intro-text .section-intro { font-size: 1rem; }
+  .gallery-first .pl-gallery-section .container { padding-left: 0; padding-right: 0; }
+  .gallery-first .pl-page > .container { width: 100%; padding: 0 20px; }
+  .gallery-first .pl-page .pl-gallery-section .container { width: 100%; }
+  .gallery-first .pl-page .pl-gallery-container { padding: 0; }
+  .gallery-first .pl-gallery-title { font-size: 1.65rem; line-height: 1.3; }
+  .gallery-first > #galleri .container { padding-left: 24px; padding-right: 24px; }
+}

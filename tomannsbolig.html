@@ -31,9 +31,10 @@
     <link rel="stylesheet" href="planlosning.css?v=3.9">
   <link rel="stylesheet" href="privacy.css?v=20260911">
   <link rel="stylesheet" href="navigation.css?v=20260915">
+  <link rel="stylesheet" href="page-flow.css?v=20260915">
 </head>
 
-<body>
+<body class="gallery-first">
     <script>
         (function() {
             const savedTheme = localStorage.getItem('theme');
@@ -56,15 +57,16 @@
                 </a>
                 <div class="navbar__dropdown-panel" id="navForsideMenu">
                     <span class="dropdown-panel__title">Forside</span>
-                    <a href="index.html#boligene" class="dropdown-panel__item"><span class="item-idx">01</span>Boligene</a>
-                    <a href="index.html#konsept" class="dropdown-panel__item"><span class="item-idx">02</span>Konsept</a>
-                    <a href="index.html#kvaliteter" class="dropdown-panel__item"><span class="item-idx">03</span>Kvaliteter &amp; Materialer</a>
-                    <a href="index.html#smarthjem" class="dropdown-panel__item"><span class="item-idx">04</span>Smart hjem</a>
-                    <a href="index.html#galleri" class="dropdown-panel__item"><span class="item-idx">05</span>Bildegalleri</a>
-                    <a href="index.html#trygghet" class="dropdown-panel__item"><span class="item-idx">06</span>Kjøpsprosessen</a>
-                    <a href="index.html#uteliv" class="dropdown-panel__item"><span class="item-idx">07</span>Beliggenhet &amp; Nærområde</a>
-                    <a href="index.html#kontakt" class="dropdown-panel__item"><span class="item-idx">08</span>Kontakt oss</a>
-                </div>
+<a href="index.html#velg-bolig" class="dropdown-panel__item"><span class="item-idx">01</span>Velg bolig</a>
+<a href="index.html#galleri" class="dropdown-panel__item"><span class="item-idx">02</span>Bildegalleri</a>
+<a href="index.html#boligene" class="dropdown-panel__item"><span class="item-idx">03</span>Pris og nøkkelinfo</a>
+<a href="index.html#uteliv" class="dropdown-panel__item"><span class="item-idx">04</span>Beliggenhet & nærområde</a>
+<a href="index.html#konsept" class="dropdown-panel__item"><span class="item-idx">05</span>Konsept</a>
+<a href="index.html#kvaliteter" class="dropdown-panel__item"><span class="item-idx">06</span>Kvaliteter & materialer</a>
+<a href="index.html#smarthjem" class="dropdown-panel__item"><span class="item-idx">07</span>Smart hjem</a>
+<a href="index.html#trygghet" class="dropdown-panel__item"><span class="item-idx">08</span>Kjøpsprosessen</a>
+<a href="index.html#kontakt" class="dropdown-panel__item"><span class="item-idx">09</span>Kontakt oss</a>
+</div>
             </div>
             <div class="navbar__links">
                 <div class="navbar__dropdown" id="navEneboligDropdown">
@@ -76,12 +78,13 @@
                     </a>
                     <div class="navbar__dropdown-panel" id="navEneboligMenu">
                         <span class="dropdown-panel__title">Eneboligen</span>
-                        <a href="enebolig.html#intro" class="dropdown-panel__item"><span class="item-idx">01</span>Oversikt</a>
-                        <a href="enebolig.html#planlosning" class="dropdown-panel__item"><span class="item-idx">02</span>Plantegninger &amp; Rom</a>
-                        <a href="enebolig.html#om-boligen" class="dropdown-panel__item"><span class="item-idx">03</span>Om boligen &amp; Nøkkelinfo</a>
-                        <a href="enebolig.html#tilvalg" class="dropdown-panel__item"><span class="item-idx">04</span>Fleksibilitet &amp; Tilvalg</a>
-                        <a href="enebolig.html#galleri" class="dropdown-panel__item"><span class="item-idx">05</span>Bildegalleri</a>
-                    </div>
+<a href="enebolig.html#intro" class="dropdown-panel__item"><span class="item-idx">01</span>Oversikt</a>
+<a href="enebolig.html#galleri" class="dropdown-panel__item"><span class="item-idx">02</span>Bildegalleri</a>
+<a href="enebolig.html#pris" class="dropdown-panel__item"><span class="item-idx">03</span>Pris og nøkkelinfo</a>
+<a href="enebolig.html#planlosning" class="dropdown-panel__item"><span class="item-idx">04</span>Plantegninger & rom</a>
+<a href="enebolig.html#om-boligen" class="dropdown-panel__item"><span class="item-idx">05</span>Om boligen</a>
+<a href="enebolig.html#tilvalg" class="dropdown-panel__item"><span class="item-idx">06</span>Fleksibilitet & tilvalg</a>
+</div>
                 </div>
                 <div class="navbar__dropdown" id="navTomannsboligDropdown">
                     <a href="tomannsbolig.html" class="navbar__link is-active" id="navTomannsboligLink" aria-expanded="false" aria-haspopup="true">
@@ -92,12 +95,13 @@
                     </a>
                     <div class="navbar__dropdown-panel" id="navTomannsboligMenu">
                         <span class="dropdown-panel__title">Tomannsboligen</span>
-                        <a href="#intro" class="dropdown-panel__item"><span class="item-idx">01</span>Oversikt</a>
-                        <a href="#planlosning" class="dropdown-panel__item"><span class="item-idx">02</span>Plantegninger &amp; Rom</a>
-                        <a href="#om-boligen" class="dropdown-panel__item"><span class="item-idx">03</span>Om boligen &amp; Nøkkelinfo</a>
-                        <a href="#tilvalg" class="dropdown-panel__item"><span class="item-idx">04</span>Fleksibilitet &amp; Tilvalg</a>
-                        <a href="#galleri" class="dropdown-panel__item"><span class="item-idx">05</span>Bildegalleri</a>
-                    </div>
+<a href="tomannsbolig.html#intro" class="dropdown-panel__item"><span class="item-idx">01</span>Oversikt</a>
+<a href="tomannsbolig.html#galleri" class="dropdown-panel__item"><span class="item-idx">02</span>Bildegalleri</a>
+<a href="tomannsbolig.html#pris" class="dropdown-panel__item"><span class="item-idx">03</span>Pris og nøkkelinfo</a>
+<a href="tomannsbolig.html#planlosning" class="dropdown-panel__item"><span class="item-idx">04</span>Plantegninger & rom</a>
+<a href="tomannsbolig.html#om-boligen" class="dropdown-panel__item"><span class="item-idx">05</span>Om boligen</a>
+<a href="tomannsbolig.html#tilvalg" class="dropdown-panel__item"><span class="item-idx">06</span>Fleksibilitet & tilvalg</a>
+</div>
                 </div>
                 <a href="#faq" class="navbar__link" id="navFaqBtn">FAQ</a>
                 <a href="index.html#kontakt" class="navbar__cta">Kontakt oss</a>
@@ -142,10 +146,67 @@
             <!-- Intro Text -->
             <div class="pl-intro-text" id="intro">
                 <h1 class="section-title">Utforsk tomannsboligen</h1>
-                <p class="section-intro">Tomannsboligen har en attraktiv beliggenhet på et solrikt høydedrag ved Bekkestua. Boligene er prosjektert med fokus på moderne arkitektur, funksjonelle planløsninger og gode romkvaliteter som åpner for hele fire soverom og tre stuer. Tomannsboligen har atkomstvei med carport og praktisk utebod på oversiden av huset, og byr på en solfylt hage på nedsiden med flott utsikt mot Kolsåstoppen. Her får du innholdsrike og familievennlige løsninger med blant annet mulighet for å etablere hybel. Velg først etasje, og deretter tilhørende rom-illustrasjon for å utforske de ulike mulighetene.</p>
+                <p class="section-intro">To nye hjem over tre etasjer, med utsikt, sol og hage. Utforsk rommene og mulighetene for din hverdag.</p><p class="property-facts">204 m² BRA-i + 5 m² BRA-e per bolig</p><div class="property-shortcuts"><a href="#galleri">Bilder</a><a href="#pris">Pris</a><a href="#planlosning">Planløsninger</a></div>
 
                 <!-- Pris og omkostninger for 49A og 49B -->
-                <div class="pl-price-card">
+
+            </div>
+<section class="pl-gallery-section" id="galleri">
+                <div class="container">
+                    <h2 class="pl-gallery-title">Bildegalleri – Tomannsboligen</h2>
+                    <p class="pl-gallery-subtitle">Bla gjennom bildene, eller trykk for fullskjerm. Illustrasjoner – avvik og tilvalg kan forekomme.</p>
+                </div>
+
+                <div class="pl-gallery-container">
+                    <div class="pl-gallery-track-wrapper">
+                        <div class="pl-gallery-track">
+<div class="pl-gallery-slide" data-index="0">
+                                <img src="images/Ferdige illustrasjoner/Tomannsbolig stue ferdig.jpg" alt="Tomannsbolig – Stue" class="pl-gallery-img">
+                                <span class="pl-gallery-caption">Lys og luftig stue i første etasje med vinduer fra tre sider, mye lysinnslipp og direkte utgang til både vestvendt balkong og en romslig terrasse.</span>
+                            </div>
+<div class="pl-gallery-slide" data-index="1">
+                                <img src="images/optimized/Tomannsbolig kjøkken ferdig-1280w.jpg" alt="Tomannsbolig – Kjøkken" class="pl-gallery-img">
+                                <span class="pl-gallery-caption">Nydelig kjøkken fra Svane Kjøkkenet med hvit steinbenkeplate, stor kjøkkenøy og integrerte kvalitetshvitevarer.</span>
+                            </div>
+<div class="pl-gallery-slide" data-index="2">
+                                <img src="images/optimized/Tomannsbolig 49 B hage NY-1280w.jpg" alt="Tomannsbolig – Uteområde" class="pl-gallery-img">
+                                <span class="pl-gallery-caption">Moderne, innholdsrik og vertikaldelt tomannsbolig over tre plan – med solrike uteplasser og fantastiske lysforhold.</span>
+                            </div>
+<div class="pl-gallery-slide" data-index="3">
+                                <img src="images/Ferdige illustrasjoner/Tomannsbolig 49B hage ferdig NY.jpg" alt="Tomannsbolig – Hage og terrasse" class="pl-gallery-img">
+                                <span class="pl-gallery-caption">Stort hageområde på nedsiden av boligen. Her kan terrassens form og størrelse bestemmes etter kjøpers ønske (leveres ikke som standard).</span>
+                            </div>
+<div class="pl-gallery-slide" data-index="4">
+                                <img src="images/Ferdige illustrasjoner/Tomannsbolig loftstue ferdig.jpg" alt="Tomannsbolig – Loftstue" class="pl-gallery-img">
+                                <span class="pl-gallery-caption">Her er det ene soverommet i andre etasje gjort om til en loftstue for å skape et ekstra, koselig oppholdsrom for hele familien.</span>
+                            </div>
+<div class="pl-gallery-slide" data-index="5">
+                                <img src="images/Ferdige illustrasjoner/Tomannsbolig soverom ferdig.jpg" alt="Tomannsbolig – Hovedsoverom" class="pl-gallery-img">
+                                <span class="pl-gallery-caption">Stort og romslig hovedsoverom i andre etasje med god plass til garderobeskap.</span>
+                            </div>
+<div class="pl-gallery-slide" data-index="6">
+                                <img src="images/Ferdige illustrasjoner/Familiebad tomannsbolig ferdig.jpg" alt="Tomannsbolig – Bad" class="pl-gallery-img">
+                                <span class="pl-gallery-caption">Delikat og romslig familiebad i andre etasje med 60x60 fliser, dobbel servant og egen våtsone. Badekar og sotet glassdør til toalett leveres som tilvalg.</span>
+                            </div>
+<div class="pl-gallery-slide" data-index="7">
+                                <img src="images/Ferdige illustrasjoner/Tomannsbolig inngang ferdig.jpg" alt="Tomannsbolig – Inngangsparti" class="pl-gallery-img">
+                                <span class="pl-gallery-caption">Flott og gruset adkomst frem til inngangspartiet, med en separat utvendig trapp ned til kjellerstuen i underetasjen.</span>
+                            </div>
+<div class="pl-gallery-slide" data-index="8">
+                                <img src="images/Ferdige illustrasjoner/Tomannsbolig gårdsplass ferdig.jpg" alt="Tomannsbolig – Gårdsplass" class="pl-gallery-img">
+                                <span class="pl-gallery-caption">Gårdsplass med carport klargjort for elbillader, samt en praktisk utebod i bakkant av carporten.</span>
+                            </div>
+</div>
+                    </div>
+                    <button class="pl-gallery-nav prev" aria-label="Forrige bilde">&#10094;</button>
+                    <button class="pl-gallery-nav next" aria-label="Neste bilde">&#10095;</button>
+
+                    <div class="pl-gallery-scrollbar">
+                        <div class="pl-gallery-scrollbar-thumb"></div>
+                    </div>
+                </div>
+            </section>
+<div class="pl-price-card" id="pris">
                     <div class="pl-price-card__header">
                         <span class="pl-price-card__tag">Pris og nøkkelinfo</span>
                         <h3 class="pl-price-card__title">Tomannsbolig Caroline Øverlands vei 49A &amp; 49B</h3>
@@ -196,10 +257,12 @@
                         * Priser, omkostninger og beregninger er veiledende. Selger tar forbehold om endringer i priser, offentlige gebyrer og avgifter frem til bindende kjøpekontrakt er inngått. Kjøpsomkostninger for nybygg inkluderer lav dokumentavgift (kun 2,5 % av tomteverdi).
                     </p>
                 </div>
-            </div>
+
 
             <!-- ═══════════════════════ ROM-VIEWER ═══════════════════════ -->
             <div class="pl-viewer" id="planlosning">
+<h2 class="plan-heading">Utforsk planløsningene</h2>
+<p class="plan-help">Velg etasje og planalternativ, og trykk på rommene for å se illustrasjonene.</p>
                 <!-- Høyre kolonne: Romknapper + Visualisering -->
                 <div class="pl-display-column">
                     <div class="pl-selector-group">
@@ -299,7 +362,7 @@
                         <p>Uteområdene på nedsiden av tomannsboligen, med direkte utgang fra underetasjen, byr på store hagearealer med mange muligheter. Terrenget leveres ferdig terrassert i to nivåer for å tilpasse og utnytte helningen. Her har kjøper gode muligheter til å tilpasse utformingen etter egne ønsker. Man står fritt til å velge den løsningen som passer familien best, enten man ønsker alt i terrasse, alt i gress eller en kombinasjon. Kjøper kan også være med på å bestemme størrelsen og fordele arealet på de to platåene – for eksempel ved å velge et stort flatt parti rett utenfor utgangsdøren kombinert med en mindre hagedel på nedsiden, eller omvendt. Du har med andre ord stor frihet til å bestemme både overflatematerialer og arealfordelingen på de to terrasserte høydene. Terrasser på bakkeplan, pergola og møblering som vises på illustrasjonene, er kun ment for å vise mulighetene, slik at uteområdet kan skreddersys og tilpasses kjøpers egne ønsker.</p>
                         <p class="pl-about-disclaimer">For ytterligere informasjon, se fullstendig salgsoppgave.</p>
                     </div>
-                    
+
                     <div class="pl-about-sidebar">
                         <div class="pl-about-card">
                             <h3 class="pl-card-title">Nøkkelinfo</h3>
@@ -350,12 +413,12 @@
             <section class="pl-flexibility-section" id="tilvalg">
                 <h2 class="pl-flexibility-title">Fleksibilitet, endringer og tilvalg</h2>
                 <p class="pl-flexibility-intro">Selv om tomannsboligen i utgangspunktet er nøye planlagt, vet vi at ulike familier har ulike behov og ønsker. Derfor har vi tilrettelagt for gode løsninger som gjør det enkelt å tilpasse rominndelingen og utformingen underveis i prosessen slik at du kan skape ditt skreddersydde drømmehjem.</p>
-                
+
                 <div class="pl-flexibility-grid">
                     <!-- Rominndeling -->
                     <div class="pl-flex-card">
                         <h3>Fleksibel rominndeling og planløsning</h3>
-                        
+
                         <div class="pl-flex-subgroup">
                             <h4>2. etasje</h4>
                             <ul>
@@ -374,7 +437,7 @@
                     <!-- Tilvalg -->
                     <div class="pl-flex-card">
                         <h3>Skreddersydde tilvalg</h3>
-                        
+
                         <div class="pl-flex-subgroup">
                             <h4>Overflater</h4>
                             <p>Her kan du gjøre personlige valg på alle boligens overflater. Dette inkluderer blant annet ulike typer fliser, herdet tregulv i eik, trapp, bytte av innerdører samt valg av farger på veggene.</p>
@@ -400,62 +463,8 @@
         </div> <!-- Closes container -->
 
             <!-- ═══════════════════════ ③ BILDER AV TOMANNSBOLIGEN ═══════════════════════ -->
-            <section class="pl-gallery-section" id="galleri">
-                <div class="container">
-                    <h2 class="pl-gallery-title">Bildegalleri – Tomannsboligen</h2>
-                    <p class="pl-gallery-subtitle">Utforsk alle illustrasjoner og eksteriørbilder av tomannsboligen samlet på ett sted. Klikk på et bilde for å se det i fullskjerm. Alle illustrasjoner er veiledende, og avvik fra endelig leveranse kan forekomme.</p>
-                </div>
-                
-                <div class="pl-gallery-container">
-                    <div class="pl-gallery-track-wrapper">
-                        <div class="pl-gallery-track">
-                            <div class="pl-gallery-slide" data-index="0">
-                                <img src="images/optimized/Tomannsbolig 49 B hage NY-1280w.jpg" alt="Tomannsbolig – Uteområde" class="pl-gallery-img">
-                                <span class="pl-gallery-caption">Moderne, innholdsrik og vertikaldelt tomannsbolig over tre plan – med solrike uteplasser og fantastiske lysforhold.</span>
-                            </div>
-                            <div class="pl-gallery-slide" data-index="1">
-                                <img src="images/Ferdige illustrasjoner/Tomannsbolig 49B hage ferdig NY.jpg" alt="Tomannsbolig – Hage og terrasse" class="pl-gallery-img">
-                                <span class="pl-gallery-caption">Stort hageområde på nedsiden av boligen. Her kan terrassens form og størrelse bestemmes etter kjøpers ønske (leveres ikke som standard).</span>
-                            </div>
-                            <div class="pl-gallery-slide" data-index="2">
-                                <img src="images/Ferdige illustrasjoner/Tomannsbolig stue ferdig.jpg" alt="Tomannsbolig – Stue" class="pl-gallery-img">
-                                <span class="pl-gallery-caption">Lys og luftig stue i første etasje med vinduer fra tre sider, mye lysinnslipp og direkte utgang til både vestvendt balkong og en romslig terrasse.</span>
-                            </div>
-                            <div class="pl-gallery-slide" data-index="3">
-                                <img src="images/Ferdige illustrasjoner/Tomannsbolig loftstue ferdig.jpg" alt="Tomannsbolig – Loftstue" class="pl-gallery-img">
-                                <span class="pl-gallery-caption">Her er det ene soverommet i andre etasje gjort om til en loftstue for å skape et ekstra, koselig oppholdsrom for hele familien.</span>
-                            </div>
-                            <div class="pl-gallery-slide" data-index="4">
-                                <img src="images/optimized/Tomannsbolig kjøkken ferdig-1280w.jpg" alt="Tomannsbolig – Kjøkken" class="pl-gallery-img">
-                                <span class="pl-gallery-caption">Nydelig kjøkken fra Svane Kjøkkenet med hvit steinbenkeplate, stor kjøkkenøy og integrerte kvalitetshvitevarer.</span>
-                            </div>
-                            <div class="pl-gallery-slide" data-index="5">
-                                <img src="images/Ferdige illustrasjoner/Tomannsbolig soverom ferdig.jpg" alt="Tomannsbolig – Hovedsoverom" class="pl-gallery-img">
-                                <span class="pl-gallery-caption">Stort og romslig hovedsoverom i andre etasje med god plass til garderobeskap.</span>
-                            </div>
-                            <div class="pl-gallery-slide" data-index="6">
-                                <img src="images/Ferdige illustrasjoner/Familiebad tomannsbolig ferdig.jpg" alt="Tomannsbolig – Bad" class="pl-gallery-img">
-                                <span class="pl-gallery-caption">Delikat og romslig familiebad i andre etasje med 60x60 fliser, dobbel servant og egen våtsone. Badekar og sotet glassdør til toalett leveres som tilvalg.</span>
-                            </div>
-                            <div class="pl-gallery-slide" data-index="7">
-                                <img src="images/Ferdige illustrasjoner/Tomannsbolig inngang ferdig.jpg" alt="Tomannsbolig – Inngangsparti" class="pl-gallery-img">
-                                <span class="pl-gallery-caption">Flott og gruset adkomst frem til inngangspartiet, med en separat utvendig trapp ned til kjellerstuen i underetasjen.</span>
-                            </div>
-                            <div class="pl-gallery-slide" data-index="8">
-                                <img src="images/Ferdige illustrasjoner/Tomannsbolig gårdsplass ferdig.jpg" alt="Tomannsbolig – Gårdsplass" class="pl-gallery-img">
-                                <span class="pl-gallery-caption">Gårdsplass med carport klargjort for elbillader, samt en praktisk utebod i bakkant av carporten.</span>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="pl-gallery-nav prev" aria-label="Forrige bilde">&#10094;</button>
-                    <button class="pl-gallery-nav next" aria-label="Neste bilde">&#10095;</button>
-                    
-                    <div class="pl-gallery-scrollbar">
-                        <div class="pl-gallery-scrollbar-thumb"></div>
-                    </div>
-                </div>
-            </section>
-            
+
+
             <div class="container">
                 <!-- Disclaimer -->
             <p class="pl-disclaimer">
@@ -550,7 +559,7 @@
             <span class="section-label">Få tilsendt prospekt</span>
             <h2 class="section-title" id="prospektModalTitle">Meld uforpliktende interesse</h2>
             <p class="prospekt-modal__subtitle">Registrer deg under for å motta komplett salgsprospekt, tegninger og prisinformasjon for Caroline Øverlands vei 49.</p>
-            
+
             <form class="prospekt__form" id="prospektForm" action="https://formsubmit.co/ajax/ds@nobello.no" method="POST" onsubmit="handleProspektSubmit(event)">
                 <!-- Honeypot -->
                 <input type="text" name="_honey" style="display:none">
@@ -565,22 +574,22 @@
                 <input type="hidden" name="_autoresponse" value="Takk for at du meldte interesse for Caroline Øverlands vei 49. Ansvarlig megler Jørgen Ek og Nobello AS har mottatt din henvendelse og vil følge opp. Du kan også laste ned prospektene direkte fra nettsiden.">
                 <!-- Email Subject -->
                 <input type="hidden" name="_subject" value="Ny interessent (prospekt): Tomannsbolig - Caroline Øverlands vei 49">
-                
+
                 <div class="form-group">
                     <label class="form-label" for="prospekt-navn">Navn</label>
                     <input class="form-input" type="text" id="prospekt-navn" name="navn" required autocomplete="name" placeholder="Ditt fulle navn">
                 </div>
-                
+
                 <div class="form-group">
                     <label class="form-label" for="prospekt-epost">E-post</label>
                     <input class="form-input" type="email" id="prospekt-epost" name="email" required autocomplete="email" placeholder="din.epost@adresse.no">
                 </div>
-                
+
                 <div class="form-group">
                     <label class="form-label" for="prospekt-telefon">Telefon</label>
                     <input class="form-input" type="tel" id="prospekt-telefon" name="telefon" autocomplete="tel" placeholder="Ditt telefonnummer">
                 </div>
-                
+
                 <div class="form-group">
                     <label class="form-label">Hvilken boligtype interesserer deg?</label>
                     <div class="form-radio-group">
@@ -592,12 +601,12 @@
                         <label class="form-radio-label" for="modal-begge">Begge</label>
                     </div>
                 </div>
-                
+
                 <div class="form-group">
                     <label class="form-label" for="prospekt-melding">Eventuell kommentar / spørsmål</label>
                     <textarea class="form-textarea" id="prospekt-melding" name="melding" rows="2" placeholder="Valgfritt"></textarea>
                 </div>
-                
+
                 <button type="submit" class="btn-primary" id="prospektSubmitBtn">Få tilsendt prospekt</button>
             <p class="privacy-form-note">Nobello og megler bruker kontaktopplysningene til å følge opp din interesse i prosjektet. <a href="personvern.html">Les mer om personvern</a>.</p>
 </form>
@@ -611,7 +620,7 @@
                 </div>
                 <h3 class="prospekt-success__title">Takk for din interesse!</h3>
                 <p class="prospekt-success__desc">Din henvendelse er registrert og oversendt til ansvarlig megler <strong>Jørgen Ek</strong>. Du kan nå laste ned salgsprospektene direkte under:</p>
-                
+
                 <div class="prospekt-downloads">
                     <a href="Prospekt%20C%C3%98V49/Prospekt%20C%C3%98V%2049A%20Tomannsbolig.pdf" target="_blank" class="btn-prospekt-download" data-prospekt="tomanns-a" download>
                         <span class="btn-prospekt-download__label">
