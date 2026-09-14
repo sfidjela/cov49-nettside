@@ -551,10 +551,8 @@
     void roomContent.offsetHeight; // reflow
     roomContent.style.animation = '';
 
-    // On mobile, scroll to room display
-    if (window.innerWidth < 1024) {
-      roomDisplay.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    // Keep the visitor at the controls when changing rooms, floors or variants.
+    // Only explicit section links should move the page.
   }
 
   function resetRoomDisplay() {
