@@ -1274,3 +1274,8 @@ body.lightbox-open .lightbox {
     text-align: center;
   }
 }
+/* Boligsidene: velg etasje og planløsning før illustrasjonene på smale skjermer. */
+@media (max-width: 1023px) {
+  .pl-viewer--controls-first > .pl-controls { order: 1; }
+  .pl-viewer--controls-first > .pl-display-column { order: 2; }
+}

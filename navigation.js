@@ -15,6 +15,8 @@
   nav.prepend(header);
   nav.classList.add('has-mobile-menu');
   const toggle = header.querySelector('button');
+  const toggleLabel = toggle.firstChild;
+  const toggleIcon = toggle.querySelector('span');
   const dropdowns = Array.from(nav.querySelectorAll('.navbar__dropdown'));
 
   function setDropdown(dropdown, open) {
@@ -24,7 +26,9 @@
   function setMenu(open, returnFocus = false) {
     nav.classList.toggle('menu-open', open);
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.innerHTML = open ? 'Lukk <span aria-hidden="true">×</span>' : 'Meny <span aria-hidden="true">☰</span>';
+    // Behold klikkmålet i DOM-en mens klikket bobler til dokumentet.
+    toggleLabel.nodeValue = open ? 'Lukk ' : 'Meny ';
+    toggleIcon.textContent = open ? '×' : '☰';
     if (!open) dropdowns.forEach(d => setDropdown(d, false));
     if (returnFocus) toggle.focus();
   }
