@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://cov49.no/sitemap.xml
+Sitemap: https://xn--cv49-gra.no/sitemap.xml
